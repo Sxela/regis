@@ -22,8 +22,12 @@ internal documentation links, portable references and JavaScript syntax.
 `npm run build` emits the portable skill and a content-hash manifest.
 `npm run test:package` packs the allowlisted npm payload, installs it offline
 into a temporary directory and exercises the packaged CLI/skill/project brief.
-`npm run verify` runs all four. Node.js 22+ is required; the current package has
-no npm runtime or development dependencies.
+`npm run verify` runs all four. The package has one direct runtime dependency:
+pinned `rea-agents`, requested so npm supplies
+the analysis toolkit used by REGIS. Its transitive dependencies are locked.
+Additional dependencies still need explicit review. Supported Node versions
+are 22.19+, 24.11+, or 26+, matching REA. The offline package smoke reuses the
+npm cache populated by installation. No REGIS lifecycle hook registers MCP.
 
 The bundled skill can additionally be checked with a Codex skill-creator
 `quick_validate.py` when available. That external validator is not required for

@@ -8,7 +8,7 @@
     "regis": "bin/regis.mjs"
   },
   "engines": {
-    "node": ">=22"
+    "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
   },
   "files": [
     "bin",
@@ -42,5 +42,8 @@
   "homepage": "https://github.com/Sxela/regis#readme",
   "bugs": {
     "url": "https://github.com/Sxela/regis/issues"
+  },
+  "dependencies": {
+    "rea-agents": "6.7.0"
   }
 }

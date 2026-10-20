@@ -32,8 +32,9 @@ Read [source discovery](references/source-discovery.md). Use the available REA
 skill and actual advertised tool schemas to inspect shipped artifacts and
 recover unknown formats, resource mappings, stats and spawn behavior. Do not
 invent a universal asset-scan tool or treat every archive as a native executable.
-REA is a separately supplied analysis tool; REGIS does not install/register it,
-execute the source game, or supply every decoder merely by being installed.
+The REGIS npm package depends on REA; a standalone skill copy still needs
+separately available REA tools. Installation does not register MCP, configure
+providers, execute the source game, or supply every decoder.
 When a provider is unavailable, retain the bounded unknown, continue supported
 work and report the actual blocker. Use ordinary source tools for complete
 source repositories; use REA where shipped-artifact evidence is required.

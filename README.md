@@ -17,9 +17,9 @@ every game or produce a finished game from a single command.
 
 ## Install from this checkout
 
-Prerequisite: Node.js 22 or newer. The REGIS package has no runtime dependencies.
-REA and any analysis engines, image/video models, application dependencies and
-test browsers are separate prerequisites for the work that uses them.
+Prerequisite: Node.js 22.19+, 24.11+, or 26+. REGIS depends on pinned
+`rea-agents`; `npm ci` installs REA and its dependencies. Analysis engines,
+image/video models, game dependencies and test browsers remain separate.
 
 ```sh
 npm ci
@@ -35,9 +35,12 @@ node bin/regis.mjs skill install --client codex --scope project --project /path/
 node bin/regis.mjs skill install --client codex --scope user
 ```
 
-Codex project scope uses `.agents/skills/regis`; user scope uses
-`~/.codex/skills/regis`. Claude Code is supported with `--client claude_code`
-and uses `.claude/skills/regis`. For another skill-capable agent, use
+Run `node bin/regis.mjs skill clients` to list all 18 supported harnesses,
+including Cursor, Gemini CLI, Windsurf, OpenCode, Copilot CLI and VS Code.
+For example, use `skill install --client cursor --scope project --dry-run`.
+See [harness destinations and scope](docs/harnesses.md) for paths and overrides.
+Codex project scope uses `.agents/skills/regis`; user scope retains
+`~/.codex/skills/regis`. For another skill-capable agent, use
 `--destination /its/skill-directory/regis`, or copy the folder returned by
 `node bin/regis.mjs skill path`. Client discovery/reload behavior is client-specific.
 
@@ -77,8 +80,19 @@ asset decoding, balance, mobile behavior or a release.
 
 `doctor` is read-only and reports local Node/skill/REA CLI visibility. It cannot
 observe your agent's active MCP session. A missing CLI does not prove that REA
-MCP tools are absent. `--strict` additionally requires a local `rea` executable;
-no command downloads or registers REA automatically.
+MCP tools are absent. `--strict` additionally requires the installed REA
+dependency or a `rea` executable on PATH. The dependency entry and version
+are reported separately from PATH visibility. Diagnostics never launch REA.
+
+To connect MCP tools, explicitly review a plan for your harness:
+
+```sh
+npm exec -- rea setup --client cursor --dry-run --json
+```
+
+After reviewing it, run `npm exec -- rea setup --client cursor`, follow REA's
+approval flow, then restart the harness. This separate operation can install
+REA's matching skill and modify client-wide MCP configuration.
 
 ## What the skill delivers
 

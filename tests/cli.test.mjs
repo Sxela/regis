@@ -33,6 +33,18 @@ test('CLI rejects unknown/duplicate/missing options before any installation', ()
   }
 });
 
+test('CLI lists clients and previews a Cursor install without writing', async t => {
+  const temp = await mkdtemp(path.join(os.tmpdir(), 'regis-clients-test-'));
+  t.after(() => rm(temp, {recursive: true, force: true}));
+  const listed = run(['skill', 'clients'], temp);
+  assert.equal(listed.status, 0, listed.stderr);
+  assert.ok(JSON.parse(listed.stdout).cursor);
+  const result = run(['skill', 'install', '--client', 'cursor', '--project', temp, '--dry-run'], temp);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(JSON.parse(result.stdout).destination, path.join(temp, '.cursor', 'skills', 'regis'));
+  assert.deepEqual(await readdir(temp), []);
+});
+
 test('packaged entrypoint can initialize and check a mobile-default project', async t => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'regis-cli-test-'));
   t.after(() => rm(root, {recursive: true, force: true}));

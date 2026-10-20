@@ -31,7 +31,7 @@ export async function checkRepository(root) {
   }
   const pkg = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
   if (pkg.bin?.regis !== 'bin/regis.mjs') throw Error('CLI entrypoint mismatch.');
-  if (pkg.dependencies && Object.keys(pkg.dependencies).length) throw Error('Review new runtime dependencies before changing the zero-dependency package contract.');
+  if (Object.keys(pkg.dependencies ?? {}).length !== 1 || !/^\d+\.\d+\.\d+$/.test(pkg.dependencies?.['rea-agents'] ?? '')) throw Error('The reviewed runtime dependency is an exact rea-agents version only.');
   const sourceFiles = [];
   for (const folder of ['bin', 'lib', 'scripts', 'tests']) sourceFiles.push(...await filesUnder(path.join(root, folder)));
   for (const file of sourceFiles.filter(file => file.endsWith('.mjs'))) {

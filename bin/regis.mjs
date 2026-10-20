@@ -4,6 +4,8 @@ import {constants} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {installSkill} from '../lib/install.mjs';
+import {clients} from '../lib/clients.mjs';
+import {dependencyRea, supportedNode} from '../lib/runtime.mjs';
 import {initializeProject, checkProject} from '../lib/project.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -13,14 +15,16 @@ const usage = `REGIS — Reverse Engineer Game Into Survival
 regis --version
 regis doctor [--json] [--strict]
 regis skill path
-regis skill install [--client codex|claude_code] [--scope project|user]
+regis skill clients
+regis skill install [--client CLIENT] [--scope project|user]
                     [--project PATH] [--destination PATH] [--dry-run] [--replace]
 regis init NEW_DIRECTORY [--source GAME_PATH] [--name NAME]
 regis check PROJECT_DIRECTORY
 
-The bundled $regis agent skill performs the game workflow with separately
-available REA tools. init creates a project brief, not a playable game.
-No command registers MCP, installs REA, executes game files or publishes.
+Clients: ${Object.keys(clients).join(', ')}.
+The npm package includes REA as a dependency. MCP and providers need explicit
+REA setup. init creates a project brief, not a playable game.
+No command registers MCP, executes game files or publishes.
 `;
 
 function options(args, accepted, booleans = []) {
@@ -62,16 +66,17 @@ async function main(args) {
   if (command === 'doctor') {
     const {values, positionals} = options(rest, ['json', 'strict'], ['json', 'strict']);
     if (positionals.length) throw Error('doctor takes no positional arguments.');
-    const rea = await findRea();
+    const [rea, reaDependency] = await Promise.all([findRea(), dependencyRea()]);
     await access(path.join(skill, 'SKILL.md'));
-    const report = {node: process.version, supportedNode: Number(process.versions.node.split('.')[0]) >= 22, skill, reaCli: rea, reaMcpSession: 'unknown: inspect the active agent tool list', changes: [], note: 'No tools were installed or launched. CLI absence does not prove MCP absence.'};
-    console.log(values.json ? JSON.stringify(report, null, 2) : `Node: ${report.node}\nSkill: ${skill}\nREA CLI: ${rea || 'not found'}\n${report.reaMcpSession}\n${report.note}`);
-    if (!report.supportedNode || (values.strict && !rea)) process.exitCode = 1;
+    const report = {node: process.version, supportedNode: supportedNode(), skill, reaCli: rea, reaDependency, reaMcpSession: 'unknown: inspect the active agent tool list', changes: [], note: 'No tools were installed or launched. CLI absence does not prove MCP absence.'};
+    console.log(values.json ? JSON.stringify(report, null, 2) : `Node: ${report.node}\nSkill: ${skill}\nREA dependency: ${reaDependency.entry || 'not found'}\nREA CLI on PATH: ${rea || 'not found'}\n${report.reaMcpSession}\n${report.note}`);
+    if (!report.supportedNode || (values.strict && !reaDependency.entry && !rea)) process.exitCode = 1;
     return;
   }
   if (command === 'skill') {
+    if (rest[0] === 'clients' && rest.length === 1) { console.log(JSON.stringify(clients, null, 2)); return; }
     if (rest[0] === 'path' && rest.length === 1) { console.log(skill); return; }
-    if (rest[0] !== 'install') throw Error('Use skill path or skill install.');
+    if (rest[0] !== 'install') throw Error('Use skill path, skill clients or skill install.');
     const {values, positionals} = options(rest.slice(1), ['client', 'scope', 'project', 'destination', 'dry-run', 'replace'], ['dry-run', 'replace']);
     if (positionals.length) throw Error('skill install takes named options only.');
     console.log(JSON.stringify(await installSkill(skill, {...values, dryRun: values['dry-run']}), null, 2)); return;
