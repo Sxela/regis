@@ -30,6 +30,7 @@ try {
   if (!skill.includes('references/platform-and-mobile.md')) throw Error('Packaged skill lost mobile guidance.');
   for (const match of skill.matchAll(/\]\((references\/[^)#]+)(?:#[^)]*)?\)/g)) await readFile(path.join(source, match[1]));
   run(process.execPath, [cli, 'init', path.join(temp, 'game')], temp);
+  await readFile(path.join(temp, 'game', 'docs', 'quality-target.md'), 'utf8');
   const report = JSON.parse(run(process.execPath, [cli, 'check', path.join(temp, 'game')], temp));
   if (!report.valid) throw Error('Packaged project brief failed its contract.');
   console.log('npm tarball installed offline; REA dependency, CLI, portable references, skill installation and mobile-default brief verified.');

@@ -19,7 +19,17 @@ Follow the user's requested scope: continue an existing project or phase rather
 than restarting completed work. For a full project, persist through discovery,
 design, implementation, playtesting, promo and release preparation. Keep a short
 phase/evidence log with pending work and blockers. A scaffold, passing unit
-tests or staged trailer is not a finished game.
+tests or staged trailer is not a finished game. Read
+[quality target and milestone reviews](references/quality-and-scope.md) before
+implementation. Establish a concrete source/benchmark coverage target; a request
+to test the skill does not authorize silently reducing that target to a demo.
+Treat the first playable slice as an intermediate milestone and continue through
+the requested target. A list of deferred requirements does not complete them.
+For an explicitly quick survival test, scope a narrow content sample with full
+depth: every included actor, spell, region and UI flow uses its real assets and
+complete mechanics. A smaller catalog is acceptable; backward movement, missing
+native UI and unused spell sprites are defects, not content-scope reductions.
+Full-catalog expansion, promo and release breadth follow the requested scope.
 
 ## Establish the target and evidence
 
@@ -27,6 +37,9 @@ Resolve source path, edition/version, output repository, supported platforms and
 available REA tools from the session. Ask only for information that prevents
 meaningful progress. Keep the source installation unchanged and generated output
 outside it. Record hashes, archive/member IDs and extraction parameters.
+When the user supplies an existing adaptation or reference result, compare its
+relevant screens, loop and systems before choosing the implementation scope.
+Record the qualities to preserve, explicit exclusions and known reference defects.
 
 Read [source discovery](references/source-discovery.md). Use the available REA
 skill and actual advertised tool schemas to inspect shipped artifacts and
@@ -45,6 +58,9 @@ stats/traits/resistances; region boundaries, area spawns and encounter rules.
 Include present/missing/unsupported status, provenance and extraction coverage
 for each family. A filename or sprite does not prove behavior or local spawns.
 Keep observed facts, inferences and deliberately adapted rules separate.
+Track decoded, mapped, implemented and validated coverage per relevant family.
+Resolve missing companion resources and uncertain formats instead of making a
+small easy-to-decode selection the whole content target.
 
 ## Design and iterate before expanding content
 
@@ -61,6 +77,9 @@ next area, death/victory and save/continue. Use this loop to judge fun, readable
 counterplay, choice quality and replayability before generating a large catalog.
 Record design hypotheses and what changed after play; do not claim that a design
 document establishes fun.
+The slice must exercise the source's difficult presentation and gameplay systems.
+Review it against the target before expansion, then integrate the remaining
+required regions, actors, useful abilities/items and native interface components.
 
 Preserve coherent source regions and their local spawn identities. Make every
 offered ability, passive and item property useful in the implemented loop.
@@ -79,6 +98,9 @@ instrumented engine replays. Test formulas, targeting, status execution,
 progression, transactions, collision, saves and migrations with meaningful
 observable outcomes. Do not create passing placeholder mechanics or a second
 toy simulator that cannot fail with the game.
+Render action/direction animations, anchors/layers, projection, terrain variation
+and effects from inspected source data. Review actual motion and matched views;
+static actors and primitive effects remain placeholders when native art exists.
 
 Read [UI](references/nostalgic-ui-workflow.md) during interface work. Recover native
 components first; generate images when existing art does not fit a needed UI
@@ -106,6 +128,10 @@ early/mid/late checkpoints and earned builds. Treat numeric win-rate bands as
 project hypotheses, not universal claims or guaranteed human outcomes. Easy's
 stationary success is intentional; do not "fix" it to match Medium. Hard must
 remain winnable without hidden bonuses or compulsory grind.
+Treat every class/mode without demonstrated earned winning progression as an
+open investigation. Diagnose controller limitations, targeting, warning stacking,
+recovery, crowd contact and reward access; iterate rather than hand off after
+recording zero-win rows. Preserve Easy and mature-build regressions while tuning.
 
 Fix terrain walkability, body clearance, floors, disconnected spawns, stuck mobs,
 line of sight and pathfinding **before** compensating with damage changes. Probe
@@ -155,3 +181,6 @@ reviewable release locally; publishing, repository creation, uploads, signing
 and external deployments follow the user's actual authorization. Finish with
 tested commands, output locations, tested classes/difficulties/platforms,
 evidence-backed limits and outstanding work.
+Run the quality-target review again before handoff. Complete supported missing
+requirements; report a partial result only with its actual scope/blockers, and
+do not substitute passing package/browser checks for coverage or visual quality.

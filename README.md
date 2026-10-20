@@ -65,6 +65,12 @@ Supply the exact game edition and supported target devices when known. The
 agent starts with an inventory and evidence ledger rather than substituting a
 generic game's assets. It retains original facts separately from adaptations.
 
+The workflow first records a source/benchmark quality target, then reviews a
+representative playable slice before expanding it. It separately checks source
+coverage, animation/visual fidelity, useful builds, every class/difficulty and
+actual platform launches. Passing browser tests does not certify those qualities.
+See [quality targets](skills/regis/references/quality-and-scope.md).
+
 An optional project brief helps track the work:
 
 ```sh
@@ -77,6 +83,12 @@ configuration, fan note and design/asset/mobile briefs. Its three roles are
 candidate archetypes to be themed and iterated, not implemented classes. `check`
 validates the configuration contract; it does not certify playable mechanics,
 asset decoding, balance, mobile behavior or a release.
+
+`init` also creates `docs/quality-target.md` for the requested scope, reference
+screens, source coverage and review findings. It starts unreviewed; populate it
+from the actual source and user-supplied benchmark rather than accepting a tiny
+demo as the target. The [trial findings](docs/trial-findings.md) explain the
+observed gaps behind this workflow revision.
 
 `doctor` is read-only and reports local Node/skill/REA CLI visibility. It cannot
 observe your agent's active MCP session. A missing CLI does not prove that REA

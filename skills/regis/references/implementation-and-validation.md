@@ -12,6 +12,46 @@ Build one complete vertical slice, then extend asset families and regions in
 batches. Every imported skill/stat needs an implemented consumer, an observable
 effect and eligibility limits. An animated icon alone is not a mechanic.
 
+## Source presentation is implemented behavior
+
+Derive idle, movement, attack, death and other required actions from the source's
+animation metadata and representative contact sheets. Check frame ordering,
+directions, mirroring, loop bounds, timing and anchors. Never infer a walk cycle
+by taking a fixed number of initial frames from every creature. Decoding an atlas
+does not finish its playback. Exercise facing changes, attacks and death in the
+running renderer; retain a short motion capture alongside stills.
+
+Map source-facing indices to world movement, aim and the camera projection
+explicitly; do not assume frame zero points along a standard mathematical axis.
+Run visible direction probes for all supported facings, including reversals and
+mirrored frames. Compare actual displacement with the displayed body/feet and
+walk-cycle direction. A changing facing variable does not prove the right frame
+was rendered. Keep intentional strafing/aiming behavior distinct from an inverted
+axis, wrong angular offset or reversed animation lookup.
+
+Use source projection, actor/world scale, terrain transitions, elevation and
+depth ordering. Tile a coherent interior/transition set using its adjacency
+rules, not random rows from a terrain sheet. Validate equipped/attached layers
+against moving actors, not only a static preview. Native projectile/VFX/audio
+associations should reach the actual attack/status consumer. Temporary circles,
+lines and static sprites are debug assets until replaced or intentionally chosen
+within the quality target.
+
+For every included spell/ability, trace the applicable chain from source assets
+to cast animation/origin, projectile travel, collision/target resolution,
+impact or persistent effect, status lifetime and sound. Use source-derived
+offsets, orientation, layering and timing where established. Connect those stages
+to the real damage/status event; a loaded atlas, an icon or a line drawn while
+damage resolves elsewhere does not establish spell integration. Test expiry,
+misses, obstruction and upgrades against the chosen actual rules. Inspect a
+rendered cast at normal speed and frame by frame to verify the right effect is
+visible at the right place/time. Record deliberate mechanic/art remapping.
+
+Keep supplied source layouts and their encounter identities separate from
+authored adaptation configurations. Different titles on an identical arena do
+not establish distinct regions. Continue integrating the scoped source catalog
+after the representative slice passes its review.
+
 ## Behavior tests
 
 | System | Meaningful invariants/scenarios |

@@ -5,6 +5,8 @@ REGIS plumbing; they do not populate this evidence table for a future game.
 
 | Phase | Reviewable output | Evidence needed to call it complete |
 | --- | --- | --- |
+| Scope and quality | Source/benchmark quality target and coverage table | Required systems and presentation are explicit; exclusions have a reason/authority; representative-slice and final comparisons have concrete findings and corrections. A test request does not silently become a minimal-demo brief. |
+| Scoped survival slice | Small representative content sample with complete depth | Included actors face/move/animate correctly; native UI and applicable spell cast/projectile/impact/status/audio assets execute with real rules; earned progression, navigation, save and the start-to-outcome loop work. Reduced content count does not excuse broken integration. Full-catalog, promo and release breadth follow the selected scope. |
 | Discovery | Inventory, source manifest, evidence ledger, extraction adapters | Actual source identity/version, representative decoded assets, coverage/unknowns and stable mapping to source members. |
 | Design | Loop, class sheets, mechanics profile, upgrade/item audits | Three source-themed classes with distinct mechanics and two viable build directions each; recorded iterations rather than a claimed optimum. |
 | Implementation | Playable Node.js SPA and Electron wrapper | Actual-rule tests for combat, progression, transactions, saves, navigation and numerical previews; a complete start-to-outcome loop. |
@@ -24,3 +26,11 @@ report samples and limits. Never label a time horizon or automation abort a win.
 For each phase, preserve what was observed, what was inferred, what was authored,
 what actually ran, and what is still blocked. Do not claim external CI executed,
 human playtests happened, or publishing succeeded based on local preparation.
+
+Review [quality targets and milestone decisions](../skills/regis/references/quality-and-scope.md)
+before accepting a generated result. Coverage separates discovered, decoded,
+mapped, implemented and validated IDs. A few native sprites, renamed copies of
+one arena, generic panels, static creatures and an unedited silent capture do
+not collectively satisfy the corresponding world, presentation and promo targets.
+Tests can pass while these dimensions remain incomplete. Record exact launch
+failures without attributing them to the environment by assumption.

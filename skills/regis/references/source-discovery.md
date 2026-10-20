@@ -50,6 +50,27 @@ Define the searched scope; missing matches do not prove global absence. A
 creature catalog does not identify its zone. Correlate spawn definitions,
 coordinates and region boundaries, or label authored placement as adaptation.
 
+Track separate **discovered, decoded, mapped, implemented and validated** IDs
+for each relevant family. State the denominator and selection rule: frames read
+by a decoder, a handful of exported images and actors used in gameplay are
+different coverage. Choose targets from the source/benchmark quality brief,
+not the subset that an existing decoder happens to support.
+
+Check input completeness for the selected target: companion map packs, loose
+data versus archives, locale tables, palettes, animation registries and attachment
+banks. Use supplied or explicitly selected resources; do not fetch unrelated packs
+or search arbitrary installations. Investigate a missing dependency before
+declaring the whole family unavailable. Trace a representative native map through
+geometry/height/collision and local entity placement when that geography is part
+of the target. An authored arena may unblock an isolated combat test; it leaves
+native-world integration pending.
+
+Route investigation tools to that concrete gap. PE icon/resource enumeration is
+useful for executable resources but says nothing about a game's loose map or
+sprite formats. If a prior extractor exists, inspect its bounds, output, edition
+and limitations; credit reused format knowledge and verify it against the selected
+input. Existing game code is not evidence of the original game's runtime rules.
+
 ## Validate the adapter before bulk extraction
 
 Decode representative assets from each family and inspect previews/contact

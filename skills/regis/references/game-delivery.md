@@ -117,6 +117,14 @@ does not by itself authorize account/repository creation or a public upload.
 
 ## Handoff
 
+Revisit the [quality target](quality-and-scope.md) and compare delivered coverage,
+matched screenshots/motion, class/build results and required platform launches
+against it. Resolve supported omissions before handoff. A working browser demo,
+a silent unedited capture or an unlaunched desktop folder cannot replace the
+requested game, promo or runnable package. Keep partial outputs useful while
+stating the unmet targets and concrete blockers; do not silently redefine the
+requested result around whichever artifacts passed their easiest tests.
+
 Give exact commands for source setup, test, build and run on supported platforms.
 List output paths, tested classes/difficulties/routes/devices, balance evidence,
 asset recipe identity, remaining defects and limitations. Distinguish prepared

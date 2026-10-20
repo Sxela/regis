@@ -22,3 +22,11 @@ requirements without depending on a particular game, machine or installed model.
 
 The REA packaging comparison records the inspected upstream sources separately;
 REGIS does not vendor REA or claim that its CLI is an asset-decoding engine.
+
+An assisted local adaptation trial exposed a quality regression despite passing
+functional tests. Its [findings](trial-findings.md) informed the portable
+[quality-target workflow](../skills/regis/references/quality-and-scope.md):
+explicit scope, source/benchmark calibration, coverage through runtime validation,
+animation/UI comparison, class/mode investigation and launch diagnosis. These
+are workflow changes; no fixed source-game counts, paths, artwork or gameplay
+implementation were added to the packaged skill.

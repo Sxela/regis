@@ -32,6 +32,24 @@ Record source IDs, dimensions, transparent padding, crop bounds, slice widths an
 
 Do not replace recognizable native components with fashionable generic cards merely because they are easy to build. The source's distinctive typography, borders, selected-state colors, radar, command grid or equipment layout may carry more identity than a large decorative background. Match the actual game: a minimalist science-fiction interface should not acquire fantasy parchment simply because another port used it.
 
+## Compare the integrated result
+
+Select matching source/benchmark and generated views: menu, normal combat,
+max-load combat, reward choices, inventory/equipment or the equivalent source
+interaction. Match viewport and document world/UI scale. Compare composition,
+actor readability, terrain depth, UI footprint, art coverage, contrast and the
+largest visible departures. Inspect a moving/attacking clip as well as screenshots.
+Record concrete corrections and recapture after applying them; a successful
+image decode or no-overflow assertion is not a fidelity review.
+
+For each visible component, identify its source asset/slice, a documented derived
+treatment, or a genuinely missing role. A native font on generic rectangles does
+not recover the interface. Placeholder panels, tiny static actors and circle-only
+effects remain open work when the selected source has the corresponding art.
+Use the image-generation workflow for actual gaps after inspecting the source;
+keep it tied to the established visual reference rather than inventing a new
+style to compensate for unfinished extraction.
+
 ## Build a small native component kit
 
 Define reusable components such as NativeButton, Frame, PropertyPanel, ActionIcon, Slot, StatusBar, Tab and Modal. Components receive content and behavior; they should not each redraw their own approximation of the art. A shared fix then repairs every shop, inventory and level reward.

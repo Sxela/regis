@@ -65,6 +65,17 @@ phones. Add real Android/iOS browser sessions when devices are available and
 state the untested combinations. Test Chromium and WebKit paths; do not label a
 desktop Chromium resize as an iOS device run.
 
+## Exercise actual touch input
+
+Use real touch actions supported by the browser harness, including hold/drag,
+release and cancellation, rather than relying only on dispatched JavaScript
+PointerEvents. Synthetic pointer sequences remain useful for edge cases but
+do not prove touch capture, browser gesture handling or multitouch works.
+If a harness cannot deliver a required input mode, name that gap and use a
+supported browser/device path when available. Check both frozen simulation time
+and released input after modals/backgrounding, not only a changed overlay label.
+Audio-unlocked state is separate from successful audible playback/review.
+
 ## Platform builds
 
 Produce a web build that can be served for phone play, plus Electron desktop
@@ -80,3 +91,21 @@ needs access to generated resources: document local-network serving or a
 deliberate local import/cache flow. Never assume a desktop filesystem path is
 accessible from the phone. Provide explicit host/port and firewall instructions
 when relevant, and keep developer absolute paths out of the shipped UI.
+
+## Diagnose a failed desktop launch
+
+Keep the exact command, executable/runtime version, artifact digest, exit code
+and main/renderer logs. Check the entrypoint and packaged resource paths, missing
+runtime libraries, writable save/profile location and launch arguments. Inspect
+relevant inherited environment flags individually: for example,
+`ELECTRON_RUN_AS_NODE` changes Electron's launch mode and can make browser switches
+invalid. Do not dump unrelated environment values. Test a minimal owned wrapper
+with the same selected runtime to separate application failures from host/runtime
+failures, then repeat the actual packaged launch after a correction.
+
+Follow the host's execution controls for any retry. An access-denied operation,
+a startup crash and a missing working directory are distinct observations.
+Without an isolating reproduction, record the cause as unknown; do not attribute
+an access violation to the sandbox by assumption. Keep required desktop delivery
+open while fixing available packaging/launch defects. A browser fallback is a
+review path, not evidence that Electron passed.

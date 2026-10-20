@@ -17,6 +17,15 @@ two earned build paths. Test every class against crowds, ranged threats, boss
 pressure and confined geometry. No class should require an unavailable mechanic
 or luck-only early drop to become playable.
 
+Class identity includes a useful developing loadout and meaningful combinations
+of source-themed abilities, passives and equipment where those systems apply.
+Define how each build direction changes actual choices or execution: target
+selection, coverage, timing, sustain, mobility or tradeoffs. Repeating damage,
+speed and health percentage purchases is not by itself evidence of two viable
+builds. Keep acquisition, learning/replacement, caps, specialization, comparison
+and inspection connected to implemented mechanics. Scope their breadth against
+the selected source and quality target; do not impose a universal item/spell count.
+
 ## Iterate for fun and replayability
 
 1. Establish a complete small loop with one source-derived region, meaningful
@@ -68,3 +77,24 @@ Use the companion playtesting guide for paired experiments. Include movement
 and stationary policies with legal rewards/purchases, genuinely earned middle
 and late checkpoints, all three classes, and human fresh starts. Synthetic
 stress is useful for exploits but is not proof of an obtainable winning build.
+
+## Close failed class/mode investigations
+
+Review the full three-class by three-mode matrix; an Easy sweep does not satisfy
+missing Medium/Hard rows. For a row with no earned wins, replay a representative
+failure and inspect the controller as well as the game: can it approach ranged
+threats, use escape/defense, collect rewards, choose a coherent build, buy useful
+stock and reach the exit? Add a documented capable policy or controlled replay
+when the original bot cannot exercise a mechanic. Neither zero bot wins nor a
+granted-power win establishes whether normal progression is fair.
+
+Trace damage rate, simultaneous contacts, stacked warnings, target reach,
+recovery uptime, spawn pressure and available earned power before changing
+multipliers. Use the intended shared-hit/immunity rules if the source/adaptation
+defines them; do not let accidental per-enemy frame damage dictate balance.
+Use pickup/approach tuning to fix inaccessible rewards without hiding a broken
+targeting or geometry system. Preserve difficulty distinctions and useful class
+mechanics. Rerun affected earned early/middle/late scenarios and Easy regressions
+after each meaningful change. Keep the investigation open until winning
+progression and the behavioral contract are supported, or record the concrete
+remaining blocker without calling balance complete.
