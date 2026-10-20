@@ -1,0 +1,6 @@
+interface:
+  display_name: "REGIS"
+  short_description: "Turn game files into a tested survival adaptation"
+  default_prompt: "Use $regis to turn my game files into a three-class survival game with REA evidence, playtesting, a promo, and reproducible builds."
+policy:
+  allow_implicit_invocation: true

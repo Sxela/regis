@@ -1,0 +1,64 @@
+# Source discovery with REA
+
+## Select and preserve the source
+
+Record installation/package path, platform, edition, patch level and file hashes.
+Keep a separate generated workspace and write no conversions back into the
+installation. Make a bounded inventory before decoding large archives. Record
+unreadable, encrypted, corrupt or unsupported members rather than silently
+omitting them. Do not execute a supplied game merely to obtain static metadata.
+Runtime evidence uses an isolated profile/save and declared observations/actions
+when the requested task permits execution.
+
+## Route by carrier and question
+
+Consult the available REA skill and current session tool schemas. Examples of
+REA routes are archive inventory through `open_binary`, managed assemblies
+through `inspect_managed_artifact`, packaged JavaScript through
+`analyze_javascript_application`, and native loader/decoder functions through
+`open_binary` followed by focused function analysis. Use format-aware resource
+inspection where advertised. These are routes, not promises that a particular
+version or provider supplies every operation. Source trees need ordinary code
+inspection; unknown shipped parsers and behavior justify REA.
+
+REA can establish how files are indexed, decompressed, laid out and referenced;
+implement a deterministic adapter for a format it does not decode directly.
+Retain file/member digests, offsets, endianness, compression and palette facts,
+REA Evidence IDs or complete inline records, and the limits of each inference.
+Start summary-first and page retained evidence rather than redoing an analysis
+to avoid response truncation. Missing a provider is not a reason to fabricate a
+decoder result. Use REA's connection/recovery instructions only for an observed
+blocker; do not run installation or alter agent registrations automatically.
+
+## Inventory contract
+
+For every asset family, record stable source IDs, member paths, extraction
+coverage, output format, native dimensions/scales/anchors, and intended use:
+
+| Family | Required distinctions |
+| --- | --- |
+| Maps | Geometry versus rendered background; collision, walk surfaces, heights, props, region origin and connectivity. |
+| Actors | Player/mob/boss IDs; animation actions, facings, variants, palettes, layers, skeletons, hitboxes and attachments. |
+| Abilities | Icons versus behavior; targeting, damage/status, timing, projectile collision, VFX and audio association. |
+| Items | Logical slots, appearances, fixed unique properties, affixes, restrictions and units. |
+| UI | Fonts/glyph metrics, frames/slices, input states, icons, cursors, sound cues and native layouts. |
+| Audio | Sound identity, trigger, channel/loop metadata, music source and redistribution status. |
+| Gameplay data | Stats, traits, resistances, AI, area spawns, population and rare/boss rules with evidence. |
+
+Use `present`, `absent_in_searched_scope`, `unsupported`, or `unknown` coverage.
+Define the searched scope; missing matches do not prove global absence. A
+creature catalog does not identify its zone. Correlate spawn definitions,
+coordinates and region boundaries, or label authored placement as adaptation.
+
+## Validate the adapter before bulk extraction
+
+Decode representative assets from each family and inspect previews/contact
+sheets and audio. Test malformed lengths, bounds/offsets, invalid indexes,
+decompression limits and coordinate transforms. Fixtures should be synthetic or
+redistributable. Ensure archive extraction cannot escape the output directory or
+follow unsafe links. Stage output, verify a manifest, then activate it; a failed
+run preserves the previous usable extraction. Keep original identities and
+recovered values immutable; derived runtime assets can be rebuilt independently.
+
+Deliver an inventory, evidence ledger, source-to-runtime manifest and extraction
+recipe. Unknown behavior stays unknown until tested or intentionally authored.
