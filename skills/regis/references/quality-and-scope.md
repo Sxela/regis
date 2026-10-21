@@ -48,6 +48,37 @@ authority for exclusions. An agent-authored defer list is not user approval to
 drop the difficult parts. If requirements are unclear, proceed with supported
 work and clarify the consequential choice rather than silently lowering quality.
 
+## Accept the selected product, not a content percentage
+
+Record a compact project profile: runtime/platforms and controls, role/loadout
+count, run structure and length, ability capacity, resource systems, persistence
+and fidelity goal. Identify which decisions come from the user, source evidence,
+REGIS policy or authored design. Keep the normal three-class and web/Electron/
+mobile defaults unless overridden; do not invent equipment, currency or party
+systems just to fill a template.
+
+A user selecting ten maps out of two hundred or five spells out of fifty selects
+catalog breadth, not a lower standard of implementation. Check the selected
+entries and their dependency closure: assets, encounter rules, useful upgrades,
+rewards, interactions, saves and required transitions. An exclusion must not leave
+a dead stat, missing countermeasure or impossible progression in the included
+game. Distinguish a requested small finished game from an intermediate trial;
+finish the requested platforms, docs and media at that breadth when in scope.
+
+Extend the coverage/experiment log into one acceptance ledger rather than
+creating a new document for every check. Each row records the requirement or
+reported failure, source fact/adaptation, smallest reproduction, expected visible
+result, content IDs, build/input conditions, check/capture, latest outcome and
+remaining action. Use the [playtesting evidence contract](playtesting-and-balance-log.md#keep-acceptance-evidence-current)
+to distinguish current, stale, failed and untested results.
+
+Before calling the selected product complete, verify current evidence for the
+included content's presentation and behavior, complete earned routes/builds,
+navigation and performance, difficult UI states, and clean required-platform
+launches. Review requested media against its actual shots. Fix supported
+failures; blocked or untested required rows keep the result partial. Package
+tests, content counts and an attractive menu cannot stand in for these checks.
+
 ## Make the first slice representative
 
 Separate the scope into two lists: **content included/excluded** and **systems
@@ -57,8 +88,8 @@ For each included feature follow its complete path:
 
 | Included feature | Depth required in the playable slice |
 | --- | --- |
-| Actor | Correct source art, action/facing/mirroring, movement, collision, attack, hit/death feedback and applicable attachments. Verify rendered motion against travel direction. |
-| Spell/ability | Source icon and available cast/projectile/impact/field/status art plus audio; actual targeting, timing, collision, damage/status, cooldown, scaling, inspection and save behavior. Cover the stages applicable to that ability. |
+| Actor | Correct source art, facings, idle/move/attack/cast, hit/dying/corpse/decay stages and event sounds where supplied; collision and attachments. Verify motion against travel direction and the complete death-to-resting-body transition. |
+| Spell/ability | Source name/icon, cast/projectile/beam, impact/splash, persistent field and lingering status/DoT art and stage-specific sounds where supplied; actual targeting, timing, collision, damage/status, cooldown, scaling, inspection and saves. Verify every applicable lifecycle role through expiry. |
 | Region | Coherent source terrain/scenery and required geometry, legal navigation and local encounter logic; usable reward, boss/exit and next-area flow. |
 | UI | Native components for the screens used by the slice, legible live values, interaction states and complete desktop/touch actions. A source font alone is insufficient. |
 | Progression/equipment | Earned learning/upgrades and purchases, useful choices and correct previews; where equipment is included, real equip/unequip effects, comparison and persistence. |

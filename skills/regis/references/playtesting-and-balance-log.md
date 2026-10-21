@@ -28,6 +28,31 @@ Record what the player saw before interpreting its cause. “Stalls recover with
 
 When a seed, date or build is unknown, mark it unknown. Preserve reports even when the first diagnosis proves wrong. Distinguish human observations, mechanical verification, synthetic stress and earned progression experiments.
 
+## Keep acceptance evidence current
+
+Each acceptance result identifies the relevant code/configuration fingerprints,
+asset recipe, content IDs, seed/route/checkpoint, controller and grants, runtime,
+device/input/viewport, exact command or replay, expected result, observed outcome
+and retained artifacts. A subsystem digest or explicit input list is sufficient;
+an unrelated documentation edit need not invalidate combat. After a relevant
+change, mark the claim stale, retain its historical report and rerun affected
+scenarios before using it as current acceptance. Never silently relabel old wins,
+navigation probes or media reviews as results for a replacement build.
+
+| Changed input | Required affected review |
+| --- | --- |
+| Map origin, support, collision or crop | Placement, actual pursuit/traversal, pickups/exits, saved positions and matched rendered views. |
+| Targeting, contact policy, procs or recovery | Hit selection/accounting, controller use, reported sustain cases and affected earned encounters. |
+| Rewards, prices, item pools or grants | Eligibility, previews/transactions, comparison and earned build feasibility. |
+| Viewport, zoom, input or HUD/modal layout | Arrival/warning visibility, escape space, control release and difficult UI states. |
+| Asset mapping, palette or projection | Contextual visual/motion probes and affected gameplay feedback. |
+| Illustration, generated clip, audio or edit | Actual revision's identity, shot promise, motion/audio and exported master. |
+| Packaging or asset lookup | Clean extraction, launch, save/input and delivered documentation. |
+
+Keep the smallest deterministic reproduction of each reported defect alongside
+broader campaigns. Reconstruct unknown checkpoint details explicitly. Do not
+close a report because a nearby optimization shipped or a different seed passed.
+
 ## Classify the problem before balancing it
 
 | Family | First question | Example |
@@ -73,6 +98,48 @@ Compare relevant control policies: stationary, avoidance, objective/loot collect
 Test the beginning, middle and end. Inspect long-run growth independently: small repeated multipliers can become extreme across many stages. Preserve local content differences while measuring aggregate encounter pressure.
 
 For synthetic checkpoints, list every grant: levels, improvements, equipment, unlocks, currency, consumables and healing. For earned runs, obey actual rewards, prices, travel, replacement rules and depletion. Avoid free transition healing or refills unless the real game supplies them.
+
+## Separate controller capability, feasible progression and frequency
+
+Report three separate findings: whether the controller can use the class and
+complete interactions; whether a reproducible winning route uses only actually
+earned resources; and how often stated policies win over stated seeds. Diagnose
+weak movement, ignored defenses, shopping, collection and exit travel before
+balancing around a bot. A capable replay or human run can establish a path the
+bot cannot execute; one route cannot establish a win rate. Estimate session
+length, late scaling, boss duration and available rewards before large sweeps.
+Retained earned checkpoints help diagnosis but do not replace required full
+routes and transitions.
+
+For reported sustain failures, replay the actual or explicitly reconstructed
+checkpoint both stationary and moving. Account for healing, overheal, wards,
+shield-break recovery, regeneration, leech, hit protection, level-up healing and
+item grants where implemented. Pair a granted stress fixture with an earned
+route proving attainability. Retest affected mature builds after threat,
+recovery, reward or shop changes and preserve Easy's forgiving contract.
+
+For economy tuning, compare equal-investment encounters separately from actual
+earned routes. Track income sources, affordable useful purchases per region,
+spending, retained currency, items and resulting damage/sustain. Include optional
+gathering/selling/rerolls where implemented or disclose omissions. Investigate
+systematic late difficulty inversion caused by richer rewards; do not blindly
+scale prices with rewards or erase their intended advantage.
+
+## Inspect visible counterplay and pacing
+
+Retain a short threat-response trace: first perceivable warning, impact time,
+player speed/position, input/reaction allowance, legal escape distance, collision
+and alternative defense. Compare usable response time with the time actually
+needed to escape; these are scenario diagnostics, not universal constants or
+proof of fairness. Inspect overlapping threats and the busiest supported mobile
+HUD: individually dodgeable attacks can jointly remove every safe position,
+and a warning under a panel or heavy effect is not perceivable counterplay.
+
+Measure first visible threat, longest meaningful quiet interval, spawn-to-combat
+travel, visible populations and burst peaks at documented viewport/zoom/loadout.
+Distinguish intended breaks, blocked queues, remote arrivals and rapid clearing.
+Adding background pressure requires rerunning sustain, economy and performance;
+preserve active-time pause/save behavior and bounded spawn backlog.
 
 ## Run performance and walkability passes
 

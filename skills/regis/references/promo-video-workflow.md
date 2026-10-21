@@ -8,7 +8,11 @@ Use this with the [mechanics guide](game-to-survivors-mechanics.md), [UI workflo
 
 Decide the audience, aspect ratio, duration and tone before recording. A useful first specification is a 30–45 second, 1080 by 1920 vertical video at 30 fps, with captions readable at phone size. Desktop or store-page delivery may need a separate horizontal composition rather than a center crop.
 
-Build around a short premise. For a sincere feature reel, show the world, combat, progression, equipment and the next encounter. For a comic reel, create a setup, reversal and payoff: an intimidating boss introduction, the hero approaching confidently, then the boss asking for help. Give the joke time to read without letting it replace all gameplay.
+Establish the creative treatment alongside the output format: audience, sincere or comic tone, source-specific premise, gameplay-to-insert rhythm, announcement cards and voice performance. Record the included creative deliverables before capture. A technically complete feature reel does not satisfy a requested comic treatment by itself. Do not require comedy or generated scenes for every promo.
+
+When the user supplies finished references, inspect representative frames and cuts before designing the edit. Identify transferable qualities such as action-first openings, character scale, short announcement holds, typography, banter and returns to combat. Adapt those qualities to the current world's tone and actual mechanics. Invent new copy, visual jokes and performances rather than transplanting another game's dialogue, characters or generic recurring joke. Keep comparison-only material out of selected production assets unless its reuse is authorized.
+
+Build around a short premise. A sincere feature reel can show the world, combat, progression, equipment and the next encounter. A comic reel needs a readable setup, reversal and payoff grounded in its characters and setting; an intimidated boss asking for help is only one possible structure. Give the joke time to read without letting it replace gameplay. For a dynamic action reel, alternate short, varied combat takes with purposeful cards or UI pauses. Choose cuts for attacks, impacts, threats and meaningful decisions, rather than merely displaying a moving player.
 
 Write a timed shot list with the feature, subject, action, caption, audio cue and transition for every segment. Keep action near the middle, captions inside safe margins, and important text away from platform controls. Use short captions with a punchline or concrete feature; paragraphs become unreadable over moving footage.
 
@@ -32,6 +36,8 @@ Use terrain-driven bends, changing enemy groups, approaching threats, an escape 
 
 Log player positions and timestamps during each take. Review total travel, end displacement, moving fraction and longest idle interval, together with the footage. A high travel distance with almost no displacement can reveal a loop, although deliberate kiting needs visual judgment. Check long timestamp gaps and frame-time spikes too: a metric that skips delayed samples can hide stutter.
 
+Verify visible animation separately from translation. Camera movement, position logs and a true moving flag can coexist with a frozen body or a sliding firing pose. Inspect ordinary traversal and movement during combat at delivery size. Check source clip selection, changing gait frames, action/direction, equipped variants and foot anchors. Frequent attacks can continually reset a shared animation clock or suppress locomotion; diagnose this in the game before recording replacement footage. Where movement during attacks is supported, preserve a readable gait using the source's layers, separate locomotion timing or appropriate brief action poses. Deliberate stationary attacks remain valid for games whose rules require them.
+
 Record a little more than the intended edit length so cuts can start after loading and end before a route runs out. Retain original capture timestamps; resample into a constant-frame-rate edit from elapsed time rather than assuming every recorded image arrived at equal intervals.
 
 ## Choose the right original artwork
@@ -51,6 +57,8 @@ Use the requested comic convention as a direction, then build an original compos
 Keep the character and text on separate layers. Native sprite cutouts can scale with nearest-neighbor sampling and a restrained outline/shadow; high-resolution illustrations need suitable smooth resampling. Preserve sprite proportions and anchors. Keep a visible face and recognizable pose rather than cropping down to an anonymous wing or torso.
 
 Animate a fast entrance, a short settle, a readable hold and a decisive exit. A small overshoot, registration offset, halftone texture and impact flash can sell the print-comic treatment. Repeated camera shake and long white flashes weaken readability. Boss cards usually need only a few seconds.
+
+For a requested comic announcement treatment, plan the cards as distinct motion-design shots; a single static illustration throughout the reel does not supply the same rhythm.
 
 Use one joke or descriptive hook per card, derived from the subject's role: an overconfident commander, exhausted guardian, unreliable machine or territorial creature. Let the name remain dominant. Satire should fit the game's tone and remain understandable without audio. If humor is inappropriate, use the same structure for a serious threat or feature reveal.
 
@@ -104,6 +112,26 @@ Balance dialogue first, then impacts, gameplay and music. Duck the music around 
 
 ## Verify the deliverable
 
+Bind the source image, generated clip, speech/audio review and edited master by
+revision or digest. A replacement invalidates affected review; a previous
+transcript or checked caption field cannot validate the new artifact. Record
+source identity invariants and inspect useful crops of distinguishing anatomy,
+costume and props. Ambiguous silhouettes remain defects: redraw the source
+clearly before regenerating motion rather than repeating a count in the prompt.
+
+Give each feature shot a visible proof criterion at delivery size: the announced
+boss is in frame, terrain relief reads in the scene, upgrade values/actions are
+legible. Inspect brief repeated menu flashes, loading frames and hold durations.
+For multi-speaker inserts, record contrasting voice profiles, turn timing and
+silent participants, then listen to the actual revision for attribution as well
+as wording. Preserve the selected master and disclose staged gameplay.
+
+Inspect available tools/models before verification work and budget optional
+transcription downloads/retries. Reuse suitable available tooling. A stalled
+optional tool is neither audio validation nor a reason to hide completed scoped
+work; regenerated audio remains pending until checked. Keep requested production
+work and optional tooling separate, without adding a routine approval gate.
+
 Check the entire final export, not only a poster:
 
 | Check | What to inspect |
@@ -111,7 +139,7 @@ Check the entire final export, not only a poster:
 | Container | Duration, dimensions, aspect ratio, frame rate, frame count, codecs and pixel format |
 | Decode | Decode video and audio end to end; detect truncation or corrupt frames |
 | Picture | Read every title, inspect cuts, source facings, empty frames, crop, generated artifacts and the final hold |
-| Motion | Continuous combat travel, no accidental route loops or idle gaps; intended menu pauses |
+| Motion | Actual gait/action frame changes during traversal and combat; no unintended sliding, route loops or idle gaps; intended menu pauses |
 | Audio | Understandable speech, correct timing, comfortable balance, measured loudness and true peak |
 | Claims | Current feature counts, staged-capture disclosure, clearly separate comic inserts and attribution |
 | Reproduction | Exact prompts/workflow/seed, source references, edit settings and validation output |
@@ -140,5 +168,7 @@ exports/            master video, poster, storyboard and validation report
 ```
 
 Store platform-specific paths and capture adapters in configuration. Another project should only need its own approved assets, game/capture adapter and production settings, not the original project's engine or personal filesystem.
+
+Use relative paths or explicit configuration for selected inputs; copying an edit script into a ZIP is insufficient if it still reads the original workspace. Verify the selected package after unpacking into a fresh directory and rebuild the edit there. Compare artifact hashes when the toolchain is deterministic; otherwise compare decoded content and document the expected variation. Distinguish standalone edit reproduction using included selected media from recreating gameplay captures or rerunning a generative model.
 
 Before handing over, record the output format, shot list, source versions, staging, generated material, music provenance and tested scope. Include reproduction instructions and identify which intermediate assets are necessary to rebuild the edit. Keep an approved master when making revisions.

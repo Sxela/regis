@@ -1,8 +1,10 @@
 # Image identity, voice prompting and production review
 
-Use generated UI images for a concrete gap after inspecting native resources.
-Keep fonts, text, controls and hit targets deterministic. Save prompts, selected
-outputs, source references and original/adapted/generated labels.
+Use generated or edited UI images for a concrete need after inspecting native
+resources, following the [native UI workflow](nostalgic-ui-workflow.md#generate-missing-ui-sparingly).
+Keep runtime text, controls and hit targets deterministic; inspect deliberate
+baked-label edits for exact wording. Save prompts, selected outputs, source
+references and original/adapted/generated labels.
 
 ## Inspect the actual image before video generation
 
@@ -26,6 +28,8 @@ Define each speaker once: on/off-screen, pitch/register, timbre, rate, accent,
 delivery and physical state. Prefer observable performance such as a short
 inhalation, hesitant start, listening pause, hurried report and cracked final
 call. "Make it less AI" does not supply these decisions.
+
+For a requested machine voice, describe the audible synthesis rather than only saying "robotic": choose pitch variation, metallic/vocoder formants, buzz, speaker bandwidth and gated cadence as appropriate. State whether breath and human inflection belong in that character's delivery. Keep the sound consistent through the words, not only an opening effect. Do not apply human jaw or lip instructions to a speaker without that anatomy. These are performance intentions; listening to the selected take must establish whether they were achieved.
 
 Give exact words, speaker attribution, speech windows, pauses, silent characters
 and a final state. Keep a short clip's speech within a plausible speaking budget.
@@ -68,7 +72,9 @@ cannot certify it. Bound retries to identified issues and available generation
 resources. Preserve a reviewable take and state a remaining blocker if a model,
 service or audio review is unavailable.
 
-Edit captions separately. Decode video and audio end to end, verify dimensions,
+Edit captions separately and time them to the produced speech rather than only the planned windows. Check dialogue in the encoded master as well as the source take; editing, cuts or normalization may affect what the audience receives. Preserve an appropriate reaction/read hold without clipping the final word. A matching transcript does not establish voice character, speaker attribution, mix comfort or a listening session.
+
+Decode video and audio end to end, verify dimensions,
 fps/duration and measured loudness/true peak, then read the saved validation back.
 Parse stdout/stderr using its actual encoding; reject empty or unparsed values.
 Keep the approved master when replacing a segment with a new revision.

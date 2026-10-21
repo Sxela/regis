@@ -80,6 +80,12 @@ stress is useful for exploits but is not proof of an obtainable winning build.
 
 ## Close failed class/mode investigations
 
+Separate controller competence, earned winning-path evidence and observed win
+frequency using the [playtesting workflow](playtesting-and-balance-log.md#separate-controller-capability-feasible-progression-and-frequency).
+Compare equal investment to actual earned progression: richer difficulty rewards
+can buy enough damage/recovery to reverse late pressure. Track purchasing power
+and preserve reported sustain checkpoints rather than tuning combat in isolation.
+
 Review the full three-class by three-mode matrix; an Easy sweep does not satisfy
 missing Medium/Hard rows. For a row with no earned wins, replay a representative
 failure and inspect the controller as well as the game: can it approach ranged

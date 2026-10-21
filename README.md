@@ -52,14 +52,39 @@ modify unrelated client settings.
 
 ## Use REGIS
 
-Invoke the installed skill in your agent:
+For a fresh project initialized below, open its folder and invoke the installed
+skill in a new agent chat. This example selects desktop and mobile with mouse/
+touch as primary controls; change those preferences to match your project:
 
 ```text
-Use $regis with the game files at <source path> and build the adaptation in
-<new project path>. Use the Node.js SPA/Electron stack with mobile support and
-default mobile tests. Complete all three classes, balance modes, promo and
-reproducible source-file setup/build instructions.
+Use $regis to build a survival adaptation from the source installation
+recorded in regis-project.json.
+
+Work in this folder. Start from the original game files; do not reuse
+previous generated games or converted assets. Keep the source installation
+unchanged and record any reused source-format knowledge.
+
+Target desktop and mobile with the Node.js SPA/Electron stack and default
+mobile tests. Mouse point-and-click and touch are primary; WASD and keyboard
+shortcuts can be optional.
+
+Establish the content scope and quality target before implementation.
+A smaller selection of maps, spells or items must still have complete
+asset lifecycles, gameplay, progression, UI and save behavior. Preserve
+original names, native presentation and source-supported equipment views;
+record deliberate adaptations and missing resources.
+
+Follow SKILL.md and its references through implementation, earned playtests,
+walkability/performance checks, gameplay promo, documentation and reproducible
+packaging for the agreed scope. Keep acceptance evidence current after changes.
+Include README feature one-liners with short pitches and actual screenshots.
+Fix supported failures before handoff; report unavailable human/device/tool
+checks explicitly rather than claiming they passed.
 ```
+
+Without a project brief, supply the exact source path and new output path in the
+prompt instead. For continuation or repair, replace the fresh-start restriction
+with your actual reuse policy and requested changes; preserve completed work.
 
 Supply the exact game edition and supported target devices when known. The
 agent starts with an inventory and evidence ledger rather than substituting a
@@ -108,24 +133,95 @@ REA's matching skill and modify client-wide MCP configuration.
 
 ## What the skill delivers
 
-1. REA-backed inventory and extraction recipes for maps/collision/heights,
-   actors/mobs/bosses, abilities, items, VFX, sounds/music, UI/fonts, stats/traits
-   and region spawns; explicit coverage and unknowns.
-2. An iterated survival loop with exactly three distinct source-themed classes,
-   useful upgrades and multiple earned build paths.
-3. Implemented mechanics and behavior tests using the actual simulation;
-   source-compatible UI, with generated images for genuine gaps.
-4. Easy (mostly stationary combat can win), Medium (movement/build planning)
-   and Hard (demanding fair survival with learning), verified within a reported
-   test scope. Walkability, stuck mobs and pathfinding are correctness checks.
-5. Default mobile browser tests for touch, portrait/landscape/tablet, menus,
-   progression, orientation, audio, saves and performance, plus device sessions
-   where available. Electron is for desktop; phones receive the web build.
-6. A promo using real gameplay, with staged/generated material labeled,
-   explicit voice/action scripts where used, and image/anatomy/audio validation.
-7. Game CI/build/release preparation, Electron platform artifacts and mobile web
-   build, install/run docs, deterministic setup from supported game files and
-   a readable fan-project note.
+These are agent workflow requirements, applied to the selected source and scope.
+They are not game systems implemented automatically by the installer or CLI.
+
+**Source discovery — build from the game's identity, with evidence for each mapping.**
+
+REGIS uses REA and format-aware adapters to connect maps, actors, spells, items,
+UI and audio to their source files and behavior. An immutable source catalog,
+reproducible extraction recipes and explicit unknowns keep recovered facts
+separate from survival adaptations.
+
+**Complete depth at any content scope — fewer maps or spells still make a complete game.**
+
+Choose a small catalog or a broad adaptation without accepting half-working
+systems. The workflow checks every included feature through its assets, gameplay,
+progression, feedback and saves, then reviews the requested product against a
+concrete quality target rather than treating a passing demo as completion.
+
+**Distinct classes and useful builds — give every run meaningful decisions.**
+
+Three source-themed starting classes are the default, each with distinct strengths
+and multiple earned build paths. Ability and stat audits remove dead choices;
+Easy, Medium and Hard have explicit behavior contracts, with reward economies
+and mature builds tested alongside combat rather than tuned in isolation.
+
+**Complete asset lifecycles — reproduce more than icons and walking sprites.**
+
+Included spells retain original names and matching cast, projectile, splash,
+lingering-effect and sound resources where applicable. Characters receive their
+native actions, death/corpse stages and audio; each role is traced to an actual
+runtime event and verified, with missing resources and adaptations recorded.
+
+**Native UI and worn equipment — preserve the screens and silhouettes players recognize.**
+
+Reuse original paperdolls, inventory containers, shops, fonts, slots and controls
+where available, with generated artwork reserved for genuine gaps. When the
+source displays worn gear, equipped items update the corresponding paperdoll and
+world appearance across movement, attacks and saves, rather than only their stats.
+
+**Practical item handling — compare, equip and clear inferior loot without losing tradeoffs.**
+
+The equipment workflow covers side-by-side comparison, drag/drop, double-click
+equip, selectable autoequip and explicit selling. Iterative autosell compares
+compatible same-slot candidates using shared rules, preserving non-dominated
+choices, protected items, useful ability grants and companion equipment.
+
+**One source-supported companion — bring a useful ally and their personality into the run.**
+
+Games with parties or mercenaries can offer one optional recruit with earned
+leveling, combat support and persistent state. Original conversation, remarks
+and voice cues are reused where supplied; ally-dependent skills are reassessed
+without making the companion compulsory for a viable solo route.
+
+**Desktop and mobile controls — choose inputs for the player and test them in the real game.**
+
+REGIS resolves target platforms and preferred controls before committing to the
+layout. The default Node.js SPA supports desktop web, Electron and responsive
+mobile web, with touch interactions, appropriate prompts, portrait/landscape
+layouts and mobile browser tests included by default.
+
+**Playtests that catch regressions — measure navigation, performance and earned progression.**
+
+Tests exercise the actual game rules, rendered combat, required walking routes
+and difficult UI states. Reports separate controller capability, earned winning
+paths and sampled win rates; frame distributions, worst stalls and stuck actors
+remain visible. Acceptance evidence becomes stale when relevant inputs change,
+and reported defects become targeted regressions.
+
+**Gameplay-led promos — show real features and verify the exported result.**
+
+Promo production connects a storyboard and feature claims to actual gameplay
+shots, with staged footage and generated inserts labeled. Source-image identity,
+dialogue, motion, audio and the final encoded master receive separate checks;
+an attractive poster or silent raw capture cannot stand in for a finished promo.
+
+**Reproducible delivery — prove the player's setup works beyond the development checkout.**
+
+Ship the extractor, declared prerequisites, build/run instructions and selected
+platform artifacts, then test fresh extraction and launch without hidden cache
+or developer-file fallbacks. The game README explains important features with
+one-line benefits and short pitches, alongside current screenshots and setup
+instructions. Private source resources stay outside default public packages.
+
+**Portable harness installation — carry the same workflow into your chosen agent.**
+
+The CLI previews and installs a self-contained skill into supported project or
+user destinations, preserves replacement backups and checks project briefs.
+Read-only diagnostics distinguish local dependency visibility from an active
+MCP connection; installing the skill does not silently configure providers or
+publish a game.
 
 Tools, source versions or device access can limit a phase. The skill requires
 honest remaining-work reports rather than fabricated extraction, playtests,

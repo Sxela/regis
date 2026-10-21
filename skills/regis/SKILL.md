@@ -14,6 +14,9 @@ Support sprites, 3D models, units, vehicles and
 other protagonists where appropriate. Design **exactly three starting classes**
 with distinct strengths and multiple viable builds, named and themed for the
 selected source. Additional classes require a scope change.
+These are REGIS product defaults, not recovered source requirements. Record
+user choices, source facts, defaults and authored decisions separately in the
+project profile; honor existing projects and explicit user overrides.
 
 Follow the user's requested scope: continue an existing project or phase rather
 than restarting completed work. For a full project, persist through discovery,
@@ -25,6 +28,10 @@ implementation. Establish a concrete source/benchmark coverage target; a request
 to test the skill does not authorize silently reducing that target to a demo.
 Treat the first playable slice as an intermediate milestone and continue through
 the requested target. A list of deferred requirements does not complete them.
+Content breadth and product completeness are separate: a requested subset of
+maps or spells still requires complete integration, earned progression and
+current acceptance evidence for that subset. Retain a compact acceptance ledger
+with reproductions and expected visible outcomes, not just a feature checklist.
 For an explicitly quick survival test, scope a narrow content sample with full
 depth: every included actor, spell, region and UI flow uses its real assets and
 complete mechanics. A smaller catalog is acceptable; backward movement, missing
@@ -99,6 +106,11 @@ and dependent stats with no useful role in this mode from playable pools, such
 as party-wide healing without allies or blocking walls without useful placement
 and navigation. Keep their source records and exclusion reasons for provenance.
 Prefer distinct behavior and viable tradeoffs over mandatory stat inflation.
+When the source supports parties or mercenaries, allow one optional recruitable
+companion with earned leveling, useful combat support and native dialogue/remarks
+where available. Follow the mechanics reference for companion lifecycle and
+reopening ally-dependent abilities. For equipment, support side-by-side comparison,
+autoequip, drag/drop, double-click equip and conservative iterative autosell.
 
 ## Implement and test the actual game
 
@@ -116,13 +128,26 @@ toy simulator that cannot fail with the game.
 Render action/direction animations, anchors/layers, projection, terrain variation
 and effects from inspected source data. Review actual motion and matched views;
 static actors and primitive effects remain placeholders when native art exists.
+Audit the complete applicable asset lifecycle for each included spell and actor,
+including impact/status effects, death/corpses and event-specific sounds. Track
+each role through runtime use and verification; decoding a family is insufficient.
+Use the lifecycle matrix in the implementation reference before accepting content.
 
 Read [UI](references/nostalgic-ui-workflow.md) during interface work. Recover native
 components first; generate images when existing art does not fit a needed UI
 role. Use an available image-generation tool/skill, source identity references,
 quiet text-safe regions and deterministic interactive text. Keep original,
-adapted and generated assets labeled. Keep a readable fan-project note in menu,
-README, credits and distribution instructions; do not imply endorsement.
+adapted and generated assets labeled. Native UI with baked-in labels or fixed
+button layouts may be adapted with an image-edit model: replace static text,
+create blank controls or extend a panel with matching button art, then implement
+real controls and verify the result as described in the UI reference. Keep a
+readable fan-project note in menu, README, credits and distribution instructions;
+do not imply endorsement.
+Reuse native paperdoll, inventory and shop layouts/components where applicable.
+When the source supports visible worn equipment, connect included equipment to
+the paperdoll and in-world character appearance, not only stat changes or icons.
+Verify equip/remove/replacement in motion and after save/restore; the UI reference
+defines source capability and variant/layer checks.
 Fit the normal upgrade choice set and every action button vertically within the
 usable screen, including small mobile portrait/landscape layouts; keep text and
 touch targets readable. Validate longest-content cards and orientation changes.
@@ -131,6 +156,10 @@ touch targets readable. Validate longest-content cards and orientation changes.
 
 Read [playtesting](references/playtesting-and-balance-log.md) and the difficulty
 contract in [design and difficulty](references/design-and-difficulty.md).
+Preserve reported failures as targeted regressions. Bind each acceptance result
+to its relevant inputs; mark affected evidence stale after changes and rerun by
+dependency. Keep controller competence, earned winning paths and observed win
+frequency separate. The playtesting reference defines this evidence contract.
 Include explicit performance and walkability passes in playtesting. Measure
 rendered frame pacing under representative combat load on selected platforms,
 and traverse required routes with actual actor collision. Record budgets,
@@ -164,7 +193,10 @@ gap and deliver runnable review builds without claiming human-tested balance.
 
 Read [promo creation](references/promo-video-workflow.md) and
 [generation and dialogue](references/generation-and-dialogue.md). Use real game
-capture for feature claims; disclose staged stats and generated inserts. Record
+capture for feature claims; disclose staged stats and generated inserts. Establish
+the requested creative treatment before capture; when references are supplied,
+inspect their editorial qualities and adapt the premise to the source. Verify
+visible gait and attack animation during movement, not only travel distance. Record
 continuous meaningful movement where the game calls for it, source audio, edit
 timings and provenance. Inspect the **source illustration** before animation:
 edition, costume, anatomy, horn/limb counts, facings and props must match the
@@ -189,6 +221,9 @@ setup. Test extraction and launch from the unpacked release, not only the repo.
 Embed current screenshots from the finished game in its README: real desktop
 gameplay, mobile portrait and upgrade choices, with portable image paths, alt
 text and captions. Verify the images render in the delivered documentation.
+Give every important implemented feature a one-line benefit summary followed by
+a short elevator-pitch paragraph explaining its player value and concrete behavior.
+Follow the delivery reference; keep planned work separate from shipped claims.
 Keep proprietary source/extracted content out of the public repository and
 default source-only releases. Provide checks, hashes, useful failure messages
 and supported-version limits; never pretend synthetic CI assets prove that a

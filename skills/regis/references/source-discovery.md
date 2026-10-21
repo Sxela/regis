@@ -40,10 +40,19 @@ coverage, output format, native dimensions/scales/anchors, and intended use:
 | Maps | Geometry versus rendered background; collision, walk surfaces, heights, props, region origin and connectivity. |
 | Actors | Player/mob/boss IDs; animation actions, facings, variants, palettes, layers, skeletons, hitboxes and attachments. |
 | Abilities | Icons versus behavior; targeting, damage/status, timing, projectile collision, VFX and audio association. |
-| Items | Logical slots, appearances, fixed unique properties, affixes, restrictions and units. |
+| Items | Logical slots, inventory art versus wearable/paperdoll/world variants, attachments, palettes/dyes, fixed unique properties, affixes, restrictions and units. Record which slots actually change appearance in each source view. |
 | UI | Fonts/glyph metrics, frames/slices, input states, icons, cursors, sound cues and native layouts. |
 | Audio | Sound identity, trigger, channel/loop metadata, music source and redistribution status. |
 | Gameplay data | Stats, traits, resistances, AI, area spawns, population and rare/boss rules with evidence. |
+
+For each selected identity, inventory companion resources by lifecycle role,
+not just a single representative atlas. Spell icons, cast/travel/impact/splash,
+fields and lingering statuses may live in different banks, as can actor attacks,
+dying sequences, corpse/bones and sound variants. Trace metadata/references to
+those companions and preserve their distinctions in the source-to-runtime
+manifest. Use the [lifecycle matrix](implementation-and-validation.md#verify-complete-asset-lifecycles)
+to account for each applicable role; an absent search match is not a completed
+asset audit.
 
 Use `present`, `absent_in_searched_scope`, `unsupported`, or `unknown` coverage.
 Define the searched scope; missing matches do not prove global absence. A
@@ -72,6 +81,16 @@ and limitations; credit reused format knowledge and verify it against the select
 input. Existing game code is not evidence of the original game's runtime rules.
 
 ## Validate the adapter before bulk extraction
+
+Distinguish structural decode, correct mapping, semantic plausibility and visual
+verification in context. A valid PNG/digest does not prove that it represents
+floor, uses the right palette or belongs to the named attack. Inspect suspicious
+black/transparent surfaces with neighboring geometry and source metadata; voids,
+masks and invisible helpers can be intentional. Record derived repairs separately
+instead of replacing every dark tile. Capture native cell size, transition rules,
+height interpolation, transparent-index and palette semantics, and straight or
+premultiplied alpha where applicable. Inspect item edges and semitransparent
+effects against light and dark backgrounds before bulk conversion.
 
 Decode representative assets from each family and inspect previews/contact
 sheets and audio. Test malformed lengths, bounds/offsets, invalid indexes,

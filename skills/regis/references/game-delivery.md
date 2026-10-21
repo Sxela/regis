@@ -72,6 +72,23 @@ Not affiliated with or endorsed by the original game's creators or publishers.
 Original names and resources belong to their respective owners. A supported
 local game installation is required to generate resources."
 
+## Explain important features in the README
+
+Open with a short pitch for the game, then present each important implemented
+feature with a one-line player-facing benefit and a short elevator-pitch paragraph
+(usually two to four sentences). Explain what the player does, why it matters and
+one concrete mechanic or interaction that distinguishes it. Cover the important
+features selected for this product: for example classes/builds, spells/combat,
+regions/exploration, progression/equipment and platform controls where applicable.
+Do not create a feature entry for every stat or repeat a bare technical inventory.
+
+Keep pitches specific to the delivered build. A claim about lingering poison,
+native death animations or touch navigation must have current acceptance evidence.
+Distinguish original presentation from authored mechanics where material, label
+scope limits and keep roadmap ideas separate. Pair key pitches with current
+screenshots or media when useful, then provide setup/controls/reproduction below.
+A headline list alone is not the requested feature explanation.
+
 ## README screenshots from the finished build
 
 The finished game README must embed screenshots of the actual implemented game,
@@ -96,6 +113,16 @@ omit the requested screenshots or replace them with invented gameplay.
 
 ## Game CI and release checks
 
+Run the release candidate with only delivered files, declared prerequisites and
+the selected source installation available. Use an empty generated-assets/cache
+location and fresh profile, disable development asset overrides and trace file/
+network requests for unexpected dependencies. An isolated workspace is enough
+when it proves this boundary; a virtual machine is not mandatory. Exercise the
+actual phone resource-acquisition flow, not just desktop extraction. Confirm
+embedded README images are present, render and match the delivered revision.
+Apply the [acceptance evidence contract](playtesting-and-balance-log.md#keep-acceptance-evidence-current)
+after packaging or lookup changes. No silent borrowing from developer checkouts.
+
 Use the project's engine-native build/test tools. Run deterministic logic tests,
 extractor tests with nonproprietary fixtures, UI/navigation smoke tests and
 platform build jobs on matching runners. If a licensed installation is absent,
@@ -114,6 +141,29 @@ artifacts separate from public downloads. Build source-only packages when game
 resource redistribution is not established. Prepare external release work for
 review and publish only within the user's authorization; a request to add CI/CD
 does not by itself authorize account/repository creation or a public upload.
+
+## Bound production artifacts and exports
+
+Keep an artifact index with purpose, revision, rebuild inputs/recipe, approximate
+size and retention status. Separate selected masters/source references and
+required reproduction inputs from regenerable caches and obsolete build copies.
+Choose project-appropriate disk/compute/generation budgets; prefer shared assets
+or incremental staging over duplicating the full tree for each iteration. Do
+not assume raw captures are reproducible. Preserve user-selected artifacts and
+current-edit inputs; deletion is a separately authorized operation with resolved
+paths, not an implicit production step.
+
+When a project deliberately uses separate development/public trees, make export
+a repeatable manifest-based operation: dry-run, private staging, content/privacy
+audit, scoped destination writes, hash verification and clean-checkout testing.
+Keep source-export and binary-package manifests distinct. Explain each included
+file and exclude private notes/instructions, profiles, credentials, recordings,
+unused assets and installations as applicable. Inspect text/semantic metadata
+for personal paths and secrets without printing secret values. Audit actual
+archive contents; ignore rules alone do not define a distribution. Preserve
+destination history and unmanaged changes. Do not impose a second repository or
+infer redistribution rights from a privacy scan. Report source export, local
+commit, remote push and hosted release as separate states.
 
 ## Handoff
 

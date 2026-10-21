@@ -109,7 +109,30 @@ Record whether a background is an illustration of the game or a screenshot. Plac
 
 Use this order: exact original asset; original compatible component; documented adaptation of a native piece; newly generated illustration or icon. Search first, especially for empty slots, paperdoll buttons and property backgrounds that may already exist.
 
-When generation is necessary, provide nearby original components as references and define the required pixel dimensions, palette, edge treatment, lighting, perspective, alpha and state family. Ask for no embedded text. Generate a useful missing piece, not an entire new visual system around one missing icon.
+When generation is necessary, provide nearby original components as references and define the required pixel dimensions, palette, edge treatment, lighting, perspective, alpha and state family. Default to no embedded text; the native-UI editing option below permits deliberate static-label edits. Generate a useful missing piece, not an entire new visual system around one missing icon.
+
+An image-edit model is also an option for adapting existing native UI, not just
+generating missing artwork. For a flattened panel with baked-in labels/buttons,
+use the actual source image as the edit reference. Replace a static label, remove
+lettering to create a reusable blank button, or extend the panel with additional
+matching button surfaces. Prefer recovered blank controls or deterministic
+composition when those already solve the need; use editing when it helps retain
+the original materials, ornament and visual language.
+
+Specify the exact edit region, requested text or additional button count, output
+dimensions, transparency and what must remain unchanged. Use a mask when the
+chosen tool supports it. Preserve borders, corners, neighboring icons, spacing,
+source typography and the relevant normal/hover/pressed/disabled states. Inspect
+the result at native and gameplay scale for misspelled text, changed symbols,
+unintended edits, seams and inconsistent state art. Keep variable/localized
+labels as runtime text wherever practical; for a baked static replacement, verify
+the exact wording and give the control an equivalent accessible name.
+
+Edited button pixels are artwork, not working controls. Add real hit targets,
+actions, focus/touch feedback and layout behavior for every new or changed button;
+verify they agree with the art and remain usable on supported screen sizes.
+Keep the source image, edit prompt/settings and output identity in the asset
+manifest, label the result as adapted/generated, and retain the original.
 
 For a transparent icon, request genuine alpha and inspect it against both light and dark backgrounds. Do not accept a painted checkerboard. For buttons, keep a consistent silhouette and lighting across normal/hover/pressed states; derive states deterministically when that gives a closer match than independent generations. Keep interaction bounds separate from irregular decorative pixels.
 
@@ -139,9 +162,43 @@ If controls are draggable, clamp them to usable viewport bounds, persist their p
 
 Apply this section when the game has an inventory or equipment system. For another genre, use the equivalent object inspector, command panel, vehicle loadout or other source interaction; do not add an inventory just to imitate a different game.
 
+Recover and reuse the native paperdoll/body backdrop, inventory containers,
+equipment slots and shop panels, buttons, item display and selection states where
+available. Preserve their recognizable composition while adapting scale, controls
+and layout for the selected platforms. A generic item list beside a source font
+does not reproduce these screens. Record which native pieces each screen uses
+and explain necessary adaptations or unavailable resources.
+
+Establish what the selected source edition actually displays when equipment is
+worn: paperdoll layers, in-world sprites/models/material variants or attachments,
+and which slots/items have no visible representation. For included visible gear,
+map the logical equipped item to its real appearance in both supported views.
+Preserve source body/role variants, palette/dye, layer order, anchors and occlusion;
+do not assume the inventory icon is the wearable art. Unsupported items/variants
+need investigation and an explicit scoped adaptation, not a silent static portrait.
+Do not invent visible jewelry or wardrobe changes for slots the source never drew.
+
+Verify equip, replace and remove through the actual inventory/shop flow, then
+inspect paperdoll and world appearance during idle, movement, attack/cast and
+relevant death/corpse states. Save/reload and region travel must preserve the
+correct appearance without orphaned attachments or stale layers. Check supported
+facings/mirroring, meaningful body variants and touch layouts with a representative
+full loadout. Stats, logical slots and visible equipment must agree; an icon-only
+update cannot pass a source-supported worn-equipment requirement.
+
 Use source item art consistently in drops, shop cards, inventory, equipment slots and tooltips. Make native slot backgrounds visible behind equipment so an empty target is understandable. Support every meaningful logical slot, including accessories, even if the original doll needs adapted surrounding controls.
 
 Drag items onto compatible equipment targets and a clear trash/sell target. Show affordances and feedback before changing state. Prevent unintended loss of equipped or protected items according to the project's rules. On touch, make drag initiation distinguishable from scrolling and provide an explicit action alternative when precision is difficult.
+
+Support desktop double-click to equip into the compatible logical slot, alongside
+drag/drop and an explicit Equip button. A double-click must commit one equip
+transaction; its first click may select/inspect but must not sell, consume or
+purchase the item. On touch, use explicit Equip/Sell actions so double-tap does
+not become a gesture conflict. Reject incompatible drops without state changes.
+Expose autoequip/autosell toggles and sale previews using the mechanics guide's
+shared, iterative comparison policy. Side-by-side comparison shows both items'
+values and meaningful effects, including granted abilities; on narrow screens
+stack the same information instead of omitting comparison dimensions.
 
 Compare an unequipped item with the item occupying its actual logical slot, including items with different names or shared source layers. Hovering an equipped item should show its own properties without a redundant comparison against itself.
 
@@ -164,6 +221,23 @@ Test the largest supported choice set with the longest names, wrapped descriptio
 Use a clearly scrollable content region with a reachable close/continue action. Preserve semantic button behavior, visible focus, readable disabled states and a reliable Escape/Back route while retaining the source art.
 
 ## Validate nostalgia and ergonomics together
+
+Use deterministic, risk-based screen/state fixtures rather than a lucky first
+draw: fresh and resumable profiles, longest difficulty text, maximum legal
+choices, full loadout/inventory, long comparison, queued milestones, pending or
+canceled replacement, unaffordable shop and return from nested modals. Include
+held movement, short landscape height, safe insets, UI scale and enlarged-text
+fallback with the selected inputs. Measure actual bounds/overlap, then activate
+Continue/Buy/Back and check input release, paused simulation and currency/state
+effects. Pairwise combinations can cover risks without an exhaustive product.
+Retain a fixture for each reported UI defect.
+
+Map each screen's backdrop, frame, button, slot and font to an actual resource;
+new menu art does not complete inventory or equipment backdrops. Check title
+flex shrink and quiet text surfaces over ornament. Equipment comparison uses
+the shared semantics in the [mechanics guide](game-to-survivors-mechanics.md#make-equipment-drops-useful-and-comparable),
+not an independent interpretation of red/green tooltip rows. Geometry assertions
+and visual review must both pass; screenshots alone do not validate interactions.
 
 Compare the implementation with original references at matching visual scale. Then run complete tasks on desktop and a narrow high-PPI touch screen: start, configure, move, inspect a spell, level up, drag/equip, compare, discard/sell, buy repeatedly, reroll, cancel, resize and continue a save.
 

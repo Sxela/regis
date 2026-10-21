@@ -59,6 +59,64 @@ scope. The workflow now separates limited content breadth from required system
 depth. Full-catalog expansion, promo and release breadth need not be included
 in an explicitly scoped survival test.
 
+## Follow-up reviews from two adaptations
+
+On 2026-10-21 the user supplied `regis-improvement-suggestions.md` from the
+Allods adaptation and `regis-skill-improvement-review.md` from the UO adaptation.
+These are retrospective suggestions with historical evidence, not fresh tests
+of either game's current build. Their shared conclusion was to make existing
+advice enforceable through reproducible scenarios and change-sensitive evidence,
+rather than copy either game's tuning or append both reviews to the skill.
+
+| Review finding | Reusable correction |
+| --- | --- |
+| Earlier passes survived relevant map, combat or media changes | Acceptance ledger binds results to relevant inputs; change-impact table selects reruns and preserves stale history. |
+| Valid assets still produced wrong surfaces, effects or elevation | Structural versus semantic/contextual review, explicit spatial/world-model limits and visual traversal probes. |
+| Plausible crowd adaptations drifted from source attacks | Per-ability fidelity decisions and difficult-family source/runtime comparison before expansion. |
+| Bot clears, checkpoints and complete earned campaigns were conflated | Separate controller capability, feasible earned progression and frequency; retain exact sustain failures and economy feedback checks. |
+| Equipment grants, comparisons and previews needed repeated repairs | Grant lifecycle scenarios, shared dominance semantics, calibrated stats/threat channels and runtime-derived throughput previews. |
+| Quiet gaps, obscured warnings and accidental exits escaped broad tests | Visible pacing/counterplay traces and deliberate world-transition activation scenarios. |
+| Responsive opening screens hid saved-menu and modal failures | Deterministic adversarial state fixtures with real actions and state assertions. |
+| Promo revisions and cached development output obscured delivery quality | Artifact-specific shot review, bounded production retention and clean release tests without development fallbacks; optional manifest-based exports. |
+
+The packaged skill keeps these methods game-agnostic and retains its three-class,
+Node.js SPA/Electron and default mobile policy with explicit user scope overrides.
+Selected content breadth never excuses incomplete selected systems. No source
+game bytes, review attachments, developer paths or game-specific scripts are
+needed by the packaged instructions.
+
+This update revises instructions and acceptance scenarios. Repository verification
+checks packaging and structure; it does not establish improved generated gameplay.
+A subsequent representative adaptation must exercise the changed scenarios and
+compare artifacts/failures before claiming a behavioral quality improvement.
+
+## Revised-skill acceptance run
+
+A subsequent local Allods acceptance run on 2026-10-21 used a separate ignored
+workspace, snapshotted the revised skill and re-extracted original resources.
+It explicitly reused the earlier small trial's adapter/game/harness and the same
+chat agent; it was a regression/continuation exercise, not independent discovery.
+The user selected desktop/mobile with primary mouse point-and-click and touch,
+optional WASD, and inventory/pause shortcuts.
+
+The scenarios exposed and corrected automatic portal travel, branch-dependent
+preview errors, attacker-order-dependent contact damage and stale navigation
+cache after loading. Source/context review also corrected spell icon/audio
+associations, missing homing and lingering poison, and flat actor grounding over
+interpolated terrain. These findings demonstrate useful failures caught by the
+new method rather than merely successful package installation.
+
+Retained local evidence includes 35 simulation/adapter checks, nine native-asset
+browser configurations, 128 movement probes without recovery, 180 earned
+campaigns and a 60-second rendered crowd sample. Every class/mode/build-priority
+row has an earned moving clear in the sampled policies. The actual Windows app
+and a freshly extracted isolated web candidate launched; an edited source-audio
+showcase was decoded and technically measured. Synthetic CI fixtures received a
+separate desktop check. These are local observations, not cloud CI, human rates,
+physical-phone results or original-engine equivalence. Artifacts remain private
+and outside the package. An unfamiliar-source independent generation is still
+needed to assess broader generality.
+
 ## Validation limits
 
 REGIS package checks and skill-structure validation cover the revised documents,

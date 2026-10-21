@@ -72,6 +72,20 @@ For each ability, answer these questions:
 
 Choose **keep**, **adapt**, **exclude**, or **defer**. Exclude removes an ability from offers and grants; defer reserves its identity until its dependent system exists. Adapt requires an explicit new behavior and a test proving that behavior.
 
+For each included ability, resolve fidelity before tuning: reproduce observed
+behavior, adapt targeting/timing for automatic use, or deliberately redesign the
+effect. Splash, branching, extra targets or a different field shape are authored
+changes, not implied permission from the treatment examples below. Keep the
+chosen category, evidence/uncertainty and comparison probe with the source ID.
+Do not silently change attack identity to solve crowd pressure.
+
+Attach capability dependencies to eligibility decisions: required state/targets,
+runtime consumer, reason for exclusion and what change reopens the audit. Keep
+a reverse lookup from changed capability to affected offers, affixes, UI,
+valuation, AI and saved content. Scope dependencies to the actor/system: removing
+player mana need not remove an enemy resource. A newly possible cleanse still
+needs useful removable statuses in normal encounters before entering offers.
+
 | Source mechanic | Useful survival treatment | Removal condition |
 | --- | --- | --- |
 | Projectile or direct strike | Preserve its identity; add a modest splash or penetration when crowd targeting needs help | Incorrect effects or targeting are bugs to fix, not reasons to remove it |
@@ -120,6 +134,15 @@ A stat belongs in the playable pool only when its value reaches a simulation cal
 | Enemy evasion or summons | Accuracy or dispel bonuses unless valid targets exist |
 
 Use an explicit active-stat registry. Each entry should name its unit, baseline, consumer, stacking rule, limits, eligible item families, display label, and validation scenario. Unknown properties remain source metadata until mapped; an unknown positive number must not automatically become loot value.
+
+Calibrate a small loot sample before bulk generation: record recovered native
+ranges, chosen survival ranges, typical hero baseline, units and caps. Separate
+integer ranks from continuous bonuses. Build a threat-channel table showing
+which local enemies exercise each defense and when; a theoretical consumer
+does not make an early resistance reward useful. Inspect common/rare/unique
+items across supported slots/roles, rolled distributions and earned builds.
+Label deliberately situational equipment. Check that displayed ranges, actual
+rolls and saved-item migrations agree; quality and drop occurrence stay separate.
 
 Example audit record:
 
@@ -176,11 +199,48 @@ Give each class a useful attack immediately, a recognizable strength, a pressure
 | Ranged weapon | Attack tempo, penetration, movement, focused boss damage | Slow single-target shots cannot handle waves |
 | Caster | Area coverage, elemental damage, fields, control, equipment autocasts | Basic attack dominates its spellbook or resource starvation prevents casting |
 
-If a weapon grants an ability, track it separately from learned abilities. Define slot use, eligible shared bonuses, local upgrade eligibility, cooldown persistence on swapping, and what happens on unequip. A useful simple rule is a separate weapon autocast that receives general bonuses but cannot buy individual improvements.
+Equipment from any supported slot may grant an ability. Track learned ownership/
+rank, equipment grants, shared upgrades and temporary modifiers separately.
+Define effective rank, casting and individual-upgrade eligibility, slot use,
+cooldown continuity and effect cleanup when the last grant disappears. A simple
+project may allow equipment-only autocasts to receive shared bonuses but not
+individual upgrades; record the chosen rule. Test equip-unlearned/cast/learn,
+overlapping grants, unequip, pending choices and intermediate save/restore. No
+duplicate casting, accidental permanent learning or free cooldown resets on swaps.
 
 Give other weapon families equivalent ways to gain identity: area hits, attack speed, mixed damage, penetration or bounded leech. A caster-only weapon system should not leave the other classes with ordinary damage sticks.
 
 Preserve source restrictions only when they support a real build decision. Removed attributes should not survive as equip gates.
+
+## Allow a source-supported companion
+
+When the source has a party, hireling or mercenary system, provide an optional
+single active companion rather than reproducing an entire squad. Preserve a
+recognizable source identity/role, native appearance, animations and sounds.
+Define recruitment/replacement, earned XP and level growth, shared versus personal
+rewards, support/combat abilities, equipment ownership if supported, and death/
+recovery/dismissal rules. A companion is separate from the three starting player
+classes and must not become mandatory for a solo winning route.
+
+Use actual follow, pursuit and combat logic, with legal terrain/door traversal,
+readable health/level and useful support targeting. Keep the companion's state,
+level, cooldowns, equipment and alive/dead status coherent across travel and saves.
+Test solo versus accompanied earned runs, narrow routes, separation/rejoining,
+recruitment costs and repeated replacement so the ally cannot duplicate rewards,
+gear or free healing. Report navigation recovery rather than silently teleporting.
+
+Where the source provides companion conversation, barks or remarks, reuse those
+lines and associated portraits/voice cues in an in-game conversation/log or
+contextual remarks. Identify the speaker, preserve localization, use suitable
+triggers and cooldowns, and expose text/mute controls; do not spam repeated lines
+or invent voiced dialogue and label it original. This is local game dialogue,
+not an external messaging integration. Record authored connective dialogue.
+
+Reaudit ally-dependent abilities, item properties and AI when enabling the ally:
+heals, wards, revival or support buffs may now have useful targets. A single ally
+does not automatically justify every mass/party spell; demonstrate practical value
+and balance its opportunity cost. Keep player and companion resource/stat consumers
+separate and exclude unsupported dependencies from both playable pools.
 
 ## Separate learning from improving
 
@@ -222,6 +282,15 @@ Damage 24 → 26.4 · Splash 14.4 → 15.8 · Cooldown 2.0 s (unchanged)
 
 Hero passives follow the same rule. Each states what it changes in concrete units (HP, percent of a named base, px/s, HP/s, world units), so a themed name never stands alone. Persistent camp or legacy purchases show the value of one point and the current total next to their price.
 
+When damage or interval changes, show before/after sustained throughput using
+runtime values. A repeatable hit may use damage/interval; fields, multihits,
+channels, summons and resource-limited attacks need stated contact/target/uptime
+assumptions or a more appropriate metric. Label per-target/pre-resistance estimates
+and keep recent observed damage separate. Pure support shows healing, capacity,
+uptime or control rather than damage DPS. Test mixed speed/damage tradeoffs,
+shared multi-ability offers and interval thresholds. Keep each ability's name
+and metric scope legible; applying the offer must match its preview.
+
 Luck can improve rarity distribution for both equipment and upgrade offers. Keep quality, drop occurrence, number of choices, and price as separate systems. Test the rarity distribution statistically with and without luck, including caps.
 
 ## Build an economy that funds decisions
@@ -258,7 +327,38 @@ Make loot visible with a consistent container or marker. Automatic walk-over ope
 
 Use conservative autosell. Sell an item automatically only when a compatible item is at least as good in every active comparison dimension and better in at least one. Different damage identities, granted abilities, restrictions and meaningful nonnumeric properties can make items incomparable. A scalar score is useful for a simple bot, but is insufficient evidence for deleting a human player's tradeoff.
 
+Share a semantic comparison result across tooltips, autoequip and autosell:
+equal, dominates, dominated, tradeoff or incomparable. Define absent-value and
+near-equality policies, lower-is-better stats, caps/penalties and meaningful
+nonnumeric properties. Missing is zero only where the system defines it so;
+display rounding must not delete a real tradeoff. Test an extra useful bonus,
+an absent bonus, lost ability grants and class restrictions. Autoequip is an
+explicit project policy: if enabled, fill legal empty slots or replace clearly
+dominated gear with atomic equip/displacement/sale. Repeated pickups or opening
+inventory must not repeat sales or multiply bonuses.
+
 Track protected/favorite/equipped items and define full-inventory behavior. Show autosell income explicitly. Equipped-item hover needs its own stats, while an unequipped item may compare beside it; comparing an item to itself adds no information. Keep scrollable tooltip overlays clear of item and trash targets, and provide a touch equivalent to hover.
+
+Provide player-selectable autoequip and autosell settings plus explicit equip,
+remove and sell actions. Compare against all retained compatible items of the
+same logical slot, not only the currently worn item. Include companion usability
+when its inventory is supported: an item inferior for the player can still be
+useful to the ally. Preserve meaningful tradeoffs, favorites and unique effects.
+
+Iterative autosell computes a stable retained set: identify a strictly dominated
+unprotected candidate using the shared comparison semantics, sell it once, then
+recompute eligibility/comparisons after any sale or automatic equipment change.
+Continue until no eligible dominated item remains. Every sale needs a retained
+compatible dominator; preserve the non-dominated alternatives. Do not treat equal
+duplicates as strictly inferior without an explicit duplicate-sale policy. Use
+stable IDs/order, stop when no change occurs, and never sell the last useful item
+for a slot or repeatedly swap equal gear. Preview the sale set and show proceeds.
+
+Test a chain of three progressively better same-slot items in different pickup
+orders, incomparable tradeoffs, equal duplicates, restrictions/ability grants,
+protected and equipped items, companion-only gear and full inventory. The final
+retained choices and proceeds must follow the declared policy without double
+sales, lost equipment or repeated stat application after load/reopen/reprocessing.
 
 ## Preserve coherent zones and native geography
 
@@ -295,6 +395,13 @@ Randomize wave size within a configured range and distribute placements around u
 Continue pressure through the boss fight. After boss death, expose the exit immediately, preserve remaining loot, and allow a short collection period. Increasing reinforcements and a visible extraction deadline make departure a decision without allowing unlimited farming. State the consequence of missing the exit. Pause reward and inventory interactions consistently with the chosen active-time rules.
 
 The safe shop begins after entering the exit. Do not interrupt the boss death with a purchase modal while the player is still steering through drops. Advancing the shop loads the next area; completing the final area's flow wins the run.
+
+World transitions need deliberate activation: legal reachable ground with
+clearance from the player, reward pile and hazards, plus a suitable interaction,
+arming, hold or release-and-reenter policy. Use active-time clocks. Test a boss
+kill while steering/holding input, a flying/off-floor death, remaining reward
+collection and pause/save/continue. No instant unintended departure or stranded
+exit; guaranteed placement failures must retain a recoverable transition.
 
 Choose visible or offscreen spawning deliberately. For on-screen spawning, use a readable arrival effect and exclude unfair contact spawns. For offscreen spawning, place just beyond the current camera edge with a valid route inward. In either case derive distance from the actual viewport, zoom and elevation rather than a fixed world circle or remote map edges. Test both wide desktop and narrow portrait screens.
 
@@ -338,7 +445,11 @@ Use several kinds of experiment because each answers a different question:
 
 Run a matrix across classes, difficulty, seeds, area checkpoints, builds, body sizes and screen shapes. Include stationary, movement/collection, defensive, damage, area and low-luck policies. Test no-shopping or no-mining paths when those systems are optional. Sample difficult native geometry as well as open terrain.
 
-Stationary play is an exploit probe, not a model player. A stationary late defense build sometimes surviving can be an earned strength; an unequipped fresh hero clearing ordinary encounters indefinitely signals a larger problem. A movement bot must navigate and collect rather than follow one circle. Report recovery teleports or other escape fallbacks, because they can mask navigation failures.
+Interpret stationary play by mode and build: Easy's mostly stationary combat
+wins are intended; mature defense may legitimately earn safety. In Medium/Hard,
+use it to diagnose whether threats, reachability and sustain obey the chosen
+contract. A movement bot must navigate and collect rather than follow one circle.
+Report recovery teleports or other escape fallbacks because they can mask defects.
 
 For synthetic builds, state the exact level, passive purchases, ability purchases, equipment, luck and free resources. For earned campaigns, buy with real currency, respect replacement and shop rules, and avoid free heals or restored consumables at area transitions. If the harness abstracts exit travel, omits mining, or uses a simplistic item score, record that limitation with the results.
 
