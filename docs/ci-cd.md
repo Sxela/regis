@@ -8,6 +8,12 @@ and offline npm-tarball smoke. Tests use only synthetic data and temporary paths
 Cross-platform jobs are prepared here; local checks alone do not mean GitHub ran
 them. No real game files, paid generation or REA providers are required.
 
+The offline tarball smoke installs the newly packed REGIS archive into a temporary
+consumer using the repository's locked dependency graph. It needs the dependency
+tarballs cached by the preceding `npm ci`, not registry version metadata left over
+from an earlier `npm install`. This checks the real package and pinned REA closure
+without making a fresh dependency-resolution request during verification.
+
 The release workflow runs manually or for a `v*` tag. It verifies the package,
 checks a tag against package.json, creates the npm tarball and standalone skill
 tarball, writes SHA-256 sums and uploads workflow artifacts. A manual run only

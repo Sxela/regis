@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {mkdtemp, rm, readdir} from 'node:fs/promises';
+import {mkdtemp, rm, readdir, realpath} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -41,7 +41,7 @@ test('CLI lists clients and previews a Cursor install without writing', async t 
   assert.ok(JSON.parse(listed.stdout).cursor);
   const result = run(['skill', 'install', '--client', 'cursor', '--project', temp, '--dry-run'], temp);
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(JSON.parse(result.stdout).destination, path.join(temp, '.cursor', 'skills', 'regis'));
+  assert.equal(JSON.parse(result.stdout).destination, path.join(await realpath(temp), '.cursor', 'skills', 'regis'));
   assert.deepEqual(await readdir(temp), []);
 });
 

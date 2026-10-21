@@ -1,11 +1,13 @@
-import {mkdtemp, readFile, rm, readdir} from 'node:fs/promises';
+import {mkdtemp, readFile, rm, readdir, mkdir, writeFile, realpath} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const temp = await mkdtemp(path.join(os.tmpdir(), 'regis-package-'));
+// Keep npm's prefix and file: dependency paths consistent across Windows aliases.
+const temp = await realpath(await mkdtemp(path.join(os.tmpdir(), 'regis-package-')));
 const npmCli = process.env.npm_execpath || path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js');
 function run(command, args, cwd = root) {
   const result = spawnSync(command, args, {cwd, encoding: 'utf8', env: process.env});
@@ -17,7 +19,27 @@ try {
   const archive = (await readdir(temp)).find(name => name.endsWith('.tgz'));
   if (!archive) throw Error('npm did not create a package.');
   const installed = path.join(temp, 'installed');
-  run(process.execPath, [npmCli, 'install', '--prefix', installed, path.join(temp, archive), '--ignore-scripts', '--offline', '--no-audit', '--no-fund']);
+  const packedManifest = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'));
+  const lock = JSON.parse(await readFile(path.join(root, 'package-lock.json'), 'utf8'));
+  const consumer = {name: 'regis-package-smoke', version: '1.0.0', private: true, dependencies: {[packedManifest.name]: `file:../${archive}`}};
+  // npm ci caches locked tarballs, not necessarily registry version metadata.
+  // Preserve that dependency graph so this offline check never needs metadata.
+  lock.name = consumer.name;
+  lock.version = consumer.version;
+  lock.packages[''] = {name: consumer.name, version: consumer.version, dependencies: consumer.dependencies};
+  lock.packages[`node_modules/${packedManifest.name}`] = {
+    version: packedManifest.version,
+    resolved: `file:../${archive}`,
+    integrity: `sha512-${createHash('sha512').update(await readFile(path.join(temp, archive))).digest('base64')}`,
+    license: packedManifest.license,
+    dependencies: packedManifest.dependencies,
+    bin: packedManifest.bin,
+    engines: packedManifest.engines
+  };
+  await mkdir(installed);
+  await writeFile(path.join(installed, 'package.json'), JSON.stringify(consumer));
+  await writeFile(path.join(installed, 'package-lock.json'), JSON.stringify(lock));
+  run(process.execPath, [npmCli, 'ci', '--prefix', installed, '--ignore-scripts', '--offline', '--no-audit', '--no-fund']);
   const packageRoot = path.join(installed, 'node_modules', 'regis-agents');
   const cli = path.join(packageRoot, 'bin', 'regis.mjs');
   const doctor = JSON.parse(run(process.execPath, [cli, 'doctor', '--strict', '--json'], temp));
