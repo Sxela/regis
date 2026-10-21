@@ -9,6 +9,24 @@ or native mobile wrapper only when the project actually needs it.
 
 ## Mobile is part of the normal implementation
 
+Resolve the user's target devices and preferred controls before choosing the
+control layout. Reuse preferences already given; otherwise ask a compact
+question such as: "Which platforms and controls should this target: desktop
+keyboard/mouse, phone/tablet touch, controller, or a combination?" Continue
+independent discovery while waiting. If no preference arrives, state the default
+desktop web/Electron plus mobile web assumption. An explicit desktop-only scope
+removes mobile delivery/testing requirements; record that scope rather than
+silently expanding it.
+
+Record a platform/control matrix in the design brief, including movement,
+aim/attack, abilities, dash, menus and pause. Pick touch behavior deliberately
+(for example, floating stick, hold/drag or tap-to-move) and decide whether aiming
+is automatic or separately controlled. Do not add controller support unless
+selected or needed by the target. Every supported input method must complete
+the gameplay loop without an external keyboard. Show discoverable instructions
+and prompts for the active input method: touch guidance on phones rather than
+WASD/Space-only hints, with prompts updating when input changes on hybrid devices.
+
 Implement touch controls while building the first playable slice. Support phone
 portrait, landscape and tablet, safe-area insets, high pixel density, dynamic
 viewport height and orientation changes without resetting the run. Keep the
@@ -53,6 +71,7 @@ being tested.
 | --- | --- |
 | Portrait + landscape phone, tablet | No horizontal overflow or obscured mandatory actions; legible maximum-load HUD. |
 | Touch move/hold/drag/cancel | Actor moves continuously through valid terrain and stops on release/background/modal. |
+| Controls and prompts | Selected platform/control pairs cover all required actions; touch hints and buttons explain movement/abilities without relying on keyboard keys. Hybrid input changes update prompts. |
 | Full loop | Choose each class/difficulty; encounter, loot, upgrade, boss/exit, shop, death/victory and continue. |
 | Panels | Tap inspect, scroll, compare/equip, buy, reroll, cancel/back; no stale-input purchases or hover dependence. |
 | Upgrade card fit | At normal text size, the full choice set, heading and every Choose/Buy button fit vertically inside the usable viewport without scrolling, clipping or overlap; test longest content, smallest portrait/landscape screens and orientation changes. Preserve readable text and touch targets; test accessible scrolling fallback for enlarged text. |

@@ -74,6 +74,39 @@ Test the beginning, middle and end. Inspect long-run growth independently: small
 
 For synthetic checkpoints, list every grant: levels, improvements, equipment, unlocks, currency, consumables and healing. For earned runs, obey actual rewards, prices, travel, replacement rules and depletion. Avoid free transition healing or refills unless the real game supplies them.
 
+## Run performance and walkability passes
+
+Make both passes part of the playtest plan and milestone review, including a
+narrow survival slice. Define project-specific budgets and success criteria
+before measuring; record build, seed/route, device/browser, viewport, rendering
+settings, duration, warm-up and load. Preserve raw results and reproduction
+steps for failures. Rerun affected scenarios after changing rendering, spawning,
+navigation, collision or map extraction.
+
+For performance, run the actual rendered game through early play, dense
+mid/late combat, maximum supported effects/loadouts and boss or region
+transitions. Include cold asset loading and a sustained session to expose
+growing memory or queues. Record frame-time p50/p95/p99, longest frames and
+stalls over the agreed budget, simulation/render/pathfinding costs where
+measurable, actor/effect counts and memory/loading costs. Diagnose the slow
+operation before optimizing and compare the same scenario afterward. Average
+FPS, a short quiet scene or a fast headless bot run cannot establish smooth
+combat. Label emulated and software-rendered results; keep unavailable device
+measurements explicit rather than treating host timings as phone timings.
+
+For walkability, audit connectivity of every included region, then traverse
+required start-to-objective, reward/loot, guardian, camp and exit routes using
+the actual movement and collision code. Check the relevant body sizes, moving
+enemy pursuit and supported movement inputs. Exercise narrow passages,
+diagonal corners, props, height/floor transitions and map boundaries; compare
+collision overlays with visible ground. Validate legal spawn placement and
+paths into combat, plus reachable interaction/pickup distances. Where maps or
+spawns vary, sample reproducible seeds and report coverage. Record unreachable
+targets, blocked placements, failed paths and time without progress despite
+movement intent. Recoveries, teleports or debug relocation must remain visible
+failures/recoveries, not successful traversal. Fix blocked required routes
+before accepting the region, and distinguish authored barriers from defects.
+
 ## Record useful telemetry
 
 | Family | Measurements |

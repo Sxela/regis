@@ -48,6 +48,17 @@ Use stable IDs across extraction, simulation, rendering, tooltips, saves, and te
 
 ## Filter abilities by practical value
 
+Preserve the original in-game display name from the selected edition and
+language for every included source skill/spell. Map its stable source ID to
+the correct icon, cast/projectile/impact/status sprites or VFX, and sounds;
+use those resources in actual gameplay wherever applicable and available.
+Record missing/unsupported presentation explicitly. Do not silently rename
+spells or substitute a different spell's art/sound because it decodes easily.
+Keep source names separate from internal IDs and authored upgrade/branch names.
+Explain adapted targeting, timing or effects in the description and evidence
+ledger. If a substantial redesign needs a new name, label it as an authored
+ability and record its source inspiration rather than claiming reproduction.
+
 Audit every ability, including passive skills and equipment procs. An icon and an animation do not establish a useful mechanic.
 
 For each ability, answer these questions:
@@ -74,10 +85,21 @@ Choose **keep**, **adapt**, **exclude**, or **defer**. Exclude removes an abilit
 | Stat blessing | Map to actual damage, movement or defense; state the mapping | It changes a removed primary attribute |
 | Reflection | Return a real incoming attack with explicit duration, charges and refresh behavior | It only draws a shield without modifying incoming spells |
 | Heal or ward | Cast when injured or endangered; show recovery or protection numerically | It fires uselessly at full health or spends all uptime on trivial threats |
+| Party/group heal (for example, Mass Heal) | Keep only when allies or summons are meaningful healing targets | Solo play has no group to heal; use a suitable original self/single-target heal instead of relabeling the group spell |
 | Summon | Give it reliable targeting, movement, damage, expiration and ownership | It is decoration or repeatedly becomes stuck |
 | Travel, food, locks, resurrection | Keep only if the run explicitly supports their purpose | They depend on a world, party or economy absent from the port |
 
 Retain fire, cold, poison and similar identities for VFX, sound and statuses even if damage calculation uses fewer channels. Consolidating resistance categories does not require making every attack behave alike.
+
+These decisions depend on the implemented mode, not a universal spell blacklist.
+For example, exclude Stone Wall when automated placement blocks escape or has
+no useful tactical role; retain it only with tested placement, escape and enemy
+navigation. Do not implement otherwise absent party/resource systems solely to
+justify keeping an unsuitable spell. Remove excluded/deferred abilities from
+starting loadouts, drops, learning offers, shops and equipment procs, and remove
+their unusable dependent upgrades/stats from generation, previews and scoring.
+Handle old saves explicitly so removed content cannot re-enter the playable pool.
+Preserve the immutable source catalog and record each exclusion and its reason.
 
 Generate offers from current usefulness. Do not offer duration on an instantaneous hit, area on a self-only buff, more chain targets after its cap, or more uptime on an already continuously maintained buff. Re-evaluate eligibility after purchases and equipment changes.
 

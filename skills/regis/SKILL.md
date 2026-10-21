@@ -37,6 +37,14 @@ Resolve source path, edition/version, output repository, supported platforms and
 available REA tools from the session. Ask only for information that prevents
 meaningful progress. Keep the source installation unchanged and generated output
 outside it. Record hashes, archive/member IDs and extraction parameters.
+Before committing to input and layout, resolve target platforms and preferred
+controls from the session. If unspecified, ask a brief preference question while
+continuing source discovery; offer desktop keyboard/mouse, mobile touch and
+controller where relevant. Honor an explicit platform scope. While awaiting an
+optional answer, use the default desktop web/Electron plus mobile web scope,
+state the assumption and provide usable touch controls. Record the selected
+platform/control pairs and use input-appropriate in-game hints; see
+[platform and mobile](references/platform-and-mobile.md).
 When the user supplies an existing adaptation or reference result, compare its
 relevant screens, loop and systems before choosing the implementation scope.
 Record the qualities to preserve, explicit exclusions and known reference defects.
@@ -83,6 +91,13 @@ required regions, actors, useful abilities/items and native interface components
 
 Preserve coherent source regions and their local spawn identities. Make every
 offered ability, passive and item property useful in the implemented loop.
+For included source skills/spells, preserve their original in-game names in the
+selected edition/language and their matching icons, sprites, VFX and sounds.
+Record automatic targeting, cooldown or other survival adaptations separately;
+do not attach a familiar name to an unrelated generic attack. Exclude abilities
+and dependent stats with no useful role in this mode from playable pools, such
+as party-wide healing without allies or blocking walls without useful placement
+and navigation. Keep their source records and exclusion reasons for provenance.
 Prefer distinct behavior and viable tradeoffs over mandatory stat inflation.
 
 ## Implement and test the actual game
@@ -116,6 +131,11 @@ touch targets readable. Validate longest-content cards and orientation changes.
 
 Read [playtesting](references/playtesting-and-balance-log.md) and the difficulty
 contract in [design and difficulty](references/design-and-difficulty.md).
+Include explicit performance and walkability passes in playtesting. Measure
+rendered frame pacing under representative combat load on selected platforms,
+and traverse required routes with actual actor collision. Record budgets,
+scenarios, measurements and failures in the playtest log; passing balance runs
+or headless simulation alone does not complete either pass.
 
 | Mode | Intended experience |
 | --- | --- |
