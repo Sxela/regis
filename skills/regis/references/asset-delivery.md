@@ -85,3 +85,50 @@ releases still exclude proprietary payloads unless redistribution is authorized.
 Browser references: consult MDN's CanvasRenderingContext2D.drawImage for frame
 rectangles, HTMLMediaElement.canPlayType for capability results, and WebGL best
 practices for texture atlases, hardware limits and memory budgets.
+
+## Loading feedback is part of readiness
+
+Use one shared progress model for boot, new/continued runs, area changes and
+on-demand artwork/audio. Cover request, transfer, decode/upload and scene setup;
+an HTTP response finishing does not make an area playable. Aggregate overlapping
+jobs, deduplicate shared payloads and settle completed, failed and cancelled jobs.
+Report real byte totals when known, resource/stage counts where meaningful, and
+indeterminate work honestly; do not invent percentages for unknown work.
+
+Paint feedback before heavy work. Keep controls responsive enough to cancel or
+retry; split or move expensive work off the UI thread when the measured stall
+warrants it. Gate simulation while required visible terrain, collision or actors
+are unavailable, so downloads cannot expose missing ground or kill the player.
+Optional background work should use unobtrusive feedback rather than blocking
+every interaction. Preserve the previous usable scene until its replacement is
+ready, or provide an explicit recoverable loading state.
+
+Acceptance covers slow first entry, warm entry, overlapping loads, failed required
+content, cancellation/rapid travel and retry. The indicator appears, advances or
+explains the current stage, and settles correctly; play resumes only when required
+resources are usable. Test under the [performance network matrix](performance-playtest.md),
+not only fast local file access.
+
+## Atlas, streaming and cache acceptance
+
+Choose page/chunk sizes from measured requests, bytes, first-use cost and decoded
+memory. A larger nominal tile size can increase requests when it splits existing
+terrain patches. Keep logical IDs, native dimensions, anchors, hues and collision
+independent of transport packing. Extrude suitable gutters, validate source
+rectangles, and test edges, transparent pixels, tinting and filtering at runtime.
+Lossless conversion should preserve decoded pixels; a lossy choice needs an
+explicit visual-quality review rather than a byte-only improvement claim.
+
+Stream visible resources first, prefetch nearby content within a decoded-memory
+budget and release evicted images/textures. Pin required visible content; report
+unavoidable viewport or transient decode overshoot separately. A stationary camera
+must not repeatedly evict and download the same prefetched pages. Exercise moving
+across chunk boundaries, area/save changes and disposal with requests in flight.
+
+Test persistent browser caches across full reloads, not only an in-memory map.
+Revalidate the small index; use coherent versioned payloads and publish the index
+after its dependencies are complete. Failed/partial responses must not become
+successful cached assets. Verify update, retry and recovery with interrupted loads
+and old caches; do not require unused original and optimized copies in the runtime
+dependency set. Pixel equality with a previous renderer preserves its existing
+bugs too: retain contextual visual and world-behavior review.

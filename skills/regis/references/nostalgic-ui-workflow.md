@@ -55,6 +55,17 @@ style to compensate for unfinished extraction.
 Define reusable components such as NativeButton, Frame, PropertyPanel, ActionIcon, Slot, StatusBar, Tab and Modal. Components receive content and behavior; they should not each redraw their own approximation of the art. A shared fix then repairs every shop, inventory and level reward.
 
 Use nine-piece or three-piece composition for resizable art. Preserve corner pixels and edge thickness, tile suitable fills, and stretch only regions designed to stretch. Do not scale a complete ornate panel nonuniformly. Record inner content insets so text does not collide with the decorative frame.
+Inspect the actual source silhouette before choosing slices: a narrow ornate
+button may need full-height end caps, and repeating a textured center can introduce
+obvious joins. Use an intact image when it fits, or a verified native stretch
+region. Crop panel interiors before tiling; mirror appropriate textures when that
+removes seams without inventing important details. Keep control typography,
+visible artwork heights and touch targets consistent across menus, shop, inventory
+and HUD actions. Prefer native active states or a readable hue treatment over an
+unrelated selection rectangle; preserve keyboard focus indication separately.
+Computed CSS, bounds checks and screenshot capture alone do not establish visual
+quality. Inspect the rendered images at the supported sizes after layout checks;
+reject warped end caps, repeated bevels, texture seams and misaligned labels.
 
 Review proportions on pause, death/victory, settings, inventory, comparison and
 shop screens as well as the opening menu. Size shared button widths from the

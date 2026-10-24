@@ -261,3 +261,13 @@ Superseded decisions, remaining uncertainty and next test:
 ```
 
 Maintain an open-issues queue with severity, reproduction, next experiment and acceptance criteria. Do not close an issue solely because a nearby optimization shipped. Promotional captures and staged demonstrations are presentation checks, not earned progression results.
+
+
+## Separate performance acceptance
+
+Run the [performance playtest](performance-playtest.md) as its own pass/report,
+including simulated constrained networks for web delivery. Balance success does
+not demonstrate responsive rendering, correct loading feedback or warm-cache
+behavior. Conversely, a fast staged scene is not an earned winning progression.
+Link both reports from the project log and invalidate affected measurements when
+rendering, assets, caching, serving policy or relevant content changes.

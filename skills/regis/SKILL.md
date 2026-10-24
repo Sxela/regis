@@ -117,6 +117,8 @@ autoequip, drag/drop, double-click equip and conservative iterative autosell.
 Read [implementation and validation](references/implementation-and-validation.md).
 For web/mobile delivery, use [asset delivery](references/asset-delivery.md) to
 separate source extraction from request, byte, decode-memory and cache budgets.
+Show shared loading progress through download, decode and scene readiness, with
+retry and safe simulation gating; follow the asset-delivery acceptance cases.
 Read [platform and mobile defaults](references/platform-and-mobile.md). Use the
 Node.js SPA for web/mobile and Electron for native desktop platform builds unless
 the user explicitly changes that stack. Select Canvas/WebGL or equivalent SPA
@@ -162,6 +164,9 @@ Preserve reported failures as targeted regressions. Bind each acceptance result
 to its relevant inputs; mark affected evidence stale after changes and rerun by
 dependency. Keep controller competence, earned winning paths and observed win
 frequency separate. The playtesting reference defines this evidence contract.
+Run the separate [performance playtest](references/performance-playtest.md),
+including bandwidth/latency throttling and cold/warm persistent caches for web
+delivery. Keep performance evidence separate from balance outcomes.
 Include explicit performance and walkability passes in playtesting. Measure
 rendered frame pacing under representative combat load on selected platforms,
 and traverse required routes with actual actor collision. Record budgets,

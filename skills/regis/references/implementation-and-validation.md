@@ -161,8 +161,52 @@ Use budgeted/cached pathfinding and test moving targets; do not replace it with
 routine wall clipping or silent teleporting. A recovery is reported separately
 from successful navigation.
 
+### Movement capabilities and destination validity
+
+Separate physically valid standing surfaces from walking connectivity to the
+initial spawn. Preserve sufficient collision/support metadata to evaluate both;
+a flood fill must not erase clear rooms that a supported traversal ability can
+legitimately reach. Define movement capabilities explicitly: ordinary walking
+checks the intervening path and step rules; a wall-crossing blink, when part of
+the design, checks its landing footprint without imposing walking line-of-sight.
+Other dashes, jumps or projectiles may intentionally obey different barriers.
+
+Reject unsupported floors, insufficient clearance, invalid terrain and out-of-bounds
+landings. Test valid destinations across a wall and invalid destinations inside
+one, along with water/void where applicable, diagonal landings, cooldown failure
+policy and save/restore. Verify the real keyboard/touch action, not only a helper.
+After entering another walking component, validate pursuit, future spawns,
+objectives/exit placement and ordinary movement from the landing. Do not silently
+snap the player back to the initial component or strand required encounters.
+
+### Interaction and visual-role contracts
+
+Express source-relative adjacency and melee interaction in the declared world
+coordinates, not an arbitrary screen-pixel radius. State whether movement is
+allowed during harvesting or another interaction. Where it is, retain a reachable
+target while circling it rather than continually resetting work as distances
+change. Define range interruption, target HP/progress, depletion and save migration;
+test no duplicated payout, restored health or unintended cross-wall/floor access.
+These are interaction decisions, not a requirement to add mining to every game.
+
+Distinguish flat water/support surfaces from vertical scenery in render ordering;
+test bridges, docks or their source equivalents with actors and walls together.
+Bind impact and ongoing status feedback to the intended visual roles. Let native
+effects reach their meaningful frames at the selected cadence; a generic short
+lifetime must not truncate a recovered sequence into an unrelated-looking flash.
+Keep visual lifetime separate from damage timing, and validate overlapping effects
+and cleanup under load.
+
+When reallocating rewards between combat, resources and objectives, compare
+expected earned income and acquisition time, including drop probability, payout,
+population, interaction downtime and shop prices. Keep spatial readability and
+accessible placement in the evaluation. Project-specific percentages and cluster
+counts are tuning, not universal rules.
+
 ## Validate beyond unit tests
 
+Run the separate [performance playtest](performance-playtest.md), then keep its
+results distinct from earned balance and human-experience claims.
 Run formula/transaction checks, controlled encounters, map/navigation probes,
 earned campaign policies, human sessions and packaged-device checks. Mark each
 result with class, difficulty, seed/route, earned or synthetic budget, source
