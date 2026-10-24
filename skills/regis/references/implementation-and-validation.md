@@ -108,6 +108,11 @@ unlock state; retain an actual recording and distinguish audible review from
 technical playback evidence. Report per-role gaps instead of describing a whole
 spell/character family as integrated when only its icon or walk cycle works.
 
+For web/mobile distribution, distinguish the decoded archive from resources
+actually requested and retained by the client. Follow [asset delivery](asset-delivery.md)
+for dependency pruning, indexed atlases/bundles, compression, cache behavior,
+random frame access and cold/warm load measurements.
+
 ## Behavior tests
 
 | System | Meaningful invariants/scenarios |
@@ -120,6 +125,12 @@ spell/character family as integrated when only its icon or walk cycle works.
 | Navigation | Reachable spawn/exit/loot, floor correctness, body clearance, pursuit round obstacles, legal escape destinations, stuck detection and documented recovery. |
 | UI/input | Explicit buy/select; modal input release; focus/tap equivalents; comparison/drag/cancel; safe responsive layout and controls. |
 | Performance | Worst frames/path budgets, population bursts, VFX and decode memory on representative devices. |
+
+Start input/render probes after their observable prerequisites: the rendered
+camera, decoded required resources and usable controls, rather than a simulation
+phase flag alone. Report real-asset checks separately from synthetic CI fixtures.
+Bind release checks to the delivered artifact and use a fresh unpack directory;
+a development tab/cache or leftovers from an older archive can hide omissions.
 
 Test advertised behavior and past defects. Avoid tests that merely restate
 configuration values or assert that a function was called. Seed scenarios, save

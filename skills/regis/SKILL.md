@@ -115,6 +115,8 @@ autoequip, drag/drop, double-click equip and conservative iterative autosell.
 ## Implement and test the actual game
 
 Read [implementation and validation](references/implementation-and-validation.md).
+For web/mobile delivery, use [asset delivery](references/asset-delivery.md) to
+separate source extraction from request, byte, decode-memory and cache budgets.
 Read [platform and mobile defaults](references/platform-and-mobile.md). Use the
 Node.js SPA for web/mobile and Electron for native desktop platform builds unless
 the user explicitly changes that stack. Select Canvas/WebGL or equivalent SPA

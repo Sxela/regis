@@ -78,6 +78,25 @@ and stationary policies with legal rewards/purchases, genuinely earned middle
 and late checkpoints, all three classes, and human fresh starts. Synthetic
 stress is useful for exploits but is not proof of an obtainable winning build.
 
+## Check crowd amplification and reward access
+
+Measure per-target and total damage, affected targets and pack-clear time at
+representative densities, including initial and earned mature builds. Include
+sweeps, retaliation, overlapping blasts, chains, fields and refreshed statuses;
+single-target DPS alone misses their density multiplier. Trace kill/XP access,
+healing and purchases after tuning: dividing a fixed damage budget across every
+new enemy can delay all kills and starve progression even at unchanged total DPS.
+
+Choose arcs, falloff, target limits or budgets to fit the affected attack and
+source identity. Preserve useful class differences. A melee exploit does not
+justify weakening every dedicated area tool or compensating with global HP
+inflation. Recheck the declared difficulty contract after a targeted correction.
+
+Before interpreting a bot loss, verify actual firing windows, warning response,
+collection, useful legal spending, equipment tradeoffs and extraction. Keep the
+policy fixed for paired comparisons or disclose its change; an automated win
+frequency is not a human difficulty/enjoyment rating.
+
 ## Close failed class/mode investigations
 
 Separate controller competence, earned winning-path evidence and observed win

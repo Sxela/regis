@@ -28,6 +28,11 @@ Start with a useful class and weapon
 
 Give each system a reason to exist in this loop. Long travel, maintenance, crafting prerequisites, resource starvation, and elaborate hotbars can consume attention without making movement or build decisions better. Keep them only when they create a deliberate survival decision.
 
+Declare which actions may execute while moving. If firing requires standing,
+movement input cancels an unfired windup immediately; automatic fire must not
+repeatedly stop navigation. Check visible gait, facing and action completion in
+gameplay and promo capture. Keep any deliberate attack commitment explicit.
+
 Decide the following before making a large content catalog: target inputs and screens; class roles; manual actions; offensive and defensive capacity; how new abilities enter a build; run length; boss timing; extraction rules; and what persists after a run.
 
 ## Separate original content from survival rules
@@ -255,6 +260,12 @@ Use distinct rewards for acquiring an ability, improving a specific ability, imp
 
 Three choices work well for quick in-run decisions. A safe shop can show more. Make every draw usable with the current loadout. Group eligible choices before sampling so a large family cannot crowd out every other kind of reward. Guarantee a useful passive fallback for ordinary draws where possible. When only one family remains eligible, return valid choices rather than inventing false variety.
 
+Choose whether the primary attack consumes the same capacity as acquired tools;
+show that choice consistently in loadout and learning UI. Keep enough useful
+acquisitions to make the capacity limit meaningful. When all eligible upgrades
+are capped, continue the declared progression without empty choices, paid dead
+offers or canceled navigation.
+
 Once slots are full, ordinary upgrades should improve the existing build. A separate learning milestone may allow replacement, but the player must be able to keep the current spells. State that replacing an ability resets its individual improvements and behavior milestones while shared bonuses remain.
 
 An example rarity schedule is:
@@ -326,6 +337,11 @@ Preserve fixed unique properties where evidence supports them. Keep derived weap
 Make loot visible with a consistent container or marker. Automatic walk-over opening reduces missed small items. Check reach, floor and walls before collection, and show the actual item in inventory, shop and comparison views.
 
 Use conservative autosell. Sell an item automatically only when a compatible item is at least as good in every active comparison dimension and better in at least one. Different damage identities, granted abilities, restrictions and meaningful nonnumeric properties can make items incomparable. A scalar score is useful for a simple bot, but is insufficient evidence for deleting a human player's tradeoff.
+
+With a validated strict-dominance policy, default conservative autosell on for
+new runs unless the user/project specifies otherwise. Provide a visible opt-out,
+preserve saved preferences, and define missing-setting migration. Include sale
+income in earned progression tests; a new default changes purchasing power.
 
 Share a semantic comparison result across tooltips, autoequip and autosell:
 equal, dominates, dominated, tradeoff or incomparable. Define absent-value and
@@ -403,6 +419,11 @@ kill while steering/holding input, a flying/off-floor death, remaining reward
 collection and pause/save/continue. No instant unintended departure or stranded
 exit; guaranteed placement failures must retain a recoverable transition.
 
+For walk-over extraction, entering a legal active marker completes departure
+without a hidden second click. Show any arming delay/state, use active time and
+preserve it through pause/save/restore. Exercise steering interruption and every
+included transition, including remaining reward access and extraction timeouts.
+
 Choose visible or offscreen spawning deliberately. For on-screen spawning, use a readable arrival effect and exclude unfair contact spawns. For offscreen spawning, place just beyond the current camera edge with a valid route inward. In either case derive distance from the actual viewport, zoom and elevation rather than a fixed world circle or remote map edges. Test both wide desktop and narrow portrait screens.
 
 Optimize unbounded populations with spatial indexing, budgeted pathfinding, cached visibility and careful effect counts. If performance requires a population cap, make it an explicit design change rather than silently canceling queued waves. A burst of 50 enemies need not instantiate all rendering and navigation work in one frame.
@@ -422,6 +443,16 @@ An enemy that cannot reach or target the player is a movement or targeting defec
 Targeted enemy spells need a casting range, warning, impact timing and a reliable dodge rule. Decide whether leaving range cancels a cast, whether a marked ground position stays fixed, and which effects can be reflected. Wider ranges can work when warnings and movement provide counterplay; unavoidable screen-wide hits need another escape or mitigation mechanism.
 
 Give bosses readable attacks and survivable mistakes. Large HP multipliers should be checked against actual earned single-target damage. Native high-tier creatures should retain their identity without appearing as weak early trash.
+
+For ranged opponents, decide what happens at close range: a secondary strike,
+retreat, guard, interrupted shot or another source-fitting response. Verify its
+warning, action, independent/shared cooldown policy and actual counterplay;
+pursuit alone is not a complete close-range behavior decision.
+
+For periodic effects, distinguish DPS from damage per tick. Specify interval,
+lifetime, refresh/stack rules and snapshotted versus live contributions. Compare
+step sizes and test refresh, pause, expiry and save restoration; changing tick
+frequency must not silently multiply total damage or lose scheduled ticks.
 
 Test sustain as a system. Compare incoming damage after defenses with regeneration, healing, leech and shields over a time window. If recovery permanently exceeds incoming pressure, standing still can become the best strategy.
 

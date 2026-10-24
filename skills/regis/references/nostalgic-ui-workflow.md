@@ -56,6 +56,11 @@ Define reusable components such as NativeButton, Frame, PropertyPanel, ActionIco
 
 Use nine-piece or three-piece composition for resizable art. Preserve corner pixels and edge thickness, tile suitable fills, and stretch only regions designed to stretch. Do not scale a complete ornate panel nonuniformly. Record inner content insets so text does not collide with the decorative frame.
 
+Review proportions on pause, death/victory, settings, inventory, comparison and
+shop screens as well as the opening menu. Size shared button widths from the
+longest intended label and native padding; check real corners/edges, long content
+and orientation changes rather than merely checking that buttons fit the viewport.
+
 Example manifest specification:
 
 ```text
@@ -156,9 +161,20 @@ Prefer small source icons where a large background panel adds no information. Us
 
 Use the original minimap frame and familiar marker language where possible. Size it for navigation value, especially on a narrow phone screen; do not give every HUD group equal visual weight. Keep less urgent statistics in the character panel or Stats menu. Offscreen threats/loot can use clear edge arrows rather than another large panel.
 
+Where threat markers belong on the minimap, distinguish ordinary enemies,
+leaders and bosses with readable marker semantics/legend; verify position and
+scale against the world, not just the presence of colored pixels.
+
 If controls are draggable, clamp them to usable viewport bounds, persist their placement by an intentional screen-layout policy, and provide Reset Layout. Recheck saved desktop positions when entering portrait mode. Decorative layers should not intercept input intended for the world.
 
 ## Preserve inventory interaction as well as appearance
+
+Use a shared current/worn-versus-offered table for applicable item, ability,
+upgrade, milestone and shop inspection. Show only implemented relevant stats,
+scoped effective throughput or support values, and activation timing where useful.
+Provide hover, focus and touch access. Hover-only windows must not intercept
+Choose/Buy; intentionally pinned inspection may be interactive. Keep equipment
+stock distinguishable from passive/ability improvements and label their category.
 
 Apply this section when the game has an inventory or equipment system. For another genre, use the equivalent object inspector, command panel, vehicle loadout or other source interaction; do not add an inventory just to imitate a different game.
 
