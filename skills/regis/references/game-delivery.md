@@ -165,6 +165,12 @@ destination history and unmanaged changes. Do not impose a second repository or
 infer redistribution rights from a privacy scan. Report source export, local
 commit, remote push and hosted release as separate states.
 
+## Web link previews
+
+For web releases and requested link sharing, follow
+[social link previews](social-link-previews.md): native-style artwork, metadata
+in the initial HTML, release-locale selection and actual packaged image checks.
+
 ## Handoff
 
 Revisit the [quality target](quality-and-scope.md) and compare delivered coverage,

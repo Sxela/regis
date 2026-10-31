@@ -219,7 +219,7 @@ the missing deliverable rather than claiming the promo complete.
 
 ## Package the game and hand it over
 
-Read [game delivery](references/game-delivery.md). Deliver game source, tests,
+Read [game delivery](references/game-delivery.md) and [link previews](references/social-link-previews.md) for web releases. Deliver game source, tests,
 CI/build workflows, Electron platform artifacts, a mobile web build, platform-specific install/run instructions
 and deterministic local asset setup from the user's supported game files.
 Every final game package must ship its runnable asset-extraction script/launcher,
