@@ -5,6 +5,8 @@ art/UI, effects, mobile testing, promo and release workflows. Genre-specific
 rules live in bundled [survival and runner modules](skills/regis/references/genres/index.md).
 The runner module integrates REGIS Runner without requiring its sibling checkout.
 
+See the [release history](CHANGELOG.md) for detailed milestone features and changes.
+
 The default game stack is a **Node.js SPA + Electron desktop wrapper**, with
 **responsive mobile web support and mobile tests enabled by default**. Source
 format, visual style, perspective, renderer and mechanics remain game-specific.
