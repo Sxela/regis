@@ -16,6 +16,8 @@ Use current, implemented gameplay for the pitch. Keep the game's actual identity
 and any existing fan-project attribution; a share card should not imply an
 official product or features the delivered build lacks.
 
+See the [English social-card example](examples/railway-runner.md#english-link-preview-in-the-same-art-direction), labeled as composed preview artwork.
+
 ## Match the game's art direction
 
 Prefer the project's actual logo, bitmap font, native UI panels and real gameplay
@@ -27,6 +29,10 @@ Preserve pixel-art sampling where appropriate. Apply the same provenance and
 distribution scope as the rest of the release's media.
 
 ## Localize the response, not just the interface
+
+Use the user-selected languages from [shared localization](localization.md).
+English is the default; suggest the system language as a second option. Share
+metadata and preview artwork must follow the selected game locale mapping.
 
 For localized releases, maintain title, description, image alt text and artwork
 for the intended sharing languages. Keep one authoritative locale-to-copy/image

@@ -60,10 +60,15 @@ record a real supported-installation test separately or mark it untested.
 - A playable source project, lockfiles and versioned configuration.
 - Extraction/adaptation code, source inventory and evidence references, without
   accidentally bundling private evidence or game bytes.
-- Three documented classes and current mechanics/difficulty settings.
+- Documented selected roles/loadouts, genre and current mechanics/difficulty settings.
 - Synthetic/redistributable tests, navigation scenarios and balance results.
 - Main-menu/credits/README fan-project note and asset provenance.
 - Platform install/run, asset-setup, save-location and troubleshooting docs.
+- One-command launchers for each desktop platform (for example `run.cmd` and
+  `run.sh`) that start from the game folder whatever the current directory, with
+  line endings pinned in `.gitattributes` (CRLF for `.cmd`, LF for `.sh`).
+- A toolkit credit that states the toolkit's own licence correctly, separate
+  from the game code's licence.
 - Promo master/poster/storyboard, or an explicit remaining production blocker;
   distribution permission for media is tracked separately from local production.
 
@@ -71,6 +76,37 @@ An example note, adapted to actual attribution: "Unofficial fan project.
 Not affiliated with or endorsed by the original game's creators or publishers.
 Original names and resources belong to their respective owners. A supported
 local game installation is required to generate resources."
+
+## Publishing assets: code license is not data license
+
+A source release under a free license (for example GPL engine code) covers that
+code only. The game's art, sound, music, maps and text keep their original
+terms unless a separate release says otherwise. A shareware or demo licence
+that allows copying the unmodified package does not cover extracted or
+converted assets. Before committing assets, screenshots or promo footage to a
+public repository, establish which licence actually covers that data.
+
+When the user wants a public repository with playable assets:
+
+- Prefer an existing free replacement data set that is format-compatible with
+  the source (a community format-compatible asset pack under a redistributable licence).
+  Point the same extractor at it, so the shipped build and the player's own
+  original-data build share one pipeline. Check its licence text and hash.
+- Use the replacement's own strings: names, level titles and pickup messages
+  from its native text resources, with other strings only as an explicit compatible fallback.
+  Never relabel replacement art with the original's character names.
+- License the game code compatibly with any source code it derives from, and
+  tabulate code, engine-data, bundled-asset, media and generated-insert licences
+  in an assets/licence document. Copy the replacement's licence and credits.
+- Keep original data local-only (`local-assets/`, ignored), and have the server
+  prefer it when present and fall back to the bundled set otherwise.
+- Filter the bundled extraction to what the game uses (its levels plus the
+  textures, flats and songs they reference) and record the filter in the
+  manifest.
+- Regenerate screenshots and promo media from the bundled set. Captures of
+  the original data stay private.
+- Keep a trademark notice. Licensed assets do not grant use of the original
+  title's marks or the replacement project's endorsement.
 
 ## Explain important features in the README
 
@@ -94,9 +130,10 @@ A headline list alone is not the requested feature explanation.
 The finished game README must embed screenshots of the actual implemented game,
 not only link to a gallery or describe its appearance. Capture the release
 candidate using its real renderer and current UI. Include representative desktop
-gameplay, a mobile portrait view and an upgrade/build-choice screen; add class,
+gameplay and a mobile portrait view; include a selected genre decision screen
+(such as build choices or end-round management) where present. Add role selection,
 inventory, boss or landscape views when they explain an important feature.
-Show upgrade cards fitting vertically with their action buttons visible.
+Where upgrade cards exist, show them fitting vertically with visible action buttons.
 
 Store screenshot files in a versioned documentation/media directory and use
 portable relative Markdown image paths, meaningful alt text and short captions.
@@ -164,6 +201,14 @@ archive contents; ignore rules alone do not define a distribution. Preserve
 destination history and unmanaged changes. Do not impose a second repository or
 infer redistribution rights from a privacy scan. Report source export, local
 commit, remote push and hosted release as separate states.
+
+## Selected language delivery
+
+Record the selected locales, default/fallback and implemented locale-selection
+interfaces. Package their dictionaries, fonts and localized art; smoke-test each
+locale in the actual release, including language persistence and long-text phone
+layouts. Use [localization](localization.md) for the shared contract and record
+promo languages separately; export only the video languages the user selected.
 
 ## Web link previews
 

@@ -1,9 +1,9 @@
 # REGIS
 
-**Reverse Engineer Game Into Survival.** A game-agnostic agent skill that takes
-supplied game files through REA discovery, three-class survival design,
-implementation and tests, source-compatible UI, playtesting/balance, promo
-production and reproducible game releases.
+A source-faithful game adaptation skill with shared discovery, implementation,
+art/UI, effects, mobile testing, promo and release workflows. Genre-specific
+rules live in bundled [survival and runner modules](skills/regis/references/genres/index.md).
+The runner module integrates REGIS Runner without requiring its sibling checkout.
 
 The default game stack is a **Node.js SPA + Electron desktop wrapper**, with
 **responsive mobile web support and mobile tests enabled by default**. Source
@@ -255,3 +255,46 @@ REGIS code and original documentation use the [MIT license](LICENSE).
 See [third-party notices](THIRD_PARTY_NOTICES.md). REA is a separate dependency;
 installing REGIS does not install its providers. A fan-project note does not
 grant permission to redistribute source-game resources.
+
+## Genre modules and shared tools
+
+```sh
+node bin/regis.mjs init /path/to/new-project --genre runner
+node bin/regis.mjs init /path/to/another-project --genre survival
+```
+
+Omitting `--genre` preserves the survival default. Version-1 briefs without
+`adaptation` remain valid survival briefs. Both templates use `classes` for the
+three candidate starting roles; for runners these are characters/loadouts.
+Runner briefs add track/fairness, source-genre modules, progression defaults and
+agent profiles. `check` validates structure only, not fairness or gameplay.
+Explicit product overrides belong in the design brief and a revised contract;
+the CLI does not validate arbitrary new genres or every product variant.
+
+The portable skill separates [genre procedures](skills/regis/references/genres/index.md)
+from shared [tools and optional skills](skills/regis/references/tools-and-skills.md),
+including PixelFX, image generation, 3D pipelines and browser/media tools.
+No external tool is installed by reading these references or running verification.
+
+
+Game [localization](skills/regis/references/localization.md) is shared across
+genres: English by default, the user's system language suggested second, and
+the user chooses the shipped languages. Promo language versions are selected
+with the user before production, independently of game language support.
+
+
+## Illustrated examples
+
+The [English railway-runner gallery](skills/regis/references/examples/railway-runner.md)
+illustrates native-style UI, portrait lane/roof visibility, city scenery,
+actor-bound electrical feedback and localized social previews. Each image has
+an explanatory caption and a scope/provenance record.
+
+![English share-card example with a railway-sign title and portrait gameplay inset](skills/regis/assets/examples/railway-runner/share-en.webp)
+
+
+Shared art-production findings cover [CRT/pixel stability and sprites in 3D](skills/regis/references/style-and-rendering.md),
+[sprite generation and atlas packing](skills/regis/references/sprite-and-atlas-production.md),
+and [consistent fonts, generated panels and loader UI](skills/regis/references/nostalgic-ui-workflow.md#keep-the-complete-ui-in-one-art-direction).
+These are style-specific choices and tested adapter lessons, not requirements
+to make every game look pixelated or use a CRT filter.

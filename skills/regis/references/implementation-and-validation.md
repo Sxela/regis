@@ -3,7 +3,7 @@
 ## Architecture that permits honest tests
 
 Choose the engine/rendering approach after representative extraction. Keep the
-source catalog immutable and survival adaptations in configuration. Use stable
+source catalog immutable and selected-genre adaptations in configuration. Use stable
 IDs through extraction, combat, rendering, offers, UI, saves and tests. Separate
 simulation from presentation where practical; engine-level replay tests are a
 valid equivalent when a headless simulation is unavailable.
@@ -83,6 +83,8 @@ one used sprite or a successful sound-file load does not complete the identity.
 | Identity | Applicable roles to trace and exercise |
 | --- | --- |
 | Spell/skill | Original name and icon in offers/loadout/inspection; caster animation/origin; projectile or beam travel; collision/miss; impact/splash; persistent field; damage-over-time/status application, active feedback and expiry; cast/travel/impact/loop/end sounds where supplied. |
+| Weapon | Native name/icon/HUD sprite in pickup, inventory, shop and HUD; idle/fire frames; muzzle flash; projectile or hitscan tracer; impact/puff/blood; ammo type and pickup sprite; fire, empty and pickup sounds. |
+| Hazard/obstacle | Source prop or architecture sprite/texture; telegraph; hitbox matching the drawn shape; destruction or explosion frames where the source supports them; impact sound. |
 | Character/creature | Idle and movement facings; attack/cast variants; hit reaction where supported; dying sequence; corpse/resting body and bones/decay where supplied; attachments/shadows; movement, attack/cast, hurt and death sounds where supplied. |
 
 Use all recovered applicable roles for the selected content. Do not require a
@@ -212,9 +214,14 @@ earned campaign policies, human sessions and packaged-device checks. Mark each
 result with class, difficulty, seed/route, earned or synthetic budget, source
 version, content/config hashes and outcome (win/death/horizon/abort).
 
-All three classes and all three difficulty contracts require evidence. Unit
+All selected roles and difficulty contracts require evidence appropriate to the genre. Unit
 tests do not prove fun, a bot win rate does not prove human balance, a horizon
 does not prove victory, and a debug/browser run does not validate an installer.
 Keep an open-issues log with reproduction and next experiment. If actual human
 or device testing is unavailable, record that gap and make the review build
 runnable; do not invent sessions.
+
+
+For runner simulation, collision and transactions, use the
+[runner supplement](genres/runner/implementation.md); do not substitute free-roaming
+pathfinding checks for lane/jump/slide reachability.

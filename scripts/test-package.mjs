@@ -55,5 +55,17 @@ try {
   await readFile(path.join(temp, 'game', 'docs', 'quality-target.md'), 'utf8');
   const report = JSON.parse(run(process.execPath, [cli, 'check', path.join(temp, 'game')], temp));
   if (!report.valid) throw Error('Packaged project brief failed its contract.');
-  console.log('npm tarball installed offline; REA dependency, CLI, portable references, skill installation and mobile-default brief verified.');
+  for (const name of ['references/genres/runner/track-generation-and-fairness.md', 'references/genres/runner/playtesting.md', 'references/genres/survival/game-to-survivors-mechanics.md', 'references/tools-and-skills.md', 'references/localization.md', 'references/style-and-rendering.md', 'references/sprite-and-atlas-production.md', 'references/examples/railway-runner.md', 'assets/examples/railway-runner/manifest.json', 'assets/examples/railway-runner/menu-en.webp', 'assets/examples/railway-runner/arrival-en.webp', 'assets/examples/railway-runner/gameplay-en.webp', 'assets/examples/railway-runner/electric-impact-en.webp', 'assets/examples/railway-runner/share-en.webp']) {
+    const expected = await readFile(path.join(root, 'skills', 'regis', name));
+    const actual = await readFile(path.join(source, name));
+    if (!expected.equals(actual)) throw Error(`Packaged genre/tool reference changed: ${name}`);
+    const installedCopy = await readFile(path.join(temp, 'skill', 'regis', name));
+    if (!expected.equals(installedCopy)) throw Error(`Installed genre/tool reference changed: ${name}`);
+  }
+  run(process.execPath, [cli, 'init', path.join(temp, 'runner'), '--genre', 'runner'], temp);
+  const runnerBrief = JSON.parse(await readFile(path.join(temp, 'runner', 'regis-project.json'), 'utf8'));
+  if (runnerBrief.adaptation.genre !== 'runner' || runnerBrief.track.fairness.maxUnavoidablePatterns !== 0) throw Error('Packaged runner brief lost its genre contract.');
+  const runnerReport = JSON.parse(run(process.execPath, [cli, 'check', path.join(temp, 'runner')], temp));
+  if (!runnerReport.valid) throw Error('Packaged runner brief failed validation.');
+  console.log('npm tarball installed offline; REA dependency, CLI, portable references, skill installation and both genre briefs verified.');
 } finally { await rm(temp, {recursive: true, force: true}); }

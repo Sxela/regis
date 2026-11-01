@@ -7,6 +7,8 @@ assets rather than switching the application stack. Electron does not run on
 Android/iOS; the default phone delivery is the responsive web build. Add a PWA
 or native mobile wrapper only when the project actually needs it.
 
+See the [portrait gameplay example](examples/railway-runner.md#parallel-lanes-and-readable-vertical-clearance) for a narrow composition with visible lanes and controls.
+
 ## Mobile is part of the normal implementation
 
 Resolve the user's target devices and preferred controls before choosing the
@@ -38,7 +40,9 @@ focus changes or the browser backgrounds. Disable page gestures only where
 needed on the battlefield; menus and long comparisons must still scroll.
 Provide tap/focus alternatives to hover. Make targets large enough for fingers
 (around 44 CSS px is a useful starting point), without obscuring combat warnings.
-Support audio unlock on a user gesture, persistent volume and graceful resume.
+Support audio unlock on a user gesture, persistent mute/volume and graceful resume.
+Use a moderate project-selected initial volume; preserve saved player choices
+when changing defaults and document missing-setting migrations.
 
 Size HUD, tooltips, inventory, upgrade/shop cards, settings and exit/continue
 controls for narrow screens. No offscreen mandatory button, overlap, hover-only
@@ -128,3 +132,10 @@ Without an isolating reproduction, record the cause as unknown; do not attribute
 an access violation to the sandbox by assumption. Keep required desktop delivery
 open while fixing available packaging/launch defects. A browser fallback is a
 review path, not evidence that Electron passed.
+
+
+Runner-specific swipes, combined jump/strafe actions, simultaneous buttons and
+speed-dependent reaction windows are defined in the
+[runner module](genres/runner/workflow.md). Use its full-loop checks in place
+of survival-specific movement or upgrade scenarios. Test long/short/diagonal
+swipes, pointer cancellation and actual multi-touch through the real input path.

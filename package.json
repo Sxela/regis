@@ -1,7 +1,7 @@
 {
   "name": "regis-agents",
   "version": "0.1.0",
-  "description": "REGIS: Reverse Engineer Game Into Survival. An end-to-end, game-agnostic agent skill and project toolkit.",
+  "description": "REGIS: source-faithful game adaptation toolkit with survival and runner modules, shared art, effects, testing and delivery workflows.",
   "license": "MIT",
   "type": "module",
   "bin": {

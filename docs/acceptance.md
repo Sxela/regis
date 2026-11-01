@@ -13,9 +13,9 @@ evidence. Failed, stale or untested required rows keep completion unestablished.
 | Phase | Reviewable output | Evidence needed to call it complete |
 | --- | --- | --- |
 | Scope and quality | Source/benchmark quality target and coverage table | Required systems and presentation are explicit; exclusions have a reason/authority; representative-slice and final comparisons have concrete findings and corrections. A test request does not silently become a minimal-demo brief. |
-| Scoped survival slice | Small representative content sample with complete depth | Included actors face/move/animate correctly; native UI and applicable spell cast/projectile/impact/status/audio assets execute with real rules; earned progression, navigation, save and the start-to-outcome loop work. Reduced content count does not excuse broken integration. Full-catalog, promo and release breadth follow the selected scope. |
+| Scoped genre slice | Small representative content sample with complete depth | Included actors face/move/animate correctly; native UI and applicable spell cast/projectile/impact/status/audio assets execute with real rules; earned progression, navigation, save and the start-to-outcome loop work. Reduced content count does not excuse broken integration. Full-catalog, promo and release breadth follow the selected scope. |
 | Discovery | Inventory, source manifest, evidence ledger, extraction adapters | Actual source identity/version, representative decoded assets, coverage/unknowns and stable mapping to source members. |
-| Design | Loop, class sheets, mechanics profile, upgrade/item audits | Three source-themed classes with distinct mechanics and two viable build directions each; recorded iterations rather than a claimed optimum. |
+| Design | Loop, class sheets, mechanics profile, upgrade/item audits | Source-themed roles and complete loop from the selected genre module; recorded iterations rather than a claimed optimum. |
 | Skills/spells | Source identity mapping and usefulness audit | Included skills retain original in-game names and matching applicable icons, sprites/VFX and sounds; adaptations and missing assets are explicit. Mode-inapplicable abilities and dependent stats are absent from loadouts, offers, loot, shops and procs, with exclusion reasons and save handling recorded. |
 | Asset lifecycles | Per-identity role matrix with runtime consumers and evidence | Every applicable icon, cast/travel/impact/splash, field/status/DoT, actor move/attack/hit/dying/corpse/decay and event-sound role is accounted for and exercised through completion/cleanup. Available companions are integrated; absent/unsupported roles and adaptations are explicit. |
 | Implementation | Playable Node.js SPA and Electron wrapper | Actual-rule tests for combat, progression, transactions, saves, navigation and numerical previews; a complete start-to-outcome loop. |
@@ -24,7 +24,7 @@ evidence. Failed, stale or untested required rows keep completion unestablished.
 | Item handling | Side-by-side comparison, autoequip, drag/drop, double-click equip, sell/autosell | Shared compatible-slot comparison across all retained candidates; iterative strictly dominated sales stop at a stable useful set, protect tradeoffs/favorites/companion uses and debit/equip/sell once. Verify pickup-order chains, duplicates, full inventory, touch actions and save/reprocessing. |
 | Companion, when supported by source | One optional recruit with earned leveling and useful support | Recruitment, follow/combat, XP/rewards, death/recovery and persistence work; solo routes remain viable. Native remarks/conversations and voice cues are integrated where supplied, with speaker/text/mute controls. Reaudit ally-dependent skills and gear. |
 | Mobile | Phone portrait/landscape + tablet supported by default; honor explicit platform scope | Record platform/control preferences; complete touch actions and input-appropriate hints. Mobile suite in normal npm test/CI, real gameplay/touch flows in Chromium/WebKit; physical-device evidence or explicit gaps. |
-| Balance | Easy/Medium/Hard configurations and experiment log | All three classes, seeds/maps, earned routes and reported sustain regressions; controller capability, winning paths and win frequency separate; equal-investment and earned economy checks, visible counterplay/pacing, honest outcomes/aborts and human-evidence limits. |
+| Balance | Easy/Medium/Hard configurations and experiment log | All selected roles, seeds/maps, genre-specific policies, earned routes where relevant and reported regressions; controller capability, winning paths and win frequency separate; equal-investment and earned economy checks, visible counterplay/pacing, honest outcomes/aborts and human-evidence limits. |
 | Navigation | Collision overlays and repeatable walkability playtests | Every included region has connectivity checks and actual actor traversal to required objectives, rewards and exits; legal spawns and pursuit, floor/clearance and corner tests, stuck/fallback telemetry; blocked required routes fixed. |
 | Performance | Rendered-game load scenarios, budgets and raw timing results | Early/dense/late combat, effects, transitions, cold loading and sustained play on selected platforms; frame-time p50/p95/p99, worst stalls, population/load and available memory/cost measurements; diagnosed regressions rerun and device gaps stated. |
 | Promo | Master, poster, storyboard, script/edit/workflow/provenance | Actual gameplay claims, corrected first-frame art, frame/audio review, full decode and parsed technical/loudness measurements. |
@@ -32,10 +32,12 @@ evidence. Failed, stale or untested required rows keep completion unestablished.
 | README feature pitches | Game pitch and important-feature explanations | Each important implemented feature has a one-line benefit plus a short paragraph explaining player value and concrete behavior; claims match current evidence, scope limits are clear and planned features are separate. |
 | Delivery | Source-only game packages, CI/build workflow, install/run/asset setup docs | Runnable shipped extractor; empty-cache/fresh-profile extraction and actual launch without developer file/env fallbacks; implemented phone asset flow, current delivered screenshots, synthetic fixture CI, platform checks, checksums and content audit. |
 
-Easy's largely stationary combat wins are intentional. Medium should reward
-movement/build decisions, and Hard should require practiced play while allowing
-earned winning builds. Treat example rates in the design guide as hypotheses;
-report samples and limits. Never label a time horizon or automation abort a win.
+Use the [selected genre contract](../skills/regis/references/genres/index.md).
+Survival Easy permits mostly stationary combat; runner Easy instead requires
+forgiving but active lane navigation. Runner acceptance additionally covers
+reachability, reaction windows, jump/slide geometry, transitions and agent tiers.
+Optional equipment/companion rows apply only when those systems are selected.
+Never label a time horizon or automation abort a win.
 
 For each phase, preserve what was observed, what was inferred, what was authored,
 what actually ran, and what is still blocked. Do not claim external CI executed,

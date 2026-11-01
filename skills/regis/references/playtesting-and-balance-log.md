@@ -2,7 +2,7 @@
 
 Use this process to turn observations into tested changes for any game or standalone port. Keep the reusable method, each project's configuration, and that project's historical results separate. Examples below are hypothetical diagnostic patterns, not measured outcomes or prescribed settings.
 
-Adapt the process to characters, units, vehicles, weapons, abilities, resources and objectives that actually exist in the target game. A game without classes, equipment or currency does not need those systems merely to follow this workflow. For survival adaptations, see the [mechanics guide](game-to-survivors-mechanics.md); [UI](nostalgic-ui-workflow.md) and [promo](promo-video-workflow.md) have separate validation workflows.
+Adapt the process to characters, units, vehicles, weapons, abilities, resources and objectives that actually exist in the target game. A game without classes, equipment or currency does not need those systems merely to follow this workflow. Select the [genre module](genres/index.md) for its policies and difficulty contract; [UI](nostalgic-ui-workflow.md) and [promo](promo-video-workflow.md) have separate validation workflows.
 
 ## Define the intended experience
 
@@ -112,11 +112,11 @@ Retained earned checkpoints help diagnosis but do not replace required full
 routes and transitions.
 
 For reported sustain failures, replay the actual or explicitly reconstructed
-checkpoint both stationary and moving. Account for healing, overheal, wards,
+checkpoint with the same inputs/policy and a contrasting legal policy where informative. Account for healing, overheal, wards,
 shield-break recovery, regeneration, leech, hit protection, level-up healing and
 item grants where implemented. Pair a granted stress fixture with an earned
 route proving attainability. Retest affected mature builds after threat,
-recovery, reward or shop changes and preserve Easy's forgiving contract.
+recovery, reward or shop changes and preserve the selected difficulty contract.
 
 For economy tuning, compare equal-investment encounters separately from actual
 earned routes. Track income sources, affordable useful purchases per region,
@@ -144,7 +144,7 @@ preserve active-time pause/save behavior and bounded spawn backlog.
 ## Run performance and walkability passes
 
 Make both passes part of the playtest plan and milestone review, including a
-narrow survival slice. Define project-specific budgets and success criteria
+narrow genre slice. Define project-specific budgets and success criteria
 before measuring; record build, seed/route, device/browser, viewport, rendering
 settings, duration, warm-up and load. Preserve raw results and reproduction
 steps for failures. Rerun affected scenarios after changing rendering, spawning,

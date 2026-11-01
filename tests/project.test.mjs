@@ -90,3 +90,49 @@ test('malformed mobile declarations fail cleanly instead of throwing or disablin
   assert.ok(errors.some(e => /webkit/.test(e)));
   assert.ok(errors.some(e => /touch-movement/.test(e)));
 });
+
+
+test('legacy briefs retain survival while runner templates use distinct contracts', () => {
+  const legacy = projectConfiguration('Legacy');
+  delete legacy.adaptation;
+  assert.deepEqual(validateConfiguration(legacy), []);
+  const runner = projectConfiguration('Runner', null, 'runner');
+  assert.deepEqual(validateConfiguration(runner), []);
+  assert.equal(runner.track.lanes, 3);
+  assert.equal(runner.track.fairness.maxUnavoidablePatterns, 0);
+  assert.equal(runner.classes[0].id, 'durable');
+  assert.doesNotMatch(runner.difficulties.easy.contract, /stationary/);
+  assert.ok(runner.testing.mobile.checks.includes('combined-actions'));
+  runner.track.layout = 'authored';
+  runner.progression.autoequip.enabled = false;
+  runner.progression.endRound = [];
+  assert.deepEqual(validateConfiguration(runner), []);
+});
+
+test('runner rejects broken fairness, mobile input coverage and unsafe autoequip declarations', () => {
+  const runner = projectConfiguration('Runner', null, 'runner');
+  runner.track.fairness.maxUnavoidablePatterns = 1;
+  runner.track.fairness.reactionWindowMs = -1;
+  runner.track.actions = ['jump'];
+  runner.playtest.agents = null;
+  runner.sourceGenre.modules = null;
+  runner.progression.autoequip.respectsLocks = false;
+  runner.progression.endRound = ['inventory', 'inventory'];
+  runner.testing.mobile.checks = runner.testing.mobile.checks.filter(v => v !== 'combined-actions');
+  const errors = validateConfiguration(runner);
+  for (const pattern of [/fairness/, /reactionWindow/, /lane-left/, /agent/, /modules/, /autoequip/, /unique step/, /combined-actions/]) {
+    assert.ok(errors.some(error => pattern.test(error)), String(pattern));
+  }
+  runner.track = null;
+  assert.ok(validateConfiguration(runner).length);
+});
+
+test('unknown genres fail before any project files are created', async t => {
+  const root = await workspace(t);
+  assert.throws(() => projectConfiguration('Unknown', null, 'unknown'), /Unsupported target genre/);
+  await assert.rejects(initializeProject(path.join(root, 'game'), {genre: 'unknown'}), /Unsupported target genre/);
+  assert.deepEqual(await readdir(root), []);
+  const config = projectConfiguration('Malformed');
+  config.adaptation = null;
+  assert.ok(validateConfiguration(config).some(error => /target genre/.test(error)));
+});

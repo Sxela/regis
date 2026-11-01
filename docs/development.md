@@ -37,7 +37,7 @@ the package's own CI. It cannot establish that the instructions yield a good gam
 
 Update one canonical reference for each substantial procedure and link it from
 the entrypoint. Keep the four supplied guides readable independently. The CLI
-project contract enforces three classes, all difficulty contracts and default
+project contract enforces three candidate roles for bundled survival/runner briefs, genre-specific difficulty contracts and default
 mobile coverage; explicitly requested future stack changes require adjusting
 that versioned contract and its validation, not quietly disabling checks.
 

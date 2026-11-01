@@ -43,7 +43,7 @@ coverage, output format, native dimensions/scales/anchors, and intended use:
 | Items | Logical slots, inventory art versus wearable/paperdoll/world variants, attachments, palettes/dyes, fixed unique properties, affixes, restrictions and units. Record which slots actually change appearance in each source view. |
 | UI | Fonts/glyph metrics, frames/slices, input states, icons, cursors, sound cues and native layouts. |
 | Audio | Sound identity, trigger, channel/loop metadata, music source and redistribution status. |
-| Gameplay data | Stats, traits, resistances, AI, area spawns, population and rare/boss rules with evidence. |
+| Gameplay data | Stats, traits, resistances, AI, area spawns, population, attack timings, drops, difficulty flags and rare/boss rules with evidence. Cite authoritative source tables by file and line where available. |
 
 For each selected identity, inventory companion resources by lifecycle role,
 not just a single representative atlas. Spell icons, cast/travel/impact/splash,
@@ -102,3 +102,7 @@ recovered values immutable; derived runtime assets can be rebuilt independently.
 
 Deliver an inventory, evidence ledger, source-to-runtime manifest and extraction
 recipe. Unknown behavior stays unknown until tested or intentionally authored.
+
+
+For runners also map area-specific wall/floor/sky art, music and local rosters
+to biomes; see the [runner module](genres/runner/workflow.md).

@@ -10,7 +10,7 @@ import {initializeProject, checkProject} from '../lib/project.mjs';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const skill = path.join(root, 'skills', 'regis');
-const usage = `REGIS — Reverse Engineer Game Into Survival
+const usage = `REGIS — game adaptation toolkit
 
 regis --version
 regis doctor [--json] [--strict]
@@ -18,7 +18,7 @@ regis skill path
 regis skill clients
 regis skill install [--client CLIENT] [--scope project|user]
                     [--project PATH] [--destination PATH] [--dry-run] [--replace]
-regis init NEW_DIRECTORY [--source GAME_PATH] [--name NAME]
+regis init NEW_DIRECTORY [--source GAME_PATH] [--name NAME] [--genre survival|runner]
 regis check PROJECT_DIRECTORY
 
 Clients: ${Object.keys(clients).join(', ')}.
@@ -82,7 +82,7 @@ async function main(args) {
     console.log(JSON.stringify(await installSkill(skill, {...values, dryRun: values['dry-run']}), null, 2)); return;
   }
   if (command === 'init') {
-    const {values, positionals} = options(rest, ['source', 'name']);
+    const {values, positionals} = options(rest, ['source', 'name', 'genre']);
     if (positionals.length !== 1) throw Error('init requires one new project directory.');
     console.log(JSON.stringify(await initializeProject(positionals[0], values), null, 2)); return;
   }

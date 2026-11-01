@@ -33,6 +33,11 @@ content on demand with bounded prefetch. Avoid loading every map and source vari
 because discovery exported them. Deduplicate payloads without merging distinct
 logical IDs or their timing/anchor metadata.
 
+For generation, sheet cleanup, pivots, complete dependency sets and deterministic
+packing, use [sprite/atlas production](sprite-and-atlas-production.md). For UV
+orientation, repeating surfaces and temporal shimmer, use
+[style-specific rendering](style-and-rendering.md).
+
 ## Preserve indexed animation access
 
 For sprite renderers, compare shared PNG/lossless WebP atlas pages grouped by
@@ -73,6 +78,26 @@ Verify cache invalidation and coherent versions after an update.
 Compare suitable audio codecs, per-clip versus grouped SFX and streamed music
 against actual browser support and random/overlapping playback. Bound decoded
 audio buffers; a smaller audio download can still decode to large PCM memory.
+
+When source music is in scope, preserve its identity and documented playback. Sequenced scores (MIDI, engine-specific note
+formats, tracker modules) usually come with the instrument bank the original
+driver used, such as an FM patch bank. Extract the raw score lumps and the bank
+rather than silently substituting unrelated stock tracks or instruments.
+When implementing a custom synth, validate the relevant conventions:
+
+- Parse every score format the supported editions use into one timed event
+  list. Validate each score during extraction and record failures.
+- Read the driver's own tuning conventions from source or reference
+  implementations (note-to-frequency offsets, pitch-bend range, percussion
+  channel, voice limit). Test pitch against note events with synthetic patches.
+  A one-octave error is easy to miss without a pitch check.
+- Render off the main thread (a worker) and loop as the original did. Map songs
+  to the same contexts: per-level score, title, intermission, victory.
+- Give music its own volume control, start it only after the audio unlock
+  gesture, duck it under pause, and keep it out of the deterministic simulation.
+- The same synth module renders the promo soundtrack offline.
+- Report synthesis as an approximation unless it is a verified chip emulator.
+  Automated pitch and level checks are not a listening review.
 
 Keep packaging reproducible from the authorized original source and selected
 adapter/configuration, without depending on earlier generated games. Bind output
@@ -132,3 +157,21 @@ successful cached assets. Verify update, retry and recovery with interrupted loa
 and old caches; do not require unused original and optimized copies in the runtime
 dependency set. Pixel equality with a previous renderer preserves its existing
 bugs too: retain contextual visual and world-behavior review.
+
+When the source game ships as several data files (a base game and a sequel,
+or official expansions), let the extractor merge any subset into one install.
+Declare deterministic collision precedence (for example, first source wins).
+A later source's same-named asset with
+different content is kept under a suffixed name, and that source's levels
+point at it. The game then offers whatever content is present, without
+errors for what is missing. Test the collision and the single-source case
+with synthetic files.
+
+For a promised offline-capable run, assets must remain available after boot. Assets fetched on first use
+(sound effects, later biomes' textures, music) fail silently when the server
+stops or the connection drops mid-session. When the full set fits the budget,
+download the remaining manifest in the background after boot into a
+content-hashed browser store (memory plus Cache Storage where a secure context
+allows it), and route every loader through it, including CSS backgrounds. Do
+not cache a failed load as permanent silence. Test it: after boot, block every
+asset request and confirm that sounds, music and later biomes still work.

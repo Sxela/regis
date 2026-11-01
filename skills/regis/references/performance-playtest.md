@@ -54,6 +54,24 @@ known uncached payload and a request waterfall, including parallel transfers.
 Treat optional jitter/loss tests as additional profiles only where the tool
 actually supports them.
 
+Verify what the shaper actually limits before trusting it:
+
+- **Decoded or encoded bytes.** Time one known compressed download under a
+  low cap. Some browser emulators throttle the decoded body and report decoded
+  sizes as transferred, which makes compression invisible. If yours does, shape
+  real traffic with a TCP proxy instead: one shared link per direction, RTT/2
+  of propagation each way, and an extra RTT per new connection. Report what it
+  does not model, such as slow start and loss.
+- **What crosses the loopback wire.** Compare a browser-issued response with a
+  plain client's response for the same URL. Local security software can
+  intercept browser-looking HTTP, decompress it and re-label it. A diverging
+  `Content-Encoding` or `Content-Length` between the two is the tell. Measure
+  over TLS (ideally HTTP/2, as a CDN would serve) when that happens, and name
+  the interference in the report.
+- **Per-connection limits.** Plain HTTP/1.1 caps a browser at about six
+  connections per host, which makes request count matter more than it will
+  behind an HTTP/2 CDN. Measure both or state which one the numbers describe.
+
 For each selected constrained profile, separate:
 
 1. **Cold first visit:** fresh browser storage/profile, including HTTP cache,
@@ -97,6 +115,27 @@ Repeat the selected comparable loading cases enough to expose variability;
 three runs per profile/cache state is a useful starting point. Report median,
 range, sample count and failures instead of the best run alone. Keep a controlled
 fixture for comparisons and a separate representative gameplay workload.
+
+Common high-latency findings and fixes:
+
+- **Discovery waterfalls.** Each nested ES-module import level and each
+  "index, then the files it names" step costs a round trip. Emit
+  `modulepreload` for the whole static module graph, and preload the boot
+  indexes and atlas pages from the server-rendered page. Start the first
+  area's textures as soon as its index arrives, not after the atlases.
+- **Uncompressed text.** Engine JSON, map indexes and library code often compress
+  substantially with Brotli or gzip; measure the actual shipped set.
+- **Full re-downloads on reload.** `no-cache` without a validator downloads
+  every file again. Send ETags (or versioned immutable URLs), so warm reloads
+  cost 304s or nothing.
+- **Oversized images.** Palette art is often stored as 32-bit RGBA. Indexed PNG
+  with a transparency chunk is lossless and smaller.
+- **Unused content.** Atlases often include content the adaptation never shows.
+  Prune by walking the game's own data (state chains, item tables), and add a
+  test that every frame and texture the code names exists in the shipped set.
+  Keep whole animation cycles from the source's animation tables: a level may
+  place only one frame of an animated texture, and pruning by placement drops
+  the rest.
 
 Acceptance requires stated budgets and evidence for the supported profiles,
 correct loading/recovery behavior, bounded retained resources and reviewed

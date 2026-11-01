@@ -20,3 +20,13 @@ is discussed in [trial findings](trial-findings.md); it fell short of the intend
 quality target. The revised workflow has not yet completed a fresh game-generation
 trial. Generated games require their own default unit/browser/mobile tests,
 quality reviews and platform builds under the skill contract.
+
+
+## Genre integration validation
+
+The integrated package adds synthetic tests for legacy survival briefs, runner
+defaults, runner fairness/input declarations, malformed genre values and unknown
+genre rejection before writing output. Offline tarball smoke checks both brief
+types plus nested genre/tool reference bytes in the package and isolated install.
+These establish package/contract behavior, not actual runner fairness, rendering,
+PixelFX output, human balance or physical-device performance.

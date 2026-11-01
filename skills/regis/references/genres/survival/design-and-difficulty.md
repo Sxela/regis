@@ -1,5 +1,9 @@
 # Design, replayability and three difficulty modes
 
+Apply the selected defaults and user overrides in the [module workflow](workflow.md).
+Only selected systems require their corresponding scenarios.
+
+
 Start with the source's recognizable actions and threats. Its three classes may
 be characters, unit roles, pilots or vehicle loadouts. The roles below are
 comparison dimensions, not mandatory fantasy names or a fixed weapon catalog.
@@ -100,7 +104,7 @@ frequency is not a human difficulty/enjoyment rating.
 ## Close failed class/mode investigations
 
 Separate controller competence, earned winning-path evidence and observed win
-frequency using the [playtesting workflow](playtesting-and-balance-log.md#separate-controller-capability-feasible-progression-and-frequency).
+frequency using the [playtesting workflow](../../playtesting-and-balance-log.md#separate-controller-capability-feasible-progression-and-frequency).
 Compare equal investment to actual earned progression: richer difficulty rewards
 can buy enough damage/recovery to reverse late pressure. Track purchasing power
 and preserve reported sustain checkpoints rather than tuning combat in isolation.

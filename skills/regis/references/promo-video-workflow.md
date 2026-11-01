@@ -2,7 +2,18 @@
 
 Show the real game in motion, make one clear promise per shot, and give the edit a recognizable visual voice. Original sprites or models, fonts, UI and sounds provide authenticity; generated illustrations and animation can supply deliberate comedy or missing cinematic moments. This workflow applies to any game, engine or port. Numeric examples are optional production settings.
 
-Use this with the [mechanics guide](game-to-survivors-mechanics.md), [UI workflow](nostalgic-ui-workflow.md) and [playtesting workflow](playtesting-and-balance-log.md). A staged promo demonstrates features and atmosphere, not default difficulty or balance.
+Use this with the [selected genre module](genres/index.md), [UI workflow](nostalgic-ui-workflow.md) and [playtesting workflow](playtesting-and-balance-log.md). A staged promo demonstrates features and atmosphere, not default difficulty or balance.
+
+## Select promo languages before production
+
+Follow [localization](localization.md#ask-before-promo-production): ask which
+language versions to make before creating the promo, offering English and the
+user's system language first. Reuse an explicit selection already given for
+this promo, including on revisions. Keep game locales and promo locales separate;
+record captions/title cards and any voice/dialogue scope in the shot list.
+Wait for an unanswered selection before language-dependent copy, capture or
+generation; language-neutral planning can continue. Review each selected export
+for glyphs, text fit, reading time and audio, retaining the approved edit and tone.
 
 ## Choose the format and the idea
 
@@ -25,6 +36,8 @@ Staging may control locations, opponents, units, equipment, abilities, resources
 Capture at the intended aspect ratio and zoom. If using a 540 by 960 CSS viewport with device scale factor 2, verify that the result is actually 1080 by 1920 pixels. Wait for relevant scenes, fonts, character layers, shaders and effects to load before rolling. Use current menus and offer counts; an older capture script can accidentally show superseded mechanics.
 
 Record game audio from its own master bus into a separate track. This preserves source impacts, actions, interactions and transitions and makes the final mix easier to control. Avoid capturing notification sounds, microphone input or unrelated desktop applications.
+
+When software rendering is too slow for real-time capture, add a capture clock to the build behind an explicit query flag. The game loop then advances only when the capture tool asks, by exactly one output frame, and the tool screenshots each frame. Timing becomes exact regardless of render speed. Browser automation does not record audio, so in that mode log every sound and music request against the same clock instead of playing it. Rebuild the soundtrack offline from the same sound assets and music synth. Disclose the reconstruction.
 
 ## Match movement to the game
 
@@ -96,6 +109,10 @@ Model checkpoints, task variants, encoders, decoders, optional acceleration file
 
 Save the API workflow and job ID. Poll or collect only your own job, inspect failures, and download outputs into the project. Do not clear an unrelated queue or assume acceptance means generation succeeded. Review a contact sheet across the whole clip and listen to the generated audio before using it. Keep useful good generations rather than rerolling without a specific correction.
 
+Reference frames taken from gameplay capture carry their HUD with them. Video models copy status bars, numbers and portraits from a reference, and a generated shot then looks like real gameplay. Crop interface elements out of environment references, and state in the prompt that the shot is a cutaway with no interface. Check the contact sheet for leaked UI before using the insert.
+
+Acceleration patches such as distillation LoRAs and per-step heads are trained against a specific trunk or task variant. Pair each with the matching checkpoint and keep its pairing check enabled. A check that fails on a copied graph is a finding to fix by choosing the right checkpoint, not a switch to turn off. Verify speech with an unprompted local transcription; a cloud speech node exposed in the UI is not local.
+
 Clearly distinguish the impossible comic gag from gameplay, for example with a small “Comedy insert” label and production notes. Keep the satire's timing and identity honest even when its movement is intentionally impossible in the game.
 
 ## Assemble the edit and soundtrack
@@ -138,6 +155,7 @@ Check the entire final export, not only a poster:
 | --- | --- |
 | Container | Duration, dimensions, aspect ratio, frame rate, frame count, codecs and pixel format |
 | Decode | Decode video and audio end to end; detect truncation or corrupt frames |
+| Playback | Play it with sound where people will open it (browser, repository viewer, editor preview). Chromium builds without proprietary codecs, such as VS Code's media preview, play AAC video silently; an Opus track in MP4 plays in those and in current browsers |
 | Picture | Read every title, inspect cuts, source facings, empty frames, crop, generated artifacts and the final hold |
 | Motion | Actual gait/action frame changes during traversal and combat; no unintended sliding, route loops or idle gaps; intended menu pauses |
 | Audio | Understandable speech, correct timing, comfortable balance, measured loudness and true peak |

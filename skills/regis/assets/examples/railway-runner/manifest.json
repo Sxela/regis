@@ -1,0 +1,164 @@
+{
+  "sourceGame": "Railway Surfer",
+  "sourceVersion": "0.9.5",
+  "authorization": "User requested inclusion of screenshots from our authored game as toolkit examples. No runtime game assets or audio are included.",
+  "captureScope": "Current English build, real renderer and keyboard input, virtual clock, 390x844 CSS px at DPR 2. Staged intentional electrical collision; not a balance or physical-device test.",
+  "captureParameters": {
+    "locale": "en",
+    "seed": 16,
+    "departure": 0,
+    "viewportCSS": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 2,
+    "input": "actual keyboard input in isolated Chromium; virtual frame clock",
+    "staging": "intentional jump into right-lane pantograph; no simulation state injection"
+  },
+  "pageErrors": [],
+  "images": [
+    {
+      "file": "menu-en.webp",
+      "kind": "actual-game-screenshot",
+      "locale": "en",
+      "width": 780,
+      "height": 1688,
+      "bytes": 595012,
+      "sha256": "481dd3228f01e361f4aaf441403db86353d2a9c27c43b6ca8ddb7bc3eaa9a2d3",
+      "sourcePngSha256": "ac395a2d87db730d4154d71413b5b1419665b31ebf97c74ca3bedafcb581ecc0",
+      "encoding": "lossless WebP; decoded RGB pixels equal source PNG",
+      "state": {
+        "phase": "menu",
+        "distance": 0,
+        "fx": {
+          "ready": true,
+          "pages": 5,
+          "active": 0,
+          "draws": 0,
+          "weatherMs": 0,
+          "dust": 0,
+          "dustSources": [],
+          "wireContacts": 0,
+          "death": null,
+          "recent": []
+        }
+      }
+    },
+    {
+      "file": "arrival-en.webp",
+      "kind": "actual-game-screenshot",
+      "locale": "en",
+      "width": 780,
+      "height": 1688,
+      "bytes": 1254434,
+      "sha256": "32d339836a9cf9425a887dcc7836e24faca1afe62ba8d39070f355609ced122e",
+      "sourcePngSha256": "037003bc3e08388b13b07a91cbf8430556a2817f5a5c5a39c1a38f78765e85e4",
+      "encoding": "lossless WebP; decoded RGB pixels equal source PNG",
+      "state": {
+        "phase": "running",
+        "distance": 11.619894101221432,
+        "fx": {
+          "ready": true,
+          "pages": 5,
+          "active": 0,
+          "draws": 10,
+          "weatherMs": 0,
+          "dust": 4,
+          "dustSources": [
+            "runner"
+          ],
+          "wireContacts": 2,
+          "death": null,
+          "recent": []
+        }
+      }
+    },
+    {
+      "file": "gameplay-en.webp",
+      "kind": "actual-game-screenshot",
+      "locale": "en",
+      "width": 780,
+      "height": 1688,
+      "bytes": 1318124,
+      "sha256": "ebb9d8adb4afd238e57df6a2ae42f91bcccfdeb966973eeb03d92251a309f73f",
+      "sourcePngSha256": "d0cb4b8503d5d7faf10b8263cea136b50ac62bf688c198d358c7973d4ee39dd8",
+      "encoding": "lossless WebP; decoded RGB pixels equal source PNG",
+      "state": {
+        "phase": "running",
+        "distance": 62.71242808500454,
+        "fx": {
+          "ready": true,
+          "pages": 5,
+          "active": 0,
+          "draws": 10,
+          "weatherMs": 0,
+          "dust": 4,
+          "dustSources": [
+            "runner"
+          ],
+          "wireContacts": 2,
+          "death": null,
+          "recent": []
+        }
+      }
+    },
+    {
+      "file": "electric-impact-en.webp",
+      "kind": "actual-game-screenshot",
+      "locale": "en",
+      "width": 780,
+      "height": 1688,
+      "bytes": 1365924,
+      "sha256": "6e2a73f56cd2a8d39e55e0533ed92943cd690904f94099f778430ba0656c3c7e",
+      "sourcePngSha256": "505ec2412eae5fa1e64a160be4009d94c3acb1101603d7d7f6385bd25f8a060a",
+      "encoding": "lossless WebP; decoded RGB pixels equal source PNG",
+      "state": {
+        "phase": "dead",
+        "distance": 76.92748154471612,
+        "fx": {
+          "ready": true,
+          "pages": 5,
+          "active": 2,
+          "draws": 10,
+          "weatherMs": 0,
+          "dust": 0,
+          "dustSources": [],
+          "wireContacts": 2,
+          "death": {
+            "x": 254,
+            "y": 495.43850551564617,
+            "scale": 1,
+            "pose": "jump",
+            "runner": "courier",
+            "age": 0.2560000000000002,
+            "stage": "flight",
+            "flash": false,
+            "done": false
+          },
+          "recent": [
+            {
+              "kind": "shock",
+              "tick": 271
+            },
+            {
+              "kind": "heart",
+              "tick": 271
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "share-en.webp",
+      "kind": "composed-social-preview",
+      "locale": "en",
+      "width": 1200,
+      "height": 630,
+      "bytes": 417080,
+      "sha256": "3dcdf1d199fe3650ae43844945dc45a92da65da423bb76652a4cfd6c8e809342",
+      "sourcePngSha256": "b1a0c98ba8f7edbc1d91b2de0ee1ff04cabe295e6042b1b0103f8cd966b18461",
+      "encoding": "lossless WebP; decoded RGB pixels equal source PNG",
+      "state": null
+    }
+  ]
+}

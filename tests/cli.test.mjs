@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {mkdtemp, rm, readdir, realpath} from 'node:fs/promises';
+import {mkdtemp, rm, readdir, realpath, readFile} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -55,4 +55,20 @@ test('packaged entrypoint can initialize and check a mobile-default project', as
   const checked = run(['check', project], root);
   assert.equal(checked.status, 0, checked.stderr);
   assert.equal(JSON.parse(checked.stdout).valid, true);
+});
+
+
+test('CLI runner initialization emits runner design and passes structural check', async t => {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'regis-cli-runner-'));
+  t.after(() => rm(root, {recursive: true, force: true}));
+  const target = path.join(root, 'runner with spaces');
+  const initialized = run(['init', target, '--genre', 'runner'], root);
+  assert.equal(initialized.status, 0, initialized.stderr);
+  const config = JSON.parse(await readFile(path.join(target, 'regis-project.json'), 'utf8'));
+  assert.equal(config.adaptation.genre, 'runner');
+  assert.match(await readFile(path.join(target, 'docs/design-brief.md'), 'utf8'), /jump\+strafe/);
+  assert.equal(run(['check', target], root).status, 0);
+  const bad = run(['init', path.join(root, 'invalid'), '--genre', 'unknown'], root);
+  assert.equal(bad.status, 1);
+  assert.match(bad.stderr, /Unsupported target genre/);
 });

@@ -4,6 +4,11 @@ import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {filesUnder, contains} from '../lib/files.mjs';
 
+// Require a drive-token boundary: the final "s:/" in an HTTPS URL is not a drive.
+export function hasSourceProjectDependency(content) {
+  return /(?:^|[^A-Za-z0-9])[A-Z]:[\\/]|\b(?:uo-rea|britannia|runuo)\b/i.test(content);
+}
+
 export async function checkRepository(root) {
   const skill = path.join(root, 'skills', 'regis');
   const all = await filesUnder(skill);
@@ -18,7 +23,7 @@ export async function checkRepository(root) {
   markdown.push(...docs.filter(file => file.endsWith('.md')));
   for (const file of markdown) {
     const content = await readFile(file, 'utf8');
-    if (contains(skill, file) && /[A-Z]:[\\/]|\b(?:uo-rea|britannia|runuo)\b/i.test(content)) throw Error(`Source-project dependency in portable skill: ${file}`);
+    if (contains(skill, file) && hasSourceProjectDependency(content)) throw Error(`Source-project dependency in portable skill: ${file}`);
     for (const match of content.matchAll(/\[[^\]\n]*\]\(([^)\s]+)\)/g)) {
       let target = match[1];
       if (/^(?:https?:|mailto:|#)/.test(target)) continue;

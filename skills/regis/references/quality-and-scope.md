@@ -12,14 +12,14 @@ being exercised and keep unfinished requested work active. Time spent, a large
 test count, or calling the result an experiment does not change that scope.
 Honor an explicit timebox or prototype request; do not expand it into production.
 
-A quick test of whether the adaptation works as a survival game can explicitly
+A quick test of whether the adaptation works in the selected genre can explicitly
 target a **vertical slice with limited breadth and complete depth**. For example,
-roughly ten percent of the spells, monsters and zones can be sufficient content;
-that fraction is illustrative, not a quota. Complete the selected content's asset
+a small selection of regions, actors and mechanics can be sufficient content;
+that sample is illustrative, not a quota. Complete the selected content's asset
 integration, gameplay rules, feedback and progression. Reduce the number of
 content entries rather than leaving every included system partly implemented.
 Do not require the full catalog, a finished promo or every release platform to
-answer a scoped survival-slice question; name those outside-slice deliverables.
+answer a scoped genre-slice question; name those outside-slice deliverables.
 
 When the user supplies an existing adaptation or visual benchmark, inspect its
 relevant screens, implemented loop and feature documentation before writing a
@@ -36,8 +36,8 @@ Write a project-specific quality target before implementation. Include:
 | Presentation | Source perspective/projection, actor size, terrain depth, animation and UI reference screens. |
 | World | Native regions/maps and companion packs supplied; walkability, heights, scenery, local population; justified adaptations. |
 | Actors | Player roles, enemy/boss families, directions/actions, layers/attachments and their runtime behavior. |
-| Builds | Useful source abilities, status/counterplay, items/equipment where relevant, two distinct earned build paths per class. |
-| Interaction | Full combat/reward/camp/end flow, inspections/previews, save/reset rules, desktop and touch controls. |
+| Builds | Useful source abilities, status/counterplay, items/equipment where relevant, genre-appropriate choices and earned build paths where selected. |
+| Interaction | Complete selected start-to-outcome flow, inspections/previews, save/reset rules, desktop and touch controls. |
 | Delivery | Required platforms, source setup, clean-package launch, promo and review evidence. |
 
 Use a coverage table with **source identity, target behavior/presentation,
@@ -53,7 +53,7 @@ work and clarify the consequential choice rather than silently lowering quality.
 Record a compact project profile: runtime/platforms and controls, role/loadout
 count, run structure and length, ability capacity, resource systems, persistence
 and fidelity goal. Identify which decisions come from the user, source evidence,
-REGIS policy or authored design. Keep the normal three-class and web/Electron/
+REGIS policy or authored design. Use the selected [genre defaults](genres/index.md) and shared web/Electron/
 mobile defaults unless overridden; do not invent equipment, currency or party
 systems just to fill a template.
 
@@ -127,8 +127,8 @@ this stage; more content would multiply those errors.
 | --- | --- |
 | Coverage | Compare decoded, mapped, implemented and validated counts/IDs per relevant family against the scoped source catalog. Investigate unexplained omissions. |
 | Visual and motion | Capture matched views at a documented scale; inspect gameplay clips for directional movement, attacks, depth, silhouettes, effects and UI readability. Correct the largest departures from the target. |
-| Gameplay and builds | Play/replay complete earned loops for all classes. Explain how two build directions change decisions, targeting, defense or timing, beyond renamed percentage buffs. |
-| Difficulty | Inspect every class/mode row, including mature builds and stationary-vs-moving behavior. Investigate missing winning evidence and retain regressions when tuning. |
+| Gameplay and builds | Play/replay complete loops for every selected role; verify meaningful decisions and earned paths where progression exists. |
+| Difficulty | Inspect every selected role/mode row using the genre-specific policies, fresh states and earned states where applicable. Investigate missing winning evidence and retain regressions when tuning. |
 | Distribution | Extract into a clean unpacked package and launch the actual required executable/web build; verify input/audio/save and setup docs. A packaged directory alone is preparation. |
 
 Functional tests, content coverage, visual review, earned balance and platform

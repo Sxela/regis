@@ -2,7 +2,14 @@
 
 Recreate the source game's visual and interaction language closely: fonts, controls, frames, colors, icons, layouts, cursor/controller feedback and sounds. Adapt information and controls to the new game while preserving recognizable details. Use generated art for a menu illustration or genuinely missing assets after inspecting the original resources. This method applies to any game genre, engine, era or visual style.
 
-Use this alongside the [mechanics guide](game-to-survivors-mechanics.md), [playtesting workflow](playtesting-and-balance-log.md) and [promo workflow](promo-video-workflow.md). Examples are component roles, not a required fantasy inventory, fixed screen layout or prescribed set of game systems.
+Use this alongside the [selected genre module](genres/index.md), [playtesting workflow](playtesting-and-balance-log.md) and [promo workflow](promo-video-workflow.md). Examples are component roles, not a required fantasy inventory, fixed screen layout or prescribed set of game systems.
+
+Use [shared localization](localization.md) for selected languages, persistent
+selection, native-style script coverage and longest-text mobile checks. English
+is the default; the user's system language is the suggested second option, with
+the actual shipped languages chosen by the user.
+
+See the [English menu example](examples/railway-runner.md#native-style-ui-with-readable-english-text) for material-consistent panels and live text.
 
 ## Establish the exact reference
 
@@ -50,6 +57,31 @@ Use the image-generation workflow for actual gaps after inspecting the source;
 keep it tied to the established visual reference rather than inventing a new
 style to compensate for unfinished extraction.
 
+## Keep the complete UI in one art direction
+
+Define shared font roles, glyph scale/baseline, palette, panel material, border
+thickness, corner treatment, content padding, icons and interaction states.
+Apply that kit to loading/setup/error/retry, main menu, HUD, pause/settings,
+toasts, results, inventory/shop and promo/preview cards where applicable. Do not
+finish the title screen while leaving the loader or secondary menus in generic
+browser styling. A font match alone cannot compensate for unrelated frames.
+
+For a cold loader, a small selected subset of native/generated logo, glyphs,
+frame and progress-widget art can be embedded or boot-loaded independently of
+the large game atlas. Connect stage, byte/file counts, percentage, Retry and
+accessible labels to the real loader; decorative progress must not imply that
+assets are ready. The inspected classic-game loader used this technique to
+preserve its art direction before the main atlas arrived.
+
+Generate missing panels as one coordinated kit, conditioning later variants on
+approved examples. Ask for blank text-safe interiors and separable corners/edges
+or button states where useful. Keep menu labels and interactive controls live,
+localized and deterministic; a generated menu illustration is not a working menu.
+Measure padding against the visible inner border, not the outer image rectangle.
+Inspect long translations, selected/disabled/focus states and narrow layouts.
+Use [sprite/atlas production](sprite-and-atlas-production.md) to prepare the kit
+and [style-specific rendering](style-and-rendering.md) to preserve its sampling.
+
 ## Build a small native component kit
 
 Define reusable components such as NativeButton, Frame, PropertyPanel, ActionIcon, Slot, StatusBar, Tab and Modal. Components receive content and behavior; they should not each redraw their own approximation of the art. A shared fix then repairs every shop, inventory and level reward.
@@ -66,6 +98,15 @@ unrelated selection rectangle; preserve keyboard focus indication separately.
 Computed CSS, bounds checks and screenshot capture alone do not establish visual
 quality. Inspect the rendered images at the supported sizes after layout checks;
 reject warped end caps, repeated bevels, texture seams and misaligned labels.
+
+Use the native font for every visible text, including shop offers, pause and
+settings menus, toasts and loading text, not only titles. For missing symbols, use deliberate documented substitutes; for translated
+letters, extend the atlas or choose a compatible script-complete face rather
+than replacing readable text with unrelated glyphs. Tint coloured text without
+losing glyph transparency, and keep real text available to screen readers/tests.
+Build settings controls from native widgets where they exist (on/off labels,
+slider or thermometer pieces, selection cursors) and lay native frame pieces
+over a native background pattern rather than drawing plain boxes.
 
 Review proportions on pause, death/victory, settings, inventory, comparison and
 shop screens as well as the opening menu. Size shared button widths from the
@@ -222,8 +263,7 @@ drag/drop and an explicit Equip button. A double-click must commit one equip
 transaction; its first click may select/inspect but must not sell, consume or
 purchase the item. On touch, use explicit Equip/Sell actions so double-tap does
 not become a gesture conflict. Reject incompatible drops without state changes.
-Expose autoequip/autosell toggles and sale previews using the mechanics guide's
-shared, iterative comparison policy. Side-by-side comparison shows both items'
+Expose autoequip/autosell toggles and sale previews using the [shared, iterative comparison policy](equipment-and-comparison.md). Side-by-side comparison shows both items'
 values and meaningful effects, including granted abilities; on narrow screens
 stack the same information instead of omitting comparison dimensions.
 
@@ -262,7 +302,7 @@ Retain a fixture for each reported UI defect.
 Map each screen's backdrop, frame, button, slot and font to an actual resource;
 new menu art does not complete inventory or equipment backdrops. Check title
 flex shrink and quiet text surfaces over ornament. Equipment comparison uses
-the shared semantics in the [mechanics guide](game-to-survivors-mechanics.md#make-equipment-drops-useful-and-comparable),
+the shared semantics in the [shared equipment rules](equipment-and-comparison.md),
 not an independent interpretation of red/green tooltip rows. Geometry assertions
 and visual review must both pass; screenshots alone do not validate interactions.
 

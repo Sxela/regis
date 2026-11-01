@@ -1,248 +1,156 @@
 ---
 name: regis
-description: Build a survival or survivors adaptation from supplied game files using REA evidence, three character classes, tested mechanics, source-compatible UI, difficulty tuning, promo production, and reproducible game releases. Use for end-to-end game-to-survival work or a requested phase of that adaptation; not for unrelated binary analysis or ordinary game advice.
+description: Adapt supplied game files into a playable source-faithful game, including survival/survivors and forward runners, with REA discovery, genre-specific design and fairness checks, native-style UI, mobile playtesting, optional effects tools, promo production and reproducible releases. Use for an end-to-end adaptation or a requested phase of an existing game project.
 ---
 
-# REGIS — Reverse Engineer Game Into Survival
+# REGIS — game adaptation toolkit
 
-Turn the selected game's files into a playable, recognizable survival adaptation.
-Use the actual source game's identity, not a fantasy template imposed on every
-game. The default stack is a **Node.js-served SPA with Electron desktop builds**
-and **responsive mobile browser support tested by default**. Source adapters,
-perspective, controls, numeric balance and platform details are project decisions.
-Support sprites, 3D models, units, vehicles and
-other protagonists where appropriate. Design **exactly three starting classes**
-with distinct strengths and multiple viable builds, named and themed for the
-selected source. Additional classes require a scope change.
-These are REGIS product defaults, not recovered source requirements. Record
-user choices, source facts, defaults and authored decisions separately in the
-project profile; honor existing projects and explicit user overrides.
+Turn the selected game's files into a recognizable playable adaptation. Follow
+the requested target genre and scope; continue existing work rather than restart.
+Keep source facts, inferences, defaults, authored adaptations, unknowns and tested
+scope separate. A source filename does not establish behavior or spawn location.
 
-Follow the user's requested scope: continue an existing project or phase rather
-than restarting completed work. For a full project, persist through discovery,
-design, implementation, playtesting, promo and release preparation. Keep a short
-phase/evidence log with pending work and blockers. A scaffold, passing unit
-tests or staged trailer is not a finished game. Read
-[quality target and milestone reviews](references/quality-and-scope.md) before
-implementation. Establish a concrete source/benchmark coverage target; a request
-to test the skill does not authorize silently reducing that target to a demo.
-Treat the first playable slice as an intermediate milestone and continue through
-the requested target. A list of deferred requirements does not complete them.
-Content breadth and product completeness are separate: a requested subset of
-maps or spells still requires complete integration, earned progression and
-current acceptance evidence for that subset. Retain a compact acceptance ledger
-with reproductions and expected visible outcomes, not just a feature checklist.
-For an explicitly quick survival test, scope a narrow content sample with full
-depth: every included actor, spell, region and UI flow uses its real assets and
-complete mechanics. A smaller catalog is acceptable; backward movement, missing
-native UI and unused spell sprites are defects, not content-scope reductions.
-Full-catalog expansion, promo and release breadth follow the requested scope.
+## Select the target loop
 
-## Establish the target and evidence
+Read [genre routing](references/genres/index.md), then only the selected module:
 
-Resolve source path, edition/version, output repository, supported platforms and
-available REA tools from the session. Ask only for information that prevents
-meaningful progress. Keep the source installation unchanged and generated output
-outside it. Record hashes, archive/member IDs and extraction parameters.
-Before committing to input and layout, resolve target platforms and preferred
-controls from the session. If unspecified, ask a brief preference question while
-continuing source discovery; offer desktop keyboard/mouse, mobile touch and
-controller where relevant. Honor an explicit platform scope. While awaiting an
-optional answer, use the default desktop web/Electron plus mobile web scope,
-state the assumption and provide usable touch controls. Record the selected
-platform/control pairs and use input-appropriate in-game hints; see
-[platform and mobile](references/platform-and-mobile.md).
-When the user supplies an existing adaptation or reference result, compare its
-relevant screens, loop and systems before choosing the implementation scope.
-Record the qualities to preserve, explicit exclusions and known reference defects.
+- [Survival / survivors](references/genres/survival/workflow.md): movement,
+  automatic combat, source abilities, useful builds, crowd pressure and navigation.
+- [Forward runner](references/genres/runner/workflow.md): lane changes, jump/slide,
+  source-genre verbs, track geometry, reaction windows and survivability.
 
-Read [source discovery](references/source-discovery.md). Use the available REA
-skill and actual advertised tool schemas to inspect shipped artifacts and
-recover unknown formats, resource mappings, stats and spawn behavior. Do not
-invent a universal asset-scan tool or treat every archive as a native executable.
-The REGIS npm package depends on REA; a standalone skill copy still needs
-separately available REA tools. Installation does not register MCP, configure
-providers, execute the source game, or supply every decoder.
-When a provider is unavailable, retain the bounded unknown, continue supported
-work and report the actual blocker. Use ordinary source tools for complete
-source repositories; use REA where shipped-artifact evidence is required.
+Module defaults apply only to that target and yield to explicit user choices.
+Do not force shops, upgrades, three classes or stationary Easy tests into every
+game. For another genre, define its verbs, loop and acceptance contract using
+shared guidance; do not claim an unimplemented CLI genre is supported.
+The CLI offers `regis init NEW_DIRECTORY --genre survival|runner`; omission and
+legacy briefs retain survival. It creates a structural brief, not a playable game.
 
-Inventory maps/terrain/collision/heights; characters and animation/equipment
-layers; mobs/bosses; spells/skills/projectiles; items; VFX; sounds/music; UI/fonts;
-stats/traits/resistances; region boundaries, area spawns and encounter rules.
-Include present/missing/unsupported status, provenance and extraction coverage
-for each family. A filename or sprite does not prove behavior or local spawns.
-Keep observed facts, inferences and deliberately adapted rules separate.
-Track decoded, mapped, implemented and validated coverage per relevant family.
-Resolve missing companion resources and uncertain formats instead of making a
-small easy-to-decode selection the whole content target.
+The shared default stack is a **Node.js SPA + Electron desktop builds**, with
+**responsive mobile browser support and tests enabled by default**. Resolve
+platforms and controls from the session, honoring explicit scope overrides.
+Use [platform/mobile guidance](references/platform-and-mobile.md); Electron is
+not an Android/iOS runtime. Choose rendering/projection after inspecting assets.
 
-## Design and iterate before expanding content
+## Choose game languages
 
-Read [mechanics](references/game-to-survivors-mechanics.md) and
-[design and difficulty](references/design-and-difficulty.md). Build a source
-catalog separate from the survival rules. Audit abilities, stats and affixes as
-keep/adapt/exclude/defer, with a real runtime consumer and useful feedback.
+Read [shared localization](references/localization.md). Use a multilingual
+structure, with English as the default and the user's system language as the
+suggested second option. The user chooses which languages ship; honor existing
+choices and primary-language overrides. Keep game and promo language scopes
+separate. Use shared locale dictionaries, a supported-locale fallback, persistent
+selection and fonts/layouts verified for every chosen script.
 
-Propose three class identities with starting attack, strength, weakness,
-movement/escape rule, scaling, at least two build directions and their failure
-cases. Compare them at equal **earned** budgets. Iterate a small complete loop:
-start, move/autofight, collect, choose upgrades, boss, exit, safe improvement,
-next area, death/victory and save/continue. Use this loop to judge fun, readable
-counterplay, choice quality and replayability before generating a large catalog.
-Record design hypotheses and what changed after play; do not claim that a design
-document establishes fun.
-The slice must exercise the source's difficult presentation and gameplay systems.
-Review it against the target before expansion, then integrate the remaining
-required regions, actors, useful abilities/items and native interface components.
+## Establish evidence and the quality target
 
-Preserve coherent source regions and their local spawn identities. Make every
-offered ability, passive and item property useful in the implemented loop.
-For included source skills/spells, preserve their original in-game names in the
-selected edition/language and their matching icons, sprites, VFX and sounds.
-Record automatic targeting, cooldown or other survival adaptations separately;
-do not attach a familiar name to an unrelated generic attack. Exclude abilities
-and dependent stats with no useful role in this mode from playable pools, such
-as party-wide healing without allies or blocking walls without useful placement
-and navigation. Keep their source records and exclusion reasons for provenance.
-Prefer distinct behavior and viable tradeoffs over mandatory stat inflation.
-When the source supports parties or mercenaries, allow one optional recruitable
-companion with earned leveling, useful combat support and native dialogue/remarks
-where available. Follow the mechanics reference for companion lifecycle and
-reopening ally-dependent abilities. For equipment, support side-by-side comparison,
-autoequip, drag/drop, double-click equip and conservative iterative autosell.
+Resolve source path, edition/version, output repository and available tools.
+Keep the source unchanged and output outside it. Inventory relevant world/maps,
+actors/actions/facings/layers, threats, abilities/weapons/items, VFX, audio,
+UI/fonts and behavior/stat tables. Record provenance, hashes, archive/member IDs,
+extraction parameters and present/missing/unsupported status. Track discovered,
+decoded, mapped, implemented and validated coverage separately.
 
-## Implement and test the actual game
+Read [source discovery](references/source-discovery.md). Use available REA tools
+for shipped-artifact evidence and unknown formats; use ordinary source tools
+for complete repositories. Inspect actual schemas; do not invent scan APIs.
+The npm package includes REA, but a standalone skill still needs available REA
+tools. Installation does not register MCP/providers or supply every decoder.
+Retain bounded unknowns and continue supported work when a provider is absent.
 
-Read [implementation and validation](references/implementation-and-validation.md).
-For web/mobile delivery, use [asset delivery](references/asset-delivery.md) to
-separate source extraction from request, byte, decode-memory and cache budgets.
-Show shared loading progress through download, decode and scene readiness, with
-retry and safe simulation gating; follow the asset-delivery acceptance cases.
-Read [platform and mobile defaults](references/platform-and-mobile.md). Use the
-Node.js SPA for web/mobile and Electron for native desktop platform builds unless
-the user explicitly changes that stack. Select Canvas/WebGL or equivalent SPA
-rendering to fit recovered assets. Keep extraction
-adapters, source catalog, survival configuration, simulation, rendering, UI and
-production tooling separate. Reuse the playable simulation in headless tests or
-instrumented engine replays. Test formulas, targeting, status execution,
-progression, transactions, collision, saves and migrations with meaningful
-observable outcomes. Do not create passing placeholder mechanics or a second
-toy simulator that cannot fail with the game.
-Render action/direction animations, anchors/layers, projection, terrain variation
-and effects from inspected source data. Review actual motion and matched views;
-static actors and primitive effects remain placeholders when native art exists.
-Audit the complete applicable asset lifecycle for each included spell and actor,
-including impact/status effects, death/corpses and event-specific sounds. Track
-each role through runtime use and verification; decoding a family is insufficient.
-Use the lifecycle matrix in the implementation reference before accepting content.
+Read [quality and milestone reviews](references/quality-and-scope.md) before
+implementation. Compare any supplied adaptation/benchmark's actual screens,
+loop and systems. Define a concrete coverage/acceptance ledger with reproductions
+and visible outcomes. A trial request does not silently lower the target to a
+demo. A narrow sample can reduce breadth while keeping included systems complete.
+Keep a phase/evidence log; a scaffold or passing package tests is not a game.
 
-Read [UI](references/nostalgic-ui-workflow.md) during interface work. Recover native
-components first; generate images when existing art does not fit a needed UI
-role. Use an available image-generation tool/skill, source identity references,
-quiet text-safe regions and deterministic interactive text. Keep original,
-adapted and generated assets labeled. Native UI with baked-in labels or fixed
-button layouts may be adapted with an image-edit model: replace static text,
-create blank controls or extend a panel with matching button art, then implement
-real controls and verify the result as described in the UI reference. Keep a
-readable fan-project note in menu, README, credits and distribution instructions;
-do not imply endorsement.
-Reuse native paperdoll, inventory and shop layouts/components where applicable.
-When the source supports visible worn equipment, connect included equipment to
-the paperdoll and in-world character appearance, not only stat changes or icons.
-Verify equip/remove/replacement in motion and after save/restore; the UI reference
-defines source capability and variant/layer checks.
-Fit the normal upgrade choice set and every action button vertically within the
-usable screen, including small mobile portrait/landscape layouts; keep text and
-touch targets readable. Validate longest-content cards and orientation changes.
+## Implement the representative loop
 
-## Playtest, diagnose and balance
+Use the selected module's mechanics and difficulty contract. Separate immutable
+source catalog, adaptation configuration, simulation, renderer, UI and production
+tooling. Build one complete representative start-to-outcome loop before expanding
+the catalog. Record hypotheses and observed changes; a design document does not
+establish fun. Apply item, currency, equipment or companion rules only when those
+systems are selected. Implement their real transactions and persistence fully.
 
-Read [playtesting](references/playtesting-and-balance-log.md) and the difficulty
-contract in [design and difficulty](references/design-and-difficulty.md).
-Preserve reported failures as targeted regressions. Bind each acceptance result
-to its relevant inputs; mark affected evidence stale after changes and rerun by
-dependency. Keep controller competence, earned winning paths and observed win
-frequency separate. The playtesting reference defines this evidence contract.
-Run the separate [performance playtest](references/performance-playtest.md),
-including bandwidth/latency throttling and cold/warm persistent caches for web
-delivery. Keep performance evidence separate from balance outcomes.
-Include explicit performance and walkability passes in playtesting. Measure
-rendered frame pacing under representative combat load on selected platforms,
-and traverse required routes with actual actor collision. Record budgets,
-scenarios, measurements and failures in the playtest log; passing balance runs
-or headless simulation alone does not complete either pass.
+Read [implementation/validation](references/implementation-and-validation.md).
+Reuse the actual simulation in headless tests or instrumented engine replays;
+never build a second toy simulator. Test actual collision, formulas, timing,
+target/status behavior, transactions, save/reset/migrations and relevant rewards.
+Match spatial coordinates, anchors, support surfaces, depth, animation facings,
+attachments, shadows and effect endpoints. Inspect motion, not only decoded art.
+Audit each applicable actor/ability/weapon/hazard asset lifecycle through runtime
+use, feedback and cleanup. Boxes/static sprites remain placeholders when native
+art and animation are available.
 
-| Mode | Intended experience |
-| --- | --- |
-| Easy | Most runs can win with mostly stationary combat, ordinary earned upgrades and occasional required collection/objective movement. |
-| Medium | Success requires movement, dodging and deliberate build planning; standing still is usually insufficient. |
-| Hard | Real survival: fair but demanding movement and build choices; several attempts may be needed to understand threats and assemble a winning build. |
+Read [asset delivery](references/asset-delivery.md) for atlases, request/byte/
+decode-memory budgets, shared progress, retry and scene-readiness gating.
+Read [native UI](references/nostalgic-ui-workflow.md): recover the source's fonts,
+frames and widgets first; generate only real gaps. Preserve readable, interactive
+text and selected-language glyphs. Keep mandatory actions within usable phone
+portrait/landscape areas; inspect longest text and maximum-load HUD states.
 
-Measure those behaviors across all three classes, representative maps, seeds,
-early/mid/late checkpoints and earned builds. Treat numeric win-rate bands as
-project hypotheses, not universal claims or guaranteed human outcomes. Easy's
-stationary success is intentional; do not "fix" it to match Medium. Hard must
-remain winnable without hidden bonuses or compulsory grind.
-Treat every class/mode without demonstrated earned winning progression as an
-open investigation. Diagnose controller limitations, targeting, warning stacking,
-recovery, crowd contact and reward access; iterate rather than hand off after
-recording zero-win rows. Preserve Easy and mature-build regressions while tuning.
+For pixel-art filtering, motion stability, sprites in 3D and material/camera
+pitfalls, read [style-specific rendering](references/style-and-rendering.md).
+For generated sprite sheets, coherent UI kits and deterministic packing, read
+[sprite and atlas production](references/sprite-and-atlas-production.md).
+Choose by source style and inspected results; CRT and billboards are optional.
 
-Fix terrain walkability, body clearance, floors, disconnected spawns, stuck mobs,
-line of sight and pathfinding **before** compensating with damage changes. Probe
-doors, corners, stairs, edges, large enemies, moving targets and supported screen
-shapes. Log recovery teleports and other fallbacks instead of counting them as
-clean navigation. Include human sessions; if unavailable, state that validation
-gap and deliver runnable review builds without claiming human-tested balance.
+For optional production tools read [tools and skills](references/tools-and-skills.md).
+This includes PixelFX effects, image generation, browser/capture tools and
+[3D pipeline benchmarks](references/3d-asset-benchmarks.md). Discover capabilities
+before using them; references do not authorize installations or external actions.
+Preserve tool/model versions, matched inputs, provenance and actual review results.
 
-## Produce the promo
+For concrete visual examples, see the optional
+[English railway-runner gallery](references/examples/railway-runner.md): native-style
+UI, lane/roof readability, city scenery, actor-bound electricity and share cards.
+Use its captions as comparison prompts, not source-independent design rules.
 
-Read [promo creation](references/promo-video-workflow.md) and
-[generation and dialogue](references/generation-and-dialogue.md). Use real game
-capture for feature claims; disclose staged stats and generated inserts. Establish
-the requested creative treatment before capture; when references are supplied,
-inspect their editorial qualities and adapt the premise to the source. Verify
-visible gait and attack animation during movement, not only travel distance. Record
-continuous meaningful movement where the game calls for it, source audio, edit
-timings and provenance. Inspect the **source illustration** before animation:
-edition, costume, anatomy, horn/limb counts, facings and props must match the
-chosen identity. Fix a wrong image before spending a video generation.
+## Playtest and diagnose
 
-For spoken inserts, define the exact words, sole/stable speakers, concrete
-actions, pauses and voice delivery. Use the chosen model's supported prompt
-syntax; do not copy reference-mode tags into a base mode blindly. Review the
-whole clip and listen; ASR can check wording but cannot certify acting or timing.
-Decode the master end to end and save poster, storyboard, edit and validation.
-If generation or audio review is unavailable, preserve completed work and state
-the missing deliverable rather than claiming the promo complete.
+Read [shared playtesting](references/playtesting-and-balance-log.md) with the
+selected module's policies. Keep rule tests, real-module simulation, rendered
+real-input automation and human sessions distinct. Record seed/route, content/
+config hashes, controls/device, starting/earned state, sample sizes and outcomes
+(win/death/horizon/abort). A horizon or automation failure is not a victory.
+Check all selected roles/modes and meaningful early/middle/late checkpoints.
+Diagnose missing winning paths, visible counterplay and controller limitations
+before adjusting damage; preserve found defects as regressions. Explicitly state
+human/device gaps rather than inventing sessions or extrapolating bot win rates.
 
-## Package the game and hand it over
+Run the independent [performance playtest](references/performance-playtest.md):
+representative rendering/effects load, transitions, constrained networks and
+cold/warm caches. Also run actual navigation or runner track-traversal checks.
+Report recoveries and stalls separately from clean outcomes. Mark affected
+acceptance evidence stale after changes and rerun by dependency.
 
-Read [game delivery](references/game-delivery.md) and [link previews](references/social-link-previews.md) for web releases. Deliver game source, tests,
-CI/build workflows, Electron platform artifacts, a mobile web build, platform-specific install/run instructions
-and deterministic local asset setup from the user's supported game files.
-Every final game package must ship its runnable asset-extraction script/launcher,
-recipe and required adapters, with explicit source/output paths and dependency
-setup. Test extraction and launch from the unpacked release, not only the repo.
-Embed current screenshots from the finished game in its README: real desktop
-gameplay, mobile portrait and upgrade choices, with portable image paths, alt
-text and captions. Verify the images render in the delivered documentation.
-Give every important implemented feature a one-line benefit summary followed by
-a short elevator-pitch paragraph explaining its player value and concrete behavior.
-Follow the delivery reference; keep planned work separate from shipped claims.
-Keep proprietary source/extracted content out of the public repository and
-default source-only releases. Provide checks, hashes, useful failure messages
-and supported-version limits; never pretend synthetic CI assets prove that a
-real installation extracts correctly. The fan-project note does not grant asset
-redistribution rights. Use redistributable material only where its permission
-is actually established.
+## Promo and delivery within the requested scope
 
-Separate the generated game's CI/CD from REGIS's own package CI. Prepare a
-reviewable release locally; publishing, repository creation, uploads, signing
-and external deployments follow the user's actual authorization. Finish with
-tested commands, output locations, tested classes/difficulties/platforms,
-evidence-backed limits and outstanding work.
-Run the quality-target review again before handoff. Complete supported missing
-requirements; report a partial result only with its actual scope/blockers, and
-do not substitute passing package/browser checks for coverage or visual quality.
+Before creating a new promo, ask which language versions to produce, suggesting
+English and the user's system language. Reuse an explicit choice already given
+for that promo; otherwise wait for the answer before language-dependent production.
+Record captions/title-card and any voice/dialogue language scope in the edit plan.
+Read [promo workflow](references/promo-video-workflow.md) and
+[generation/dialogue](references/generation-and-dialogue.md) when producing media.
+Use real game capture for claims, preserve approved edits/text on revision, and
+disclose staged runs/generated inserts. Check reference identity before generation;
+review visible motion, padding, full edit and audio by listening. Decode the final
+master end to end; retain poster, storyboard, timeline and provenance.
+
+Read [game delivery](references/game-delivery.md) and, for web releases,
+[localized share previews](references/social-link-previews.md). Deliver source,
+tests/build workflows, selected platform artifacts, run/install instructions,
+and a deterministic asset setup/extractor with required adapters and versions.
+Test extraction and launch from a clean unpacked release. Keep proprietary game
+data/private evidence out of public toolkit repositories and default source-only
+packages; use distribution allowlists as well as ignore rules. Keep source,
+adapted/generated material and license/credit records distinct; a fan-project note
+does not grant redistribution rights or endorsement.
+
+Include current actual-game screenshots and concise feature benefits in game
+documentation. Separate planned features from implemented evidence. Prepare a
+reviewable local release; deployment/publication follows actual user authorization.
+Keep toolkit package checks separate from gameplay and platform execution.
+Revisit the quality target before handoff and finish supported required work;
+report actual commands, outputs, tested scope, limits and remaining blockers.
