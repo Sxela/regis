@@ -2,8 +2,11 @@
 
 A source-faithful game adaptation skill with shared discovery, implementation,
 art/UI, effects, mobile testing, promo and release workflows. Genre-specific
-rules live in bundled [survival and runner modules](skills/regis/references/genres/index.md).
+rules live in bundled [survival, runner and artillery modules](skills/regis/references/genres/index.md).
 The runner module integrates REGIS Runner without requiring its sibling checkout.
+The artillery module covers Scorched Earth/Worms-style terrain, art, zones,
+combat/cameras and validation. It adds guidance, not a CLI artillery project
+brief: `init --genre` and its synthetic contracts still support survival/runner.
 
 See the [release history](CHANGELOG.md) for detailed milestone features and changes.
 

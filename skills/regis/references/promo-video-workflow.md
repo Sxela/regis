@@ -27,17 +27,23 @@ Build around a short premise. A sincere feature reel can show the world, combat,
 
 Write a timed shot list with the feature, subject, action, caption, audio cue and transition for every segment. Keep action near the middle, captions inside safe margins, and important text away from platform controls. Use short captions with a punchline or concrete feature; paragraphs become unreadable over moving footage.
 
+When the purpose includes showing content breadth, assign a variety matrix before capture: feature/action, environment, playable role or team, opponent and visual palette. Rotate meaningful combinations across demonstrations rather than filming every feature with the same cast and backdrop and relying on a final montage to imply variety. Repeated content is appropriate for a focused showcase or controlled comparison. Use actual selectable content, and verify distinct captured IDs separately from the catalog totals; neither proves the other. A native-art closing lineup can reinforce cast variety without requiring new generated illustrations.
+
 ## Record in an isolated session
 
 Use an isolated capture environment: a separate engine profile, save slot, test account, browser profile or local server as appropriate. Preserve live sessions and saves. Keep scene-control code and alternate art in production tools rather than shipping them as gameplay changes. Native screen capture, engine recording, replay cameras and browser capture are all valid; choose the method that preserves actual rendering and reliable timing.
 
 Staging may control locations, opponents, units, equipment, abilities, resources and timing, but use the actual renderer and rules for gameplay shots. Record interventions in production notes. Invulnerability or a controlled replay may produce a clean take; it must not be presented as an ordinary earned result.
 
+Changing the map or cast can invalidate a staged encounter: body dimensions, weapon origins, support surfaces, clear lanes and cliff geometry may differ. Recompute staging from the selected content. Log actual action outcomes and inspect their visible proof: a shot counter alone does not establish a hit, multi-stage attack, terrain cut or falling victim. Await the selected scene's required textures, fonts and character variants; a full-roster title card may need more art loaded than a normal match.
+
 Capture at the intended aspect ratio and zoom. If using a 540 by 960 CSS viewport with device scale factor 2, verify that the result is actually 1080 by 1920 pixels. Wait for relevant scenes, fonts, character layers, shaders and effects to load before rolling. Use current menus and offer counts; an older capture script can accidentally show superseded mechanics.
 
 Record game audio from its own master bus into a separate track. This preserves source impacts, actions, interactions and transitions and makes the final mix easier to control. Avoid capturing notification sounds, microphone input or unrelated desktop applications.
 
 When software rendering is too slow for real-time capture, add a capture clock to the build behind an explicit query flag. The game loop then advances only when the capture tool asks, by exactly one output frame, and the tool screenshots each frame. Timing becomes exact regardless of render speed. Browser automation does not record audio, so in that mode log every sound and music request against the same clock instead of playing it. Rebuild the soundtrack offline from the same sound assets and music synth. Disclose the reconstruction.
+
+A separate production adapter may instead import the actual simulation and renderer, provided it retains the gameplay rules and documents its camera/UI presentation changes. Probe the installed encoder with a short real encode before recording a long take; an executable name does not establish codec availability. In streamed capture, surface encoder stderr and stop feeding frames on encoder exit rather than hanging on a closed input pipe. Record capture resolution separately from delivery resolution and disclose any upscale.
 
 ## Match movement to the game
 
@@ -52,6 +58,8 @@ Log player positions and timestamps during each take. Review total travel, end d
 Verify visible animation separately from translation. Camera movement, position logs and a true moving flag can coexist with a frozen body or a sliding firing pose. Inspect ordinary traversal and movement during combat at delivery size. Check source clip selection, changing gait frames, action/direction, equipped variants and foot anchors. Frequent attacks can continually reset a shared animation clock or suppress locomotion; diagnose this in the game before recording replacement footage. Where movement during attacks is supported, preserve a readable gait using the source's layers, separate locomotion timing or appropriate brief action poses. Deliberate stationary attacks remain valid for games whose rules require them.
 
 Record a little more than the intended edit length so cuts can start after loading and end before a route runs out. Retain original capture timestamps; resample into a constant-frame-rate edit from elapsed time rather than assuming every recorded image arrived at equal intervals.
+
+Review camera behavior through the end of each action. In turn-based or unit-switching games, normal handoff can flash an unrelated actor just before the cut. Trim the take or apply a disclosed capture-only aftermath hold after the action settles. Do not suppress unresolved damage, falling, hazards or the gameplay handoff to manufacture a result.
 
 ## Choose the right original artwork
 
@@ -127,6 +135,8 @@ Use original composition, licensed music or another explicitly suitable source. 
 
 Balance dialogue first, then impacts, gameplay and music. Duck the music around speech and punchlines. Measure the final encoded file rather than assuming the requested loudness filter target was achieved. A practical starting aim is approximately -15 to -16 LUFS integrated and true peak at or below -1.5 dBTP, then check comfortable playback on a phone. Do not normalize every quiet detail into a loud hit.
 
+Lossy encoding may raise reconstructed peaks. If the delivered track exceeds the chosen ceiling, leave additional mix/limiter headroom and remeasure each encoded audio variant. Do not report the normalization filter's proposed output as the input measurements of the actual master.
+
 ## Verify the deliverable
 
 Bind the source image, generated clip, speech/audio review and edited master by
@@ -172,6 +182,10 @@ ffmpeg -i promo.mp4 -af ebur128=peak=true -f null -
 
 Save a master video, poster, storyboard/contact sheet, edit manifest, production notes and validation report. Read the report back. Decode tool output with its actual encoding, verify parsed numeric fields, reject empty measurements and retain raw evidence. A successful command does not establish that a later parser recorded its results correctly.
 
+Contact sheets should preserve the entire frame or letterbox it: a fill crop can hide captions or cut off the title while falsely suggesting a clean review. Sample the encoded export across every segment, including late aftermath and the closing hold. Browser playback can check time advancement, decoded audio signal and dropped frames; codec support strings or a nonzero signal do not establish comfortable balance, intelligibility or a listening review. State any unavailable listening scope explicitly.
+
+Bind playback, loudness and visual evidence to the final artifact digest. A changed take, soundtrack or render script invalidates affected downstream reviews and packages. Avoid overlapping writers to one revision's captures or exports; finish the selected render before validation and packaging.
+
 ## Deliver a portable production package
 
 Use project-neutral output roles rather than depending on a particular repository layout:
@@ -188,5 +202,7 @@ exports/            master video, poster, storyboard and validation report
 Store platform-specific paths and capture adapters in configuration. Another project should only need its own approved assets, game/capture adapter and production settings, not the original project's engine or personal filesystem.
 
 Use relative paths or explicit configuration for selected inputs; copying an edit script into a ZIP is insufficient if it still reads the original workspace. Verify the selected package after unpacking into a fresh directory and rebuild the edit there. Compare artifact hashes when the toolchain is deterministic; otherwise compare decoded content and document the expected variation. Distinguish standalone edit reproduction using included selected media from recreating gameplay captures or rerunning a generative model.
+
+Make the revision/output directory an explicit configuration value shared by capture, render, validation and packaging. Preserve the previous approved revision, and ensure every selected script, font/license, take and event log resolves inside the unpacked edit kit. A portable re-edit may use included captures without requiring the full game or the GPU encoder used to record them; describe those separate prerequisites. Revision checks should confirm that the intended map/cast changes reached the captures, not merely the shot-list copy.
 
 Before handing over, record the output format, shot list, source versions, staging, generated material, music provenance and tested scope. Include reproduction instructions and identify which intermediate assets are necessary to rebuild the edit. Keep an approved master when making revisions.

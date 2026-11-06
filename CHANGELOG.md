@@ -1,10 +1,41 @@
 # REGIS release history
 
-These retrospective milestones describe the changes at their original commits.
-GitHub publication dates reflect when the releases were created, not when the
-features were implemented. Dated `milestone-*` tags identify repository snapshots;
+These milestones describe the changes at their tagged commits, including
+retrospective releases. GitHub publication dates reflect when the releases were
+created, not necessarily when features were implemented. Dated `milestone-*` tags identify repository snapshots;
 the npm package version remains `0.1.0`. Workflow requirements describe work an
 agent must perform, not game systems automatically implemented by the CLI.
+
+## 2026-11-06 - Turn-based artillery and promo production
+
+[GitHub release](https://github.com/Sxela/regis/releases/tag/milestone-2026-11-06-artillery-and-promo)
+
+### Compound artillery combat
+
+- Add reusable fixed-power, prepaid multi-shot, reactive-object and liquid-fire
+  lifecycle guidance without promoting individual weapon tuning to defaults.
+- Cover stable lingering-attack cameras, meaningful ground erosion, batched
+  terrain edits and regressions that distinguish frame stalls from camera jitter.
+- Extend validation for actual damage/support/alpha changes and full arsenals.
+
+### Promo production
+
+- Add intentional map/cast variety planning and content-aware encounter staging.
+- Cover capture-only aftermath holds, encoder probes, complete-frame review,
+  encoded audio headroom and revision-bound playback evidence.
+- Clarify configurable revision paths and clean-unpack re-edit verification;
+  retain project-specific content, media and tuning outside the skill.
+
+### Turn-based artillery module
+
+- Add a portable Scorched Earth/Worms-style workflow with separate settling
+  heightfield and cavern/suspended-terrain contracts.
+- Add terrain/zone generation, illustrated asset preparation/embedding,
+  destruction, action-camera, rope, AI and playtesting references.
+- Keep art styles, content quantities, inventory, languages and optional systems
+  project-specific; preserve old assets and explicitly version seed behavior.
+- Include the module in entrypoint/UI routing and tarball/install byte checks.
+  CLI project briefs remain survival/runner; no artillery validator is claimed.
 
 ## 2026-11-01 — Runner modules and shared art production
 

@@ -1,6 +1,6 @@
 interface:
   display_name: "REGIS"
-  short_description: "Adapt games with survival and runner genre modules"
-  default_prompt: "Use $regis to adapt my game files in the requested genre, selecting the survival or runner module and shared REA, art, effects, mobile testing and delivery guidance as needed."
+  short_description: "Adapt survival, runner and turn-based artillery games"
+  default_prompt: "Use $regis to adapt my game files in the requested genre, selecting the survival, runner or artillery module and shared REA, art, effects, mobile testing and delivery guidance as needed."
 policy:
   allow_implicit_invocation: true

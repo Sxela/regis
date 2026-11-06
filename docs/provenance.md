@@ -73,3 +73,36 @@ numbers are not universal defaults. No new runtime, physical-phone, CRT calibrat
 or model-quality study was run for this documentation update. Toolkit verification
 checks portable references, packaging and synthetic contracts only; source-game
 assets and private measurement logs remain outside the toolkit.
+
+## Artillery findings
+
+The artillery references distill an authored side-view game's iterative terrain,
+art, controls, camera, weapon, AI, zone-expansion and browser-validation work.
+They preserve technical invariants and failure modes while omitting its cast,
+zone subjects, asset counts, map dimensions, tuning values and machine paths.
+Settling heightfields, suspended cavern terrain, raster art and vector art are
+separate choices. No original game data, generated image pack, private trial log
+or claimed physical-device/human session is bundled by this update. The module
+is guidance only; the CLI does not gain an artillery brief or validator.
+
+## Promo showcase findings
+
+The shared promo guide incorporates lessons from revising a staged artillery
+feature reel to show distinct environments and playable casts. The transferable
+findings concern content-aware staging, action/camera continuity, encoder
+capability checks, complete-frame contact sheets, encoded audio measurement,
+revision-bound evidence and portable re-editing. Content subjects, roster/map
+counts, clip timings, machine paths, game code, captured media and music are not
+bundled or promoted to universal requirements. Automated playback/audio-signal
+checks are distinguished from a human listening or device review. Toolkit tests
+validate skill structure and packaging, not a newly produced game or promo.
+
+## Compound combat follow-up
+
+Later authored artillery iterations exposed stale fixed-power state, prepaid
+follow-up ownership, child contact/fuse differences, reactive-pickup chains,
+liquid movement/erosion and particle-camera/cache interactions. These findings
+are retained as conditional lifecycle and evidence checks. Weapon names, health
+percentages, tick counts, projectile counts, timings, cut sizes, measured frame
+rates and particular implementation files are deliberately not toolkit defaults.
+No runtime implementation or game test fixtures are imported into the skill.

@@ -7,6 +7,7 @@ existing project's selected loop; explicit user choices override module defaults
 | --- | --- | --- |
 | Survival / survivors | [Survival module](survival/workflow.md) | Free movement, automatic combat, useful source abilities, earned builds, crowd pressure and navigation. |
 | Forward runner | [Runner module](runner/workflow.md) | Lane/jump/slide contract, source-genre verbs, authored or seeded tracks, fair clearances and reaction windows. |
+| Turn-based artillery / Scorched Earth / Worms-like | [Artillery module](artillery/workflow.md) | Settling or suspended terrain, ballistics, safe starts, zone variety, destruction and complete action resolution. |
 | Another genre / hybrid | Define its project-specific loop using shared references | State verbs, constraints, win/loss, progression if any, and measurable difficulty; do not import either module's mandatory classes, shop or movement rules. |
 
 Load only the selected module and relevant shared references. For hybrids record
@@ -16,6 +17,7 @@ no universal Easy stationary policy, lane count, class count or upgrade system.
 The CLI's `init --genre survival|runner` selects a bundled structural brief.
 Omitting the flag retains survival for compatibility. Existing version-1 briefs
 without `adaptation` remain survival. This is a scaffold, not gameplay validation.
+The artillery module is workflow guidance, not a new CLI brief/validator.
 An alternative genre requires an explicit project contract; a document describing
 it does not mean the CLI already validates that genre's mechanics.
 

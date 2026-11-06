@@ -1,6 +1,6 @@
 ---
 name: regis
-description: Adapt supplied game files into a playable source-faithful game, including survival/survivors and forward runners, with REA discovery, genre-specific design and fairness checks, native-style UI, mobile playtesting, optional effects tools, promo production and reproducible releases. Use for an end-to-end adaptation or a requested phase of an existing game project.
+description: Adapt supplied game files into a playable source-faithful game, including survival/survivors, forward runners and turn-based artillery, with REA discovery, genre-specific design and fairness checks, native-style UI, mobile playtesting, optional effects tools, promo production and reproducible releases. Use for an end-to-end adaptation or a requested phase of an existing game project.
 ---
 
 # REGIS — game adaptation toolkit
@@ -18,6 +18,8 @@ Read [genre routing](references/genres/index.md), then only the selected module:
   automatic combat, source abilities, useful builds, crowd pressure and navigation.
 - [Forward runner](references/genres/runner/workflow.md): lane changes, jump/slide,
   source-genre verbs, track geometry, reaction windows and survivability.
+- [Turn-based artillery](references/genres/artillery/workflow.md): ballistic combat,
+  destructible terrain, zone art/generation, action cameras and fair starts.
 
 Module defaults apply only to that target and yield to explicit user choices.
 Do not force shops, upgrades, three classes or stationary Easy tests into every

@@ -93,3 +93,7 @@ effects. Measure request/byte/decode-memory/frame-time outcomes for the actual
 export, cold and warm loads, supported browsers and mobile viewports.
 Record physical-device gaps separately. A clean atlas image is not proof of
 correct indexing, animation, complete packaging or reduced draw calls.
+
+For raster assets in destructible side-view artillery games, read the
+[artillery art supplement](genres/artillery/art-production.md) for terrain
+footings, cave openings, spline-edge registration and airborne effect bounds.

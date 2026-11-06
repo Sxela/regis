@@ -1,7 +1,7 @@
 {
   "name": "regis-agents",
   "version": "0.1.0",
-  "description": "REGIS: source-faithful game adaptation toolkit with survival and runner modules, shared art, effects, testing and delivery workflows.",
+  "description": "REGIS: source-faithful game adaptation toolkit with survival, runner and artillery workflow modules, shared art, effects, testing and delivery workflows.",
   "license": "MIT",
   "type": "module",
   "bin": {
